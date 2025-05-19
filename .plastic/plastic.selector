@@ -1,0 +1,4 @@
+repository "PeraltaGame/PeraltaGame@6872734581610@cloud"
+  path "/"
+    br "/main"
+    co "/main"
