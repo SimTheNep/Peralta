@@ -822,7 +822,35 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spWallDecor_0: -7470734461985074482
+      spWallDecor_1: 5224761976331970762
+      spWallDecor_10: 6072021706074067713
+      spWallDecor_11: -7578400172596618574
+      spWallDecor_12: -5095777162334109171
+      spWallDecor_13: -1253469586795521669
+      spWallDecor_14: -236238364326879305
+      spWallDecor_15: -7106405753979232349
+      spWallDecor_16: -6375102556335982534
+      spWallDecor_17: 4423053413730102958
+      spWallDecor_18: 1576321489429280962
+      spWallDecor_19: 2096775033122982594
+      spWallDecor_2: -4840820247424698250
+      spWallDecor_20: -2216153859892506173
+      spWallDecor_21: 5250250318155062848
+      spWallDecor_22: -8997115306122920603
+      spWallDecor_23: 3003587492506049967
+      spWallDecor_24: -2683879278068744478
+      spWallDecor_25: 6865794151959134266
+      spWallDecor_26: -5014595723934145416
+      spWallDecor_27: -4561255300869744544
+      spWallDecor_3: -5267051546199574326
+      spWallDecor_4: 4651805437761396150
+      spWallDecor_5: -922231557041352622
+      spWallDecor_6: 2689654575188127771
+      spWallDecor_7: -3809966514009011450
+      spWallDecor_8: 1083213478005153639
+      spWallDecor_9: -1467794170980546023
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

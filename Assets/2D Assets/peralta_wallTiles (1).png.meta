@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      peralta_wallTiles (1)_0: 2879434861550785965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
