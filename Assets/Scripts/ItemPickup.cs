@@ -16,7 +16,7 @@ public class ItemPickup : MonoBehaviour
                 GabrielInventory inventory = other.GetComponent<GabrielInventory>();
                 if (inventory != null)
                 {
-                    inventory.AddItem(itemData);
+                    //inventory.AddItem(itemData);
                     Destroy(gameObject); // tira o objeto da cena
                 }
             }
