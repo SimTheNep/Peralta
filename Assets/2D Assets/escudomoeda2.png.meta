@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 90fc81afa499d8c40b268fbeef71bd42
+guid: 42e08b94eccc9b04b80548eeefb5327b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1848815139667621135
-    second: peralta_floorTiles (1)_0
-  - first:
-      213: -4248036037642122258
-    second: peralta_floorTiles (1)_1
+      213: -571681331906669111
+    second: escudomoeda2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: peralta_floorTiles (1)_0
+      name: escudomoeda2_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 174
-        width: 80
-        height: 68
+        x: 2
+        y: 3
+        width: 31
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1fa4fb80d60b756e0800000000000000
-      internalID: -1848815139667621135
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: peralta_floorTiles (1)_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 96
-        height: 161
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eeb88471bb1fb05c0800000000000000
-      internalID: -4248036037642122258
+      spriteID: 9c51bf68bdaf018f0800000000000000
+      internalID: -571681331906669111
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      peralta_floorTiles (1)_0: -1848815139667621135
-      peralta_floorTiles (1)_1: -4248036037642122258
+      escudomoeda2_0: -571681331906669111
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

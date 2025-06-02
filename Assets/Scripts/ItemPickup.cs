@@ -13,12 +13,12 @@ public class ItemPickup : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
-                /*GabrielInventory inventory = other.GetComponent<GabrielInventory>();
+                GabrielInventory inventory = other.GetComponent<GabrielInventory>();
                 if (inventory != null)
                 {
-                    inventory.AddItem(itemData, amount);
+                    inventory.AddItem(itemData);
                     Destroy(gameObject); // tira o objeto da cena
-                }*/
+                }
             }
         }
     }
@@ -31,7 +31,7 @@ public class ItemPickup : MonoBehaviour
             /*PeraltaInventory inventory = other.GetComponent<PeraltaInventory>();
             if (inventory != null)
             {
-                inventory.AddItem(itemData, amount);
+                inventory.AddItem(itemData);
                 Destroy(gameObject);
             }*/
         }
