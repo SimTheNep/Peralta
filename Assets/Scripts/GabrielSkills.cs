@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
+public enum SkillType { Push, Attack, Throw }
 public class GabrielSkills : MonoBehaviour
 {
 
-    private enum SkillType { Push, Attack, Throw }
     private SkillType currentSkill = SkillType.Push;
 
     private bool isPerformingSkill = false;
@@ -102,5 +101,9 @@ public class GabrielSkills : MonoBehaviour
         }
     }
     
+    public SkillType GetCurrentSkill()
+    {
+        return currentSkill;
+    }
     
 }

@@ -1,14 +1,19 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/ItemData")]
+public enum ItemType { Throwable, Attackable, Healable }
+
+[CreateAssetMenu(fileName = "NewItem", menuName = "Inventory/ItemData")]
 public class ItemData : ScriptableObject
 {
-    public string itemName;           // Nome do item
-    public Sprite icon;               // Ícone do item para mostrar no UI
-    public string description;        // Descrição opcional
-    public ItemType type;             // Tipo do item (Gabriel ou Peralta)
+    public string itemName;
+    public Sprite icon;
+    public string description;
+    public GameObject worldPrefab;  
+    public ItemType itemType;             
+    public MonoBehaviour itemBehaviour;
+    public ItemPerson person;
 
-    public enum ItemType
+    public enum ItemPerson
     {
         Gabriel,    // Apenas Gabriel pode usar
         Peralta     // Apenas Peralta pode usar
