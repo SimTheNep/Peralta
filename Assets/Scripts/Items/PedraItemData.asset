@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2908469a8bd22df4d8a8cb96df477054, type: 3}
-  m_Name: Pedra
+  m_Name: PedraItemData
   m_EditorClassIdentifier: 
   itemName: Pedra
   icon: {fileID: -8870327549414350, guid: 0b082357a02e5e641b0e7bbe2b23cb5c, type: 3}
   description: "\xC9 uma pedra..."
-  type: 0
+  worldPrefab: {fileID: 0}
+  itemType: 0
+  itemBehaviour: {fileID: 6268202714790889655, guid: 9f580f4be9fc43a4392940a1a2821b07, type: 3}
+  person: 0
