@@ -54,7 +54,7 @@ public class ControlEnemy : MonoBehaviour
         {
             if (Pos.x >= 10)
             {
-                this.transform.eulerAngles = new Vector3(0, 0, 180);
+                this.transform.eulerAngles = new Vector3(0, 180, 0);
                 direcao = true;
                 Velocidade = Velocidade * -1;
 
