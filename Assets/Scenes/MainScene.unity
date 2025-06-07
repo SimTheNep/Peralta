@@ -1089,28 +1089,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
   m_PrefabInstance: {fileID: 3980416010590845218}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &524601876 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6504016026059253130, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-  m_PrefabInstance: {fileID: 3980416010590845218}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524601875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1244f21daf19994f82df69b08417df9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &524601877 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2448324745921832461, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-  m_PrefabInstance: {fileID: 3980416010590845218}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524601875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff16a2f0ca07a644bb1a373dbb640753, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &524601881 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3918163314528630438, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
@@ -4003,10 +3981,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7812402751088034603, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7812402751088034603, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
@@ -4036,18 +4010,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: hauntSkill
-      value: 
-      objectReference: {fileID: 524601876}
-    - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: hoverSkill
-      value: 
-      objectReference: {fileID: 524601881}
-    - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: phaseSkill
-      value: 
-      objectReference: {fileID: 524601877}
-    - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: skillUIImage
       value: 
       objectReference: {fileID: 1177627069}
@@ -4055,38 +4017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peralta
       objectReference: {fileID: 0}
-    - target: {fileID: 3186074505031934899, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3186074505031934899, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3186074505031934899, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3186074505031934899, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3186074505031934899, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5822462830057819704, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 206284315}
-    - target: {fileID: 6204006084127043361, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204006084127043361, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6204006084127043361, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.25

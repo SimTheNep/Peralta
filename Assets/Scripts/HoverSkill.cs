@@ -55,7 +55,8 @@ public class HoverSkill : MonoBehaviour
             timeRemaining = Time;
 
             if (animator != null)
-                animator.Play("Hover_Peralta01");
+                animator.SetTrigger("Hover");
+                animator.Play("HoverLoop");
 
             this.gameObject.layer = LayerMask.NameToLayer("Floot");
         }
