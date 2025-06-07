@@ -1089,11 +1089,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
   m_PrefabInstance: {fileID: 3980416010590845218}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &524601876
+--- !u!114 &524601876 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6504016026059253130, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+  m_PrefabInstance: {fileID: 3980416010590845218}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524601875}
   m_Enabled: 1
@@ -1101,14 +1100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1244f21daf19994f82df69b08417df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hauntRange: 5
-  peraltaInventoryUI: {fileID: 1924207419}
-  peralta: {fileID: 524601875}
---- !u!114 &524601877
+--- !u!114 &524601877 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2448324745921832461, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+  m_PrefabInstance: {fileID: 3980416010590845218}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524601875}
   m_Enabled: 1
@@ -1116,11 +1111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff16a2f0ca07a644bb1a373dbb640753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &524601878
+--- !u!114 &524601878 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 9019047214767113482, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+  m_PrefabInstance: {fileID: 3980416010590845218}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524601875}
   m_Enabled: 1
@@ -1311,21 +1305,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8910304432982592667, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
   m_PrefabInstance: {fileID: 3013171891538472990}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &553137953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553137941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57452667ffc217845ba740beb70ac767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 6
-  currentHealth: 0
-  animator: {fileID: 0}
 --- !u!1 &555225046
 GameObject:
   m_ObjectHideFlags: 0
@@ -3685,10 +3664,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8910304432982592667, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 553137953}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
 --- !u!1001 &3980416010590845218
 PrefabInstance:
@@ -3762,19 +3738,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6504016026059253130, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      propertyPath: peraltaInventoryUI
+      value: 
+      objectReference: {fileID: 1924207419}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 524601878}
-    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 524601877}
-    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 524601876}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
 --- !u!1001 &5404204420321699438
 PrefabInstance:

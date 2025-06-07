@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 3921725513960240834}
   - component: {fileID: 3710009515345946728}
   - component: {fileID: 4259193411201505744}
+  - component: {fileID: 3539610634938790255}
   m_Layer: 3
   m_Name: Gabriel
   m_TagString: Gabriel
@@ -292,3 +293,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3539610634938790255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8910304432982592667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57452667ffc217845ba740beb70ac767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 6
+  currentHealth: 0
+  animator: {fileID: 0}

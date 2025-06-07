@@ -15,7 +15,13 @@ GameObject:
   - component: {fileID: 9029563595003164407}
   - component: {fileID: 392852926930219903}
   - component: {fileID: 5822462830057819704}
-  m_Layer: 3
+  - component: {fileID: 2448324745921832461}
+  - component: {fileID: 6504016026059253130}
+  - component: {fileID: 3918163314528630438}
+  - component: {fileID: 7538798837028385987}
+  - component: {fileID: 3171885917608872271}
+  - component: {fileID: 6532183511238774704}
+  m_Layer: 6
   m_Name: Peralta
   m_TagString: Peralta
   m_Icon: {fileID: 0}
@@ -186,9 +192,10 @@ MonoBehaviour:
   - {fileID: 4213575655890957230, guid: 96aca996f92d83948bf9a212855002fb, type: 3}
   - {fileID: 7265680066588346632, guid: 96aca996f92d83948bf9a212855002fb, type: 3}
   - {fileID: 2877242648127540054, guid: 96aca996f92d83948bf9a212855002fb, type: 3}
-  hoverSkill: {fileID: 0}
-  phaseSkill: {fileID: 0}
-  hauntSkill: {fileID: 0}
+  hoverSkill: {fileID: 3918163314528630438}
+  phaseSkill: {fileID: 2448324745921832461}
+  hauntSkill: {fileID: 6504016026059253130}
+  isPossessing: 0
 --- !u!114 &5822462830057819704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,3 +230,95 @@ MonoBehaviour:
   selectedSlot: 0
   peraltaSkills: {fileID: 392852926930219903}
   inventoryUI: {fileID: 0}
+--- !u!114 &2448324745921832461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844302221783558123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff16a2f0ca07a644bb1a373dbb640753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6504016026059253130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844302221783558123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1244f21daf19994f82df69b08417df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hauntRange: 5
+  peraltaInventoryUI: {fileID: 0}
+  peralta: {fileID: 2844302221783558123}
+--- !u!114 &3918163314528630438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844302221783558123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e91b1674869dc54e9fd4b12a9f44962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Time: 6
+--- !u!114 &7538798837028385987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844302221783558123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!114 &3171885917608872271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844302221783558123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":null,"embed":null}}'
+    _objectReferences: []
+--- !u!95 &6532183511238774704
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844302221783558123}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a3af99ff01c41f478167ef4cf8ddf5d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
