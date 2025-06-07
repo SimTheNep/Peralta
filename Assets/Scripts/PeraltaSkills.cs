@@ -11,7 +11,9 @@ public class PeraltaSkills : MonoBehaviour
     private bool isSkillStarted = false;
 
     public Image skillUIImage;
-     public Sprite[] skillSprites;
+    public Sprite[] skillSprites;
+
+    public HoverSkill hoverSkill;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,8 +24,7 @@ public class PeraltaSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    bool yPressed = Input.GetKey(KeyCode.Y);
+        bool yPressed = Input.GetKey(KeyCode.Y);
         bool bPressed = Input.GetKey(KeyCode.B);
 
         isPerformingSkill = yPressed && bPressed;
@@ -39,19 +40,7 @@ public class PeraltaSkills : MonoBehaviour
             {
                 Debug.Log("Peralta a executar skill: " + currentSkill);
                 isSkillStarted = true;
-            }
-
-            switch (currentSkill)
-            {
-                case SkillType.Hover:
-                    //StartHover();
-                    break;
-                case SkillType.Phase:
-                    //StartPhase();
-                    break;
-                case SkillType.Haunt:
-                    //StartPossession();
-                    break;
+                UseCurrentSkill();
             }
         }
         else
@@ -80,6 +69,25 @@ public class PeraltaSkills : MonoBehaviour
         if (skillUIImage != null && skillSprites != null && skillSprites.Length > (int)currentSkill)
         {
             skillUIImage.sprite = skillSprites[(int)currentSkill];
+        }
+    }
+
+    void UseCurrentSkill()
+    {
+        switch (currentSkill)
+        {
+            case SkillType.Hover:
+                if (hoverSkill != null)
+                    hoverSkill.Execute();
+                break;
+            /*case SkillType.Phase:
+                if (phaseSkill != null)
+                    phaseSkill.Execute();
+                break;
+            case SkillType.Haunt:
+                if (hauntSkill != null)
+                    hauntSkill.Execute();
+                break;*/
         }
     }
 }
