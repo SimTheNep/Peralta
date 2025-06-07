@@ -18,6 +18,8 @@ public class PeraltaSkills : MonoBehaviour
     public PhaseSkill phaseSkill;
     public HauntSkill hauntSkill;
 
+    public bool isPossessing = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,15 +29,30 @@ public class PeraltaSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //se estiver a possuir só deixa usar haunt e n cicla
+        if (isPossessing)
+        {
+            if (currentSkill != SkillType.Haunt)
+            {
+                return;  // bloqueia todas as skills exceto Haunt
+
+            }
+        }
+        else
+        {
+            // Ciclar skill só se não estiver possuindo
+            if (Keyboard.current.yKey.wasPressedThisFrame && !Keyboard.current.bKey.isPressed)
+            {
+                CycleSkill();
+            }
+        }
+
+
         bool yPressed = Keyboard.current.yKey.isPressed;
         bool bPressed = Keyboard.current.bKey.isPressed;
 
         isPerformingSkill = yPressed && bPressed;
 
-        if (Keyboard.current.yKey.wasPressedThisFrame && !Keyboard.current.bKey.isPressed)
-        {
-            CycleSkill();
-        }
 
         if (isPerformingSkill)
         {
