@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PeraltaController : MonoBehaviour
 {
+    public Animator animator;   
     public float moveSpeed = 5f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
