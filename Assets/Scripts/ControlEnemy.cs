@@ -43,9 +43,10 @@ public class ControlEnemy : MonoBehaviour
 
 
 
-        if (Life == 0)
+        if (Life <= 0)
         {
             gameObject.GetComponent<Animator>().Play("Death_Inimigo01");
+            Destroy(gameObject);
         }
         
         //sistema de movimento base
