@@ -3,12 +3,42 @@ using UnityEngine;
 
 public class HoverSkill : MonoBehaviour
 {
-    public float Time;
+    public float Time = 6f;          // tempo máximo 
+    public float timeRemaining = 0f; // tempo que diminui durante a execução
+
     private Animator animator;
+
+    private bool isActive = false;
+
+
     private void Start()
     {
         animator = GetComponent<Animator>();
-       
+        timeRemaining = Time;
+
+    }
+
+    private void Update()
+    {
+        if (isActive)
+        {
+            timeRemaining -= UnityEngine.Time.deltaTime;
+            if (timeRemaining <= 0f)
+            {
+                timeRemaining = 0f;
+                terminafloot();
+            }
+        }
+        else
+        {
+            // Quando não está ativo, regenera mana a 1 por segundo até o máximo
+            if (timeRemaining < Time)
+            {
+                timeRemaining += UnityEngine.Time.deltaTime * 1f; // 1 por segundo
+                if (timeRemaining > Time)
+                    timeRemaining = Time;
+            }
+        }
     }
 
 
@@ -16,27 +46,31 @@ public class HoverSkill : MonoBehaviour
     {
         Debug.Log("Peralta executou HoverSkill");
         print("Floot 0");
-        if (Time > 0)
-        {
-            if (animator != null)
-            {
-                animator.Play("Hover_Peralta01");
-                
 
-            }
+
+
+        if (!isActive)
+        {
+            isActive = true;
+            timeRemaining = Time;
+
+            if (animator != null)
+                animator.Play("Hover_Peralta01");
+
             this.gameObject.layer = LayerMask.NameToLayer("Floot");
-            print("Floot 1");
-            Invoke("terminafloot", Time);
-            
         }
-        
+
     }
 
     void terminafloot()
     {
-        animator.Play("Idle_Peralta01");
-        print("Floot fim");
+        isActive = false;
+
+        if (animator != null)
+            animator.Play("Idle_Peralta01");
+
         this.gameObject.layer = LayerMask.NameToLayer("Peralta");
 
+        Debug.Log("Floot fim");
     }
 }
