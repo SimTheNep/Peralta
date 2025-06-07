@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRadius: 1.5
-  gabrielInventoryManager: {fileID: 0}
+  gabrielInventoryManager: {fileID: 3710009515345946728}
   animator: {fileID: 4259193411201505744}
 --- !u!114 &3710009515345946728
 MonoBehaviour:
@@ -307,4 +307,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 6
   currentHealth: 0
-  animator: {fileID: 0}
+  animator: {fileID: 4259193411201505744}

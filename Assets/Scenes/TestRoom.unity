@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984892654c4cd284fa93b1a26892fc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gabriel: {fileID: 0}
+  gabriel: {fileID: 1445381551}
   peralta: {fileID: 1349229954}
   gabrielUIGroup: {fileID: 2069707485}
   peraltaUIGroup: {fileID: 1356451134}
@@ -7108,7 +7108,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: -2, z: 0}
@@ -7178,7 +7178,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 0, z: 0}
@@ -7192,7 +7192,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 1, z: 0}
@@ -7220,7 +7220,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 2, z: 0}
@@ -7891,6 +7891,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3185626848438632142, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+      propertyPath: skillUIImage
+      value: 
+      objectReference: {fileID: 97370974}
+    - target: {fileID: 3539610634938790255, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1445381553}
+    - target: {fileID: 3710009515345946728, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 775608508}
+    - target: {fileID: 3921725513960240834, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+      propertyPath: gabrielInventoryManager
+      value: 
+      objectReference: {fileID: 1445381554}
     - target: {fileID: 7387227521552236484, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.53893
@@ -7945,6 +7961,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8910304432982592667, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
   m_PrefabInstance: {fileID: 1445381550}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1445381553 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4259193411201505744, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+  m_PrefabInstance: {fileID: 1445381550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1445381554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3710009515345946728, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+  m_PrefabInstance: {fileID: 1445381550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445381551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf8cb4df9da8bc4abaff450c3383579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1466190959
 GameObject:
   m_ObjectHideFlags: 0
