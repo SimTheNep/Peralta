@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GabrielController : MonoBehaviour
 {
+    public Animator animator; // ref ao animator só para animações
+
 
     public float moveSpeed = 5f;
     private Vector2 moveInput;

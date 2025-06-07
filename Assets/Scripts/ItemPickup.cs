@@ -1,62 +1,40 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ItemPickup : MonoBehaviour
 {
-    public ItemData itemData; // Referência ao ScriptableObject do item
-    public int amount = 1;
+    public ItemData itemData;
 
 
-    // Para items que vão para o Gabriel mas tens de clicar B
+    public GabrielInventoryManager gabrielInventoryManager;
+
+    void Start()
+    {
+        //vai procurar o inventory manager do gabriel automaticamente 
+        GameObject gabriel = GameObject.FindGameObjectWithTag("Gabriel");
+        if (gabriel != null)
+        {
+            gabrielInventoryManager = gabriel.GetComponentInChildren<GabrielInventoryManager>();
+          
+        }
+       
+    }
+
     void OnTriggerStay2D(Collider2D other)
     {
-        /*if (other.CompareTag("Gabriel") && Input.GetKeyDown(KeyCode.B))
+        
+        if (other.CompareTag("Gabriel") && Keyboard.current.bKey.wasPressedThisFrame)
         {
-            GabrielInventory inventory = other.GetComponent<GabrielInventory>();
-            if (inventory != null)
+            if (gabrielInventoryManager != null && itemData != null)
             {
-                for (int i = 0; i < amount; i++)
-                {
-                    inventory.AddItem(itemData);
-                }
-
-                Destroy(gameObject);
+                Item newItem = itemData.GetItem();
+                gabrielInventoryManager.TryPickupItem(newItem);
+                Destroy(gameObject); 
             }
-        }*/
-        if (other.CompareTag("Gabriel"))
-        {
-            Debug.Log("Gabriel na trigger da pedra");
 
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                Debug.Log("B pressionado perto da pedra");
-
-                GabrielInventory inventory = other.GetComponent<GabrielInventory>();
-                if (inventory != null)
-                {
-                    for (int i = 0; i < amount; i++)
-                    {
-                        inventory.AddItem(itemData);
-                    }
-
-                    Destroy(gameObject);
-                }
-            }
-        }
-
-    }
-
-    // Para items que vão automaticamente para a Peralta
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Peralta") && itemData.person == ItemData.ItemPerson.Peralta)
-        {
-            /*PeraltaInventory inventory = other.GetComponent<PeraltaInventory>();
-            if (inventory != null)
-            {
-                inventory.AddItem(itemData);
-                Destroy(gameObject);
-            }*/
         }
     }
-    
+
+   
+
 }

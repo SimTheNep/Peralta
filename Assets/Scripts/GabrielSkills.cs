@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
-public enum SkillType { Push, Attack, Throw }
+public enum SkillType { Push, Throw, Attack }
 public class GabrielSkills : MonoBehaviour
 {
 
@@ -13,6 +14,15 @@ public class GabrielSkills : MonoBehaviour
     public Image skillUIImage;
     public Sprite[] skillSprites;
 
+
+    public PushSkill pushSkill;
+    public ThrowSkill throwSkill;
+    public AttackSkill attackSkill;
+
+    public GabrielInventoryManager gabrielnventory;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,35 +33,24 @@ public class GabrielSkills : MonoBehaviour
     void Update()
     {
 
-        bool yPressed = Input.GetKey(KeyCode.Y);
-        bool bPressed = Input.GetKey(KeyCode.B);
+        bool yPressed = Keyboard.current.yKey.isPressed;
+        bool bPressed = Keyboard.current.bKey.isPressed;
 
         isPerformingSkill = yPressed && bPressed;
 
-        if (Input.GetKeyDown(KeyCode.Y) && !Input.GetKey(KeyCode.B))
+        if (Keyboard.current.yKey.wasPressedThisFrame && !Keyboard.current.bKey.isPressed)
         {
             CycleSkill();
         }
 
         if (isPerformingSkill)
         {
-            if (!isSkillStarted)
+            if (!isSkillStarted && gabrielnventory.HasItemForSkill(currentSkill))
             {
                 Debug.Log("A executar skill: " + currentSkill);
                 isSkillStarted = true;
-            }
-
-            switch (currentSkill)
-            {
-                case SkillType.Push:
-                    //TryPushBox();
-                    break;
-                case SkillType.Throw:
-                    //ExecuteThrow();
-                    break;
-                case SkillType.Attack:
-                    //ExecuteAttack();
-                    break;
+                UseCurrentSkill();
+                gabrielnventory.ConsumeItemForSkill(currentSkill);
             }
         }
         else
@@ -88,19 +87,22 @@ public class GabrielSkills : MonoBehaviour
         switch (currentSkill)
         {
             case SkillType.Push:
-                Debug.Log("Gabriel usa: Empurrar");
+                pushSkill.Execute();
                 break;
-
-            case SkillType.Attack:
-                Debug.Log("Gabriel usa: Atacar");
-                break;
-
             case SkillType.Throw:
-                Debug.Log("Gabriel usa: Atirar");
+                throwSkill.Execute();
+                break;
+            case SkillType.Attack:
+                if (gabrielnventory.HasItemForSkill(SkillType.Attack))
+                {
+                    attackSkill.Execute();
+                }
                 break;
         }
     }
-    
+
+
+
     public SkillType GetCurrentSkill()
     {
         return currentSkill;

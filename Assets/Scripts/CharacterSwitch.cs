@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterSwitch : MonoBehaviour
 {
@@ -6,8 +7,9 @@ public class CharacterSwitch : MonoBehaviour
     public GameObject gabriel;
     public GameObject peralta;
 
-    public GameObject gabrielSkillUI; 
-    public GameObject peraltaSkillUI;
+    public GameObject gabrielUIGroup;  
+    public GameObject peraltaUIGroup;  
+
 
     private GameObject currentCharacter;
 
@@ -21,7 +23,7 @@ public class CharacterSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+            if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             if (currentCharacter == gabriel)
             {
@@ -40,6 +42,9 @@ public class CharacterSwitch : MonoBehaviour
         gabriel.GetComponent<GabrielController>().enabled = false;
         peralta.GetComponent<PeraltaController>().enabled = false;
 
+        gabriel.GetComponent<GabrielSkills>().enabled = false;
+        peralta.GetComponent<PeraltaSkills>().enabled = false;
+
         // mete as duas personagens com Rigidbody2D Kinematic (não afeta fisica)
         Rigidbody2D gabrielRb = gabriel.GetComponent<Rigidbody2D>();
         Rigidbody2D peraltaRb = peralta.GetComponent<Rigidbody2D>();
@@ -54,8 +59,8 @@ public class CharacterSwitch : MonoBehaviour
 
             gabriel.GetComponent<GabrielSkills>().enabled = true;
 
-            gabrielSkillUI.SetActive(true);
-            peraltaSkillUI.SetActive(false);
+            gabrielUIGroup.SetActive(true);
+            peraltaUIGroup.SetActive(false);
 
             Debug.Log("Personagem ativa: Gabriel");
         }
@@ -66,8 +71,8 @@ public class CharacterSwitch : MonoBehaviour
 
             peralta.GetComponent<PeraltaSkills>().enabled = true;
 
-            gabrielSkillUI.SetActive(false);
-            peraltaSkillUI.SetActive(true);
+            gabrielUIGroup.SetActive(false);
+            peraltaUIGroup.SetActive(true);
 
             Debug.Log("Personagem ativa: Peralta");
         }
