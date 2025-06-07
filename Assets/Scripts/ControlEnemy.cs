@@ -16,9 +16,14 @@ public class ControlEnemy : MonoBehaviour
     public float Radius;
     public float CoolDown;
 
+
+    private Animator animator;
+
     void Start()
     {
-            Velocidade = 5f;
+
+        animator = GetComponent<Animator>(); 
+        Velocidade = 5f;
             Estate = "Idle";
             
             
@@ -45,7 +50,11 @@ public class ControlEnemy : MonoBehaviour
 
         if (Life <= 0)
         {
-            gameObject.GetComponent<Animator>().Play("Death_Inimigo01");
+            if (animator != null)
+            {
+                animator.Play("Death_Inimigo01");
+            }
+
             Destroy(gameObject);
         }
         
@@ -75,7 +84,11 @@ public class ControlEnemy : MonoBehaviour
        
         if (Estate == "Active")
         {
-            gameObject.GetComponent<Animator>().Play("Active_Inimigo01");
+            if (animator != null)
+            {
+                animator.Play("Active_Inimigo01");
+            }
+            
             Velocidade = 5f;
             Vector3 Dif = AlvoGOB.transform.position - this.transform.position;
             Dif.Normalize();
@@ -86,7 +99,11 @@ public class ControlEnemy : MonoBehaviour
         //sistema de rest
         if (Estate == "Tired")
         {
-            gameObject.GetComponent<Animator>().Play("Tired_Inimigo01");
+            if (animator != null)
+            {
+                animator.Play("Tired_Inimigo01");
+            }
+  
             Invoke("passaidle", CoolDown);
             
         }
@@ -102,12 +119,18 @@ public class ControlEnemy : MonoBehaviour
     //Sistema de dano
     private void OnCollisionEnter2D(Collision2D collision)
     {
-      //  GabrielHealthBar = GabrielHealthBar - 1;
-
-        if (Estate == "Active")
+        if (collision.gameObject.CompareTag("Gabriel"))
         {
-            Estate = "Tired";
+            GabrielHealth gabrielHealth = collision.gameObject.GetComponent<GabrielHealth>();
+
+            if (gabrielHealth != null && Estate == "Active")
+            {
+                gabrielHealth.TakeDamage(1f); 
+
+                Estate = "Tired"; 
+            }
         }
+
     }
    
    

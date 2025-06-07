@@ -95,6 +95,7 @@ public class GabrielSkills : MonoBehaviour
             case SkillType.Attack:
                 if (gabrielnventory.HasItemForSkill(SkillType.Attack))
                 {
+                    Debug.Log("atacou script skills");
                     attackSkill.Execute();
                 }
                 break;

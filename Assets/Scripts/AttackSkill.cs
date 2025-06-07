@@ -34,21 +34,24 @@ public class AttackSkill : MonoBehaviour
 
     public void Execute()
     {
+        Debug.Log("tentar executar");
         if (animator != null)
         {
+            Debug.Log("tentar trigger thing");
             animator.SetTrigger("Attack");
         }
 
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRadius);
+        Debug.Log("tentar procurar");
         foreach (var hit in hits)
         {
             if (hit.CompareTag("Enemy"))
             {
-                var enemy = hit.GetComponent<testenemy>(); //mduar para controlenemy dps
+                var enemy = hit.GetComponent<ControlEnemy>(); 
                 if (enemy != null)
                 {
-
+                    Debug.Log("econtrou");
                     Item item =gabrielInventoryManager.slots[gabrielInventoryManager.selectedSlot];
                     float damage = item != null ? item.damage : 1f;
 
