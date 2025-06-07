@@ -5657,6 +5657,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8910304432982592667, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
   m_PrefabInstance: {fileID: 1937901143}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &670156942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670156930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57452667ffc217845ba740beb70ac767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 6
+  currentHealth: 0
+  animator: {fileID: 0}
 --- !u!1 &775608506
 GameObject:
   m_ObjectHideFlags: 0
@@ -7197,7 +7212,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 1, z: 0}
@@ -7239,7 +7254,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 2, z: 0}
@@ -7253,7 +7268,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 3, z: 0}
@@ -7267,7 +7282,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 3, z: 0}
@@ -7281,7 +7296,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 4, z: 0}
@@ -7608,6 +7623,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1349229955}
+    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1349229964}
+    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1349229963}
+    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1349229965}
   m_SourcePrefab: {fileID: 100100000, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
 --- !u!1 &1349229954 stripped
 GameObject:
@@ -7626,6 +7650,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e91b1674869dc54e9fd4b12a9f44962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Time: 6
+--- !u!114 &1349229963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349229954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":null,"embed":null}}'
+    _objectReferences: []
+--- !u!114 &1349229964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349229954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!95 &1349229965
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349229954}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a3af99ff01c41f478167ef4cf8ddf5d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1356451134
 GameObject:
   m_ObjectHideFlags: 0
@@ -9228,7 +9305,7 @@ Tilemap:
       - {fileID: -683100154, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: -602400227, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: 1888922715, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 19, y: 6, z: 0}
@@ -10665,7 +10742,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8910304432982592667, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 670156942}
   m_SourcePrefab: {fileID: 100100000, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
 --- !u!1 &1963711203
 GameObject:
@@ -11926,7 +12006,7 @@ TilemapCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
