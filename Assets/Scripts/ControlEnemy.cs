@@ -88,7 +88,7 @@ public class ControlEnemy : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().Play("Tired_Inimigo01");
             Invoke("passaidle", CoolDown);
-            ;
+            
         }
 
 
