@@ -9,10 +9,14 @@ public class GabrielController : MonoBehaviour
     private Vector2 moveInput;
     private Rigidbody2D rb;
 
+    private SpriteRenderer spriteRenderer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -22,8 +26,16 @@ public class GabrielController : MonoBehaviour
         moveInput.y = Input.GetAxisRaw("Vertical");
 
         moveInput = moveInput.normalized;
+        animator.SetBool("IsMoving", moveInput.magnitude > 0);
+
+
+        if (moveInput.x != 0)
+        {
+            spriteRenderer.flipX = moveInput.x < 0;
+        }
+
     }
-    
+
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);

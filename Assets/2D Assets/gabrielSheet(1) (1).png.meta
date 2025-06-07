@@ -221,7 +221,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_0
+      name: Gabriel_Idle0
       rect:
         serializedVersion: 2
         x: 0
@@ -229,7 +229,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -243,7 +243,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_1
+      name: Gabriel_Idle1
       rect:
         serializedVersion: 2
         x: 64
@@ -251,7 +251,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -265,7 +265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_2
+      name: Gabriel_Idle2
       rect:
         serializedVersion: 2
         x: 128
@@ -273,7 +273,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -287,7 +287,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_3
+      name: Gabriel_Idle3
       rect:
         serializedVersion: 2
         x: 192
@@ -295,7 +295,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -309,7 +309,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_4
+      name: Gabriel_Idle4
       rect:
         serializedVersion: 2
         x: 256
@@ -317,7 +317,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -331,7 +331,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_5
+      name: Gabriel_Idle5
       rect:
         serializedVersion: 2
         x: 320
@@ -339,7 +339,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -353,7 +353,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_6
+      name: Gabriel_Run0
       rect:
         serializedVersion: 2
         x: 0
@@ -361,7 +361,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -375,7 +375,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_7
+      name: Gabriel_Run1
       rect:
         serializedVersion: 2
         x: 64
@@ -383,7 +383,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -397,7 +397,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_8
+      name: Gabriel_Run2
       rect:
         serializedVersion: 2
         x: 128
@@ -405,7 +405,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -419,7 +419,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_9
+      name: Gabriel_Run3
       rect:
         serializedVersion: 2
         x: 192
@@ -427,7 +427,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -441,7 +441,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_10
+      name: Gabriel_Run4
       rect:
         serializedVersion: 2
         x: 256
@@ -449,7 +449,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -463,7 +463,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_11
+      name: Gabriel_Run5
       rect:
         serializedVersion: 2
         x: 320
@@ -471,7 +471,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -485,7 +485,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_12
+      name: Gabriel_Damage0
       rect:
         serializedVersion: 2
         x: 0
@@ -493,7 +493,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -507,7 +507,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_13
+      name: Gabriel_Damage1
       rect:
         serializedVersion: 2
         x: 64
@@ -515,7 +515,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -529,7 +529,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_14
+      name: Gabriel_Damage2
       rect:
         serializedVersion: 2
         x: 128
@@ -537,7 +537,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -559,7 +559,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -581,7 +581,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -603,7 +603,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -625,7 +625,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -647,7 +647,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -669,7 +669,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -691,7 +691,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -713,7 +713,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -735,7 +735,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -749,7 +749,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_24
+      name: Gabriel_Attack0
       rect:
         serializedVersion: 2
         x: 0
@@ -757,7 +757,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -771,7 +771,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_25
+      name: Gabriel_Attack1
       rect:
         serializedVersion: 2
         x: 64
@@ -779,7 +779,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -793,7 +793,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_26
+      name: Gabriel_Attack2
       rect:
         serializedVersion: 2
         x: 128
@@ -801,7 +801,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -815,15 +815,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_27
+      name: Gabriel_Attack3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 193
         y: 64
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -837,7 +837,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_28
+      name: Gabriel_Attack4
       rect:
         serializedVersion: 2
         x: 256
@@ -845,7 +845,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -859,7 +859,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gabrielSheet(1) (1)_29
+      name: Gabriel_Attack5
       rect:
         serializedVersion: 2
         x: 320
@@ -867,7 +867,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -889,7 +889,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -911,7 +911,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -933,7 +933,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -955,7 +955,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -977,7 +977,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -999,7 +999,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1028,42 +1028,42 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      gabrielSheet(1) (1)_0: -2621075872172523421
-      gabrielSheet(1) (1)_1: -2664821516887664269
-      gabrielSheet(1) (1)_10: 7862297211332935765
-      gabrielSheet(1) (1)_11: 3158889153502448231
-      gabrielSheet(1) (1)_12: -9086991127485497237
-      gabrielSheet(1) (1)_13: 869039841525564130
-      gabrielSheet(1) (1)_14: 7764204861600552966
+      Gabriel_Attack0: 3436424233678215401
+      Gabriel_Attack1: -5459703888279573344
+      Gabriel_Attack2: 5170627224972909688
+      Gabriel_Attack3: -2952323828587673465
+      Gabriel_Attack4: 7178585243600741654
+      Gabriel_Attack5: 273280920335365547
+      Gabriel_Damage0: -9086991127485497237
+      Gabriel_Damage1: 869039841525564130
+      Gabriel_Damage2: 7764204861600552966
+      Gabriel_Idle0: -2621075872172523421
+      Gabriel_Idle1: -2664821516887664269
+      Gabriel_Idle2: -755633895943289421
+      Gabriel_Idle3: 54858872339469680
+      Gabriel_Idle4: 6507416028180321777
+      Gabriel_Idle5: -1197565176701442704
+      Gabriel_Run0: 1221107701589736037
+      Gabriel_Run1: 1826500072311504217
+      Gabriel_Run2: -1350970353156611751
+      Gabriel_Run3: 5601347334648813499
+      Gabriel_Run4: 7862297211332935765
+      Gabriel_Run5: 3158889153502448231
       gabrielSheet(1) (1)_15: -8623771685663804658
       gabrielSheet(1) (1)_16: 8510462280750444664
       gabrielSheet(1) (1)_17: 1763025841588038093
       gabrielSheet(1) (1)_18: -1078571096534398284
       gabrielSheet(1) (1)_19: -8261559522296215694
-      gabrielSheet(1) (1)_2: -755633895943289421
       gabrielSheet(1) (1)_20: 3698039280126727004
       gabrielSheet(1) (1)_21: -1563953163631948224
       gabrielSheet(1) (1)_22: 3973450241264665700
       gabrielSheet(1) (1)_23: 1828934444493683511
-      gabrielSheet(1) (1)_24: 3436424233678215401
-      gabrielSheet(1) (1)_25: -5459703888279573344
-      gabrielSheet(1) (1)_26: 5170627224972909688
-      gabrielSheet(1) (1)_27: -2952323828587673465
-      gabrielSheet(1) (1)_28: 7178585243600741654
-      gabrielSheet(1) (1)_29: 273280920335365547
-      gabrielSheet(1) (1)_3: 54858872339469680
       gabrielSheet(1) (1)_30: -8987449824671718398
       gabrielSheet(1) (1)_31: 2205167634550610201
       gabrielSheet(1) (1)_32: -6335151627382723615
       gabrielSheet(1) (1)_33: 2058221302863581095
       gabrielSheet(1) (1)_34: -567261610294663310
       gabrielSheet(1) (1)_35: -1938313195658282576
-      gabrielSheet(1) (1)_4: 6507416028180321777
-      gabrielSheet(1) (1)_5: -1197565176701442704
-      gabrielSheet(1) (1)_6: 1221107701589736037
-      gabrielSheet(1) (1)_7: 1826500072311504217
-      gabrielSheet(1) (1)_8: -1350970353156611751
-      gabrielSheet(1) (1)_9: 5601347334648813499
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
