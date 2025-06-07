@@ -1089,6 +1089,44 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
   m_PrefabInstance: {fileID: 3980416010590845218}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &524601876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524601875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1244f21daf19994f82df69b08417df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hauntRange: 5
+  peralta: {fileID: 0}
+--- !u!114 &524601877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524601875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff16a2f0ca07a644bb1a373dbb640753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &524601878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524601875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e91b1674869dc54e9fd4b12a9f44962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &527591059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,6 +3625,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      propertyPath: hoverSkill
+      value: 
+      objectReference: {fileID: 524601878}
+    - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      propertyPath: phaseSkill
+      value: 
+      objectReference: {fileID: 524601877}
+    - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: skillUIImage
       value: 
       objectReference: {fileID: 1177627069}
@@ -3594,6 +3640,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peralta
       objectReference: {fileID: 0}
+    - target: {fileID: 5822462830057819704, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 206284315}
     - target: {fileID: 6204006084127043361, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.25
@@ -3637,7 +3687,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524601878}
+    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524601877}
+    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524601876}
   m_SourcePrefab: {fileID: 100100000, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
 --- !u!1001 &5404204420321699438
 PrefabInstance:

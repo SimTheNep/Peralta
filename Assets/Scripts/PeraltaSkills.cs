@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PeraltaSkills : MonoBehaviour
@@ -14,6 +15,8 @@ public class PeraltaSkills : MonoBehaviour
     public Sprite[] skillSprites;
 
     public HoverSkill hoverSkill;
+    public PhaseSkill phaseSkill;
+    public HauntSkill hauntSkill;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,12 +27,12 @@ public class PeraltaSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool yPressed = Input.GetKey(KeyCode.Y);
-        bool bPressed = Input.GetKey(KeyCode.B);
+        bool yPressed = Keyboard.current.yKey.isPressed;
+        bool bPressed = Keyboard.current.bKey.isPressed;
 
         isPerformingSkill = yPressed && bPressed;
 
-        if (Input.GetKeyDown(KeyCode.Y) && !Input.GetKey(KeyCode.B))
+        if (Keyboard.current.yKey.wasPressedThisFrame && !Keyboard.current.bKey.isPressed)
         {
             CycleSkill();
         }
@@ -80,14 +83,14 @@ public class PeraltaSkills : MonoBehaviour
                 if (hoverSkill != null)
                     hoverSkill.Execute();
                 break;
-            /*case SkillType.Phase:
+            case SkillType.Phase:
                 if (phaseSkill != null)
                     phaseSkill.Execute();
                 break;
             case SkillType.Haunt:
                 if (hauntSkill != null)
                     hauntSkill.Execute();
-                break;*/
+                break;
         }
     }
 }
