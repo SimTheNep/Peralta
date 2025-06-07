@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.3537736, g: 1, b: 0.76630425, a: 1}
   m_FlipX: 0
@@ -187,6 +187,8 @@ MonoBehaviour:
   - {fileID: 7265680066588346632, guid: 96aca996f92d83948bf9a212855002fb, type: 3}
   - {fileID: 2877242648127540054, guid: 96aca996f92d83948bf9a212855002fb, type: 3}
   hoverSkill: {fileID: 0}
+  phaseSkill: {fileID: 0}
+  hauntSkill: {fileID: 0}
 --- !u!114 &5822462830057819704
 MonoBehaviour:
   m_ObjectHideFlags: 0
