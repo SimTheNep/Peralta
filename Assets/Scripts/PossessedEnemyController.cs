@@ -23,6 +23,14 @@ public class PossessedEnemyController : MonoBehaviour
         {
             TryInteractWithLever();
         }
+
+        if (h != 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Sign(h) * Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+
     }
 
     void TryInteractWithLever()

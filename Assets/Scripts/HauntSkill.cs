@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+
 
 public class HauntSkill : MonoBehaviour
 {
@@ -67,11 +69,28 @@ public class HauntSkill : MonoBehaviour
                 PossessedEnemyController pc = possessedEnemy.AddComponent<PossessedEnemyController>();
                 pc.Init(this);
 
-                HidePeralta();
-                isPossessing = true;
+                Vector3 dir = possessedEnemy.transform.position - transform.position;
+                if (dir.x > 0)
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                else
+                    transform.eulerAngles = new Vector3(0, 180, 0);
 
-                if (cameraFollow != null)
-                    cameraFollow.SetTarget(possessedEnemy.transform);
+
+                if (animator != null)
+                    animator.SetTrigger("Possess");
+
+
+                if (animator != null)
+                    StartCoroutine(PerformPossessionAnimationAndHide());
+                else
+                {
+                    HidePeralta();
+                    isPossessing = true;
+
+                    if (cameraFollow != null)
+                        cameraFollow.SetTarget(possessedEnemy.transform);
+                }
+
 
                 Debug.Log("Possuído: " + possessedEnemy.name);
                 break;
@@ -104,8 +123,12 @@ public class HauntSkill : MonoBehaviour
                 PossessedEnemyController pc = possessedEnemy.AddComponent<PossessedEnemyController>();
                 pc.Init(this);
 
+              
+
+                // Muda a câmara para o novo corpo
                 if (cameraFollow != null)
                     cameraFollow.SetTarget(possessedEnemy.transform);
+
 
                 Debug.Log("Transferiu possessão para: " + possessedEnemy.name);
                 return;
@@ -131,6 +154,9 @@ public class HauntSkill : MonoBehaviour
             peralta.transform.position = possessedEnemy.transform.position + offset;
 
             ShowPeralta();
+
+            if (animator != null)
+                animator.SetTrigger("Unpossess");
 
             if (cameraFollow != null)
                 cameraFollow.SetTarget(this.transform);
@@ -222,6 +248,27 @@ public class HauntSkill : MonoBehaviour
             Gizmos.DrawRay(transform.position, dir * hauntRange);
         }
     }
+    IEnumerator PerformPossessionAnimationAndHide() //isto foi com o chatgpt, só para esperar antes de play e tal
+    {
+        if (animator != null)
+            animator.SetTrigger("Possess");
+
+        yield return new WaitForSeconds(0.5f); 
+
+        HidePeralta();
+        isPossessing = true;
+
+        if (cameraFollow != null)
+            cameraFollow.SetTarget(possessedEnemy.transform);
+    }
+
+    IEnumerator HidePeraltaAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        HidePeralta();
+        isPossessing = true;
+    }
+
 
 
 }

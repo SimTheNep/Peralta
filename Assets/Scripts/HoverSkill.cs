@@ -55,8 +55,8 @@ public class HoverSkill : MonoBehaviour
             timeRemaining = Time;
 
             if (animator != null)
-                animator.SetTrigger("Hover");
-                animator.Play("HoverLoop");
+                animator.SetBool("IsHovering", true);
+               
 
             this.gameObject.layer = LayerMask.NameToLayer("Floot");
         }
@@ -68,7 +68,7 @@ public class HoverSkill : MonoBehaviour
         isActive = false;
 
         if (animator != null)
-            animator.Play("Idle_Peralta01");
+            animator.SetBool("IsHovering", false);
 
         this.gameObject.layer = LayerMask.NameToLayer("Peralta");
 
