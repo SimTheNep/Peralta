@@ -90,7 +90,12 @@ public class GabrielSkills : MonoBehaviour
                 pushSkill.Execute();
                 break;
             case SkillType.Throw:
-                throwSkill.Execute();
+                if (gabrielnventory.HasItemForSkill(SkillType.Throw))
+                {
+                    Debug.Log("atirou script skills");
+                    throwSkill.Execute();
+                }
+                
                 break;
             case SkillType.Attack:
                 if (gabrielnventory.HasItemForSkill(SkillType.Attack))
