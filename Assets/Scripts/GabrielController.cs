@@ -2,20 +2,26 @@ using UnityEngine;
 
 public class GabrielController : MonoBehaviour
 {
-    public Animator animator; // ref ao animator só para animações
+    public Animator animator; // ref ao animator sï¿½ para animaï¿½ï¿½es
 
 
     public float moveSpeed = 5f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
 
+    
+
     private SpriteRenderer spriteRenderer;
+
+    private bool isFlipped = false;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
 
     }
 
@@ -33,6 +39,8 @@ public class GabrielController : MonoBehaviour
         {
             spriteRenderer.flipX = moveInput.x < 0;
         }
+
+
 
     }
 

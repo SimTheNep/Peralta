@@ -7,8 +7,10 @@ public class PeraltaController : MonoBehaviour
     private Vector2 moveInput;
     private Rigidbody2D rb;
 
+   
 
     private SpriteRenderer spriteRenderer;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,6 +18,7 @@ public class PeraltaController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -31,6 +34,8 @@ public class PeraltaController : MonoBehaviour
         {
             spriteRenderer.flipX = moveInput.x < 0;
         }
+        
+
     }
 
     void FixedUpdate()
