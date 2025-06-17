@@ -52,7 +52,15 @@ public class ThrowSkill : MonoBehaviour
         }
 
         print("Gabriel atira");
-            Instantiate(Pedra_ProjectilPrefab, LauchOffset.position, transform.rotation);
-        
+
+        Projectile_behaviour novoProjetil = Instantiate(Pedra_ProjectilPrefab, LauchOffset.position, LauchOffset.rotation);
+
+        novoProjetil.goingRight = gabrielController.Flip;
+
+        novoProjetil.gabrielInventoryManager = gabrielInventoryManager;
+
+
+
+
     }
 }

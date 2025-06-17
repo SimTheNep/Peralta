@@ -5,8 +5,8 @@ public class Projectile_behaviour : MonoBehaviour
     public GabrielController gabrielController;
     public GabrielInventoryManager gabrielInventoryManager;
     public float Speed;
-    public bool Flip2;
-   
+    public bool goingRight = true;
+
     void Start()
     {
 
@@ -30,31 +30,23 @@ public class Projectile_behaviour : MonoBehaviour
 
 
     }
-    private void Update()
+
+    void Update()
     {
-        if (gabrielController.Flip == true) {
+        Vector3 direcao;
 
-            Flip2 = true;
-        }
-
-        if (gabrielController.Flip == false)
+        if (goingRight)
         {
-
-            Flip2 = false;
+            direcao = Vector3.right;
         }
-
-        //print("pedra vai");
-        if (Flip2 == false)
+        else
         {
-            transform.position += -transform.right * Time.deltaTime * Speed;
+            direcao = Vector3.left;
         }
 
-        if (Flip2 == true)
-        {
-            print("Ei");
-            transform.position += transform.right * Time.deltaTime * Speed;
-        }
+        transform.position += direcao * Speed * Time.deltaTime;
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -62,11 +54,21 @@ public class Projectile_behaviour : MonoBehaviour
             if (collision.collider == CompareTag("Enemy"))
             {
                 var enemy = collision.collider.GetComponent<ControlEnemy>();
-                if (enemy != null)
+                if (enemy != null && gabrielInventoryManager != null)
                 {
                     print("atingiu");
                     Item item = gabrielInventoryManager.slots[gabrielInventoryManager.selectedSlot];
-                    float damage = item != null ? item.damage : 1f;
+                
+                    float damage;
+
+                    if (item != null)
+                    {
+                        damage = item.damage;
+                    }
+                    else
+                    {
+                        damage = 1f;
+                    }
 
                     enemy.Life -= damage;
                    

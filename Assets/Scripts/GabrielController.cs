@@ -38,7 +38,7 @@ public class GabrielController : MonoBehaviour
 
         if (moveInput.x != 0)
         {
-            Flip = true;
+            Flip = moveInput.x > 0;
             spriteRenderer.flipX = moveInput.x < 0;
         }
 
