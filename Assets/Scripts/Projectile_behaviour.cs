@@ -51,12 +51,13 @@ public class Projectile_behaviour : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-            if (collision.collider == CompareTag("Enemy"))
+            if (collision.collider.CompareTag("Enemy"))
             {
+                
                 var enemy = collision.collider.GetComponent<ControlEnemy>();
                 if (enemy != null && gabrielInventoryManager != null)
                 {
-                    print("atingiu");
+                    
                     Item item = gabrielInventoryManager.slots[gabrielInventoryManager.selectedSlot];
                 
                     float damage;
