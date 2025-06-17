@@ -6,9 +6,19 @@ public class ThrowSkill : MonoBehaviour
     public Transform LauchOffset;
     public Animator animator;
     public GabrielInventoryManager gabrielInventoryManager;
+    public GabrielController gabrielController;
 
     void Start()
     {
+        if (gabrielController == null)
+        {
+            GameObject gabriel = GameObject.FindGameObjectWithTag("Gabriel");
+            if (gabriel != null)
+            {
+                gabrielController = gabriel.GetComponentInChildren<GabrielController>();
+            }
+        }
+
         if (gabrielInventoryManager == null)
         {
             GameObject gabriel = GameObject.FindGameObjectWithTag("Gabriel");
@@ -17,6 +27,7 @@ public class ThrowSkill : MonoBehaviour
                 gabrielInventoryManager = gabriel.GetComponentInChildren<GabrielInventoryManager>();
             }
         }
+
 
         if (animator == null)
         {

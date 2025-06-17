@@ -8,6 +8,7 @@ public class GabrielController : MonoBehaviour
     public float moveSpeed = 5f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
+    public bool Flip;
 
     
 
@@ -37,6 +38,7 @@ public class GabrielController : MonoBehaviour
 
         if (moveInput.x != 0)
         {
+            Flip = true;
             spriteRenderer.flipX = moveInput.x < 0;
         }
 
