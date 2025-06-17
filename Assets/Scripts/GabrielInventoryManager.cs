@@ -123,6 +123,7 @@ public class GabrielInventoryManager : MonoBehaviour
         {
             item.quantity--;
             if (item.quantity <= 0) slots[selectedSlot] = null;
+            inventoryUI?.UpdateUI(slots, selectedSlot);
         }
         /*else if (skill == SkillType.Attack)
         {
