@@ -58,25 +58,22 @@ public class Projectile_behaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        foreach (var hit in hits)
-        {
-            if (hit.CompareTag("Enemy"))
+
+            if (collision.collider == CompareTag("Enemy"))
             {
-                var enemy = hit.GetComponent<ControlEnemy>();
+                var enemy = collision.collider.GetComponent<ControlEnemy>();
                 if (enemy != null)
                 {
-                    
+                    print("atingiu");
                     Item item = gabrielInventoryManager.slots[gabrielInventoryManager.selectedSlot];
                     float damage = item != null ? item.damage : 1f;
 
                     enemy.Life -= damage;
-
-                    Debug.Log($"Gabriel atacou {enemy.name} com {item.itemName}, causando {damage} de dano!");
+                   
                 }
 
             }
 
-        }*/
         Destroy(gameObject);
     }
 }
