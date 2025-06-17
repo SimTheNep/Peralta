@@ -11,6 +11,7 @@ public class GabrielHealth : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.Log($"[START] {gameObject.name} iniciado na layer {gameObject.layer} com tag {gameObject.tag}");
         currentHealth = maxHealth;
 
         if (animator == null)
@@ -19,6 +20,7 @@ public class GabrielHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        Debug.Log($"[GABRIEL] TakeDamage chamado. Dano: {amount}");
         currentHealth -= amount;
 
         Debug.Log($"Gabriel levou {amount} de dano. Vida restante: {currentHealth}");

@@ -21,9 +21,9 @@ public class ControlEnemy : MonoBehaviour
 
     void Start()
     {
-
+        Debug.Log($"[START] {gameObject.name} iniciado na layer {gameObject.layer} com tag {gameObject.tag}");
         animator = GetComponent<Animator>(); 
-        Velocidade = 5f;
+        Velocidade = 4f;
             Estate = "Idle";
             
             
@@ -119,18 +119,23 @@ public class ControlEnemy : MonoBehaviour
     //Sistema de dano
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log($"[ENEMY] OnCollisionEnter2D com: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
         if (collision.gameObject.CompareTag("Gabriel"))
         {
             GabrielHealth gabrielHealth = collision.gameObject.GetComponent<GabrielHealth>();
 
             if (gabrielHealth != null && Estate == "Active")
             {
-                gabrielHealth.TakeDamage(1f); 
+                Debug.Log("[ENEMY] Gabriel encontrado e estado ativo. Aplicando dano.");
+                gabrielHealth.TakeDamage(1f);
 
-                Estate = "Tired"; 
+                Estate = "Tired";
+            }
+            else
+            {
+                Debug.Log("[ENEMY] GabrielHealth não encontrado ou estado não ativo.");
             }
         }
-
     }
    
    

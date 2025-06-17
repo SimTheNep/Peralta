@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2421180098263073494}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.124, y: -0.209, z: 0}
+  m_LocalPosition: {x: -0.013, y: -0.055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68,7 +68,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 539780229686443007}
@@ -118,15 +118,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2621075872172523421, guid: 76558776f217db94686110c2f29d97de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!70 &5117990342081913890
@@ -163,8 +163,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.14717261, y: -0.19275579}
-  m_Size: {x: 0.22428775, y: 0.22428775}
+  m_Offset: {x: -1.0221931, y: -1.6332864}
+  m_Size: {x: 1.3048556, y: 1.3048556}
   m_Direction: 0
 --- !u!50 &4190031334972018040
 Rigidbody2D:
@@ -254,6 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pedra_ProjectilPrefab: {fileID: 6096343480932416821, guid: 650ce9a49fbc0684d87730919051b821, type: 3}
   LauchOffset: {fileID: 539780229686443007}
+  animator: {fileID: 4259193411201505744}
+  gabrielInventoryManager: {fileID: 3710009515345946728}
 --- !u!114 &3921725513960240834
 MonoBehaviour:
   m_ObjectHideFlags: 0
