@@ -12,4 +12,12 @@ public class PeraltaInventoryManager : MonoBehaviour
     public PeraltaSkills peraltaSkills;
     public InventoryUI inventoryUI;
 
+    public bool canUseInventory = true;
+
+    void Update()
+    {
+        if (!canUseInventory) return;
+       
+    }
+
 }

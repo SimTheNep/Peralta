@@ -21,7 +21,7 @@ public class GabrielSkills : MonoBehaviour
 
     public GabrielInventoryManager gabrielnventory;
 
-
+    public bool canUseSkills = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +32,7 @@ public class GabrielSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canUseSkills) return;
 
         bool yPressed = Keyboard.current.yKey.isPressed;
         bool bPressed = Keyboard.current.bKey.isPressed;

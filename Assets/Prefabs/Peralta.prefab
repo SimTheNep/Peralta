@@ -132,8 +132,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.1055241, y: -1.6055102}
-  m_Size: {x: 1.3604088, y: 1.3604088}
+  m_Offset: {x: -0.14855735, y: -0.23158948}
+  m_Size: {x: 0.17924127, y: 0.17924134}
   m_Direction: 0
 --- !u!50 &8239754030985306017
 Rigidbody2D:
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6532183511238774704}
   moveSpeed: 5
+  canMove: 1
 --- !u!114 &392852926930219903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +198,7 @@ MonoBehaviour:
   phaseSkill: {fileID: 2448324745921832461}
   hauntSkill: {fileID: 6504016026059253130}
   isPossessing: 0
+  canUseSkills: 1
 --- !u!114 &5822462830057819704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +233,7 @@ MonoBehaviour:
   selectedSlot: 0
   peraltaSkills: {fileID: 392852926930219903}
   inventoryUI: {fileID: 0}
+  canUseInventory: 1
 --- !u!114 &2448324745921832461
 MonoBehaviour:
   m_ObjectHideFlags: 0

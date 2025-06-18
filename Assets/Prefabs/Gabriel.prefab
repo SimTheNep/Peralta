@@ -163,8 +163,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.0221931, y: -1.6332864}
-  m_Size: {x: 1.3048556, y: 1.3048556}
+  m_Offset: {x: -0.9766828, y: -1.6332865}
+  m_Size: {x: 1.7144482, y: 1.7144482}
   m_Direction: 0
 --- !u!50 &4190031334972018040
 Rigidbody2D:
@@ -207,6 +207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4259193411201505744}
   moveSpeed: 5
+  Flip: 0
+  canMove: 1
 --- !u!114 &3185626848438632142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +230,7 @@ MonoBehaviour:
   throwSkill: {fileID: 7164898276760932456}
   attackSkill: {fileID: 3921725513960240834}
   gabrielnventory: {fileID: 3710009515345946728}
+  canUseSkills: 1
 --- !u!114 &2692514466950442923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +259,7 @@ MonoBehaviour:
   LauchOffset: {fileID: 539780229686443007}
   animator: {fileID: 4259193411201505744}
   gabrielInventoryManager: {fileID: 3710009515345946728}
+  gabrielController: {fileID: 0}
 --- !u!114 &3921725513960240834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +311,7 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   stonePrefab: {fileID: 5596868613322933132, guid: 190355b20e1823648921ba7044ed8e89, type: 3}
   stickPrefab: {fileID: 5596868613322933132, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+  canUseInventory: 1
 --- !u!95 &4259193411201505744
 Animator:
   serializedVersion: 7

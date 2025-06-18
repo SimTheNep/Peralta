@@ -10,8 +10,8 @@ public class PeraltaController : MonoBehaviour
    
 
     private SpriteRenderer spriteRenderer;
-    
 
+    public bool canMove = true; //para os dialogos
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +24,14 @@ public class PeraltaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!canMove)
+        {
+            moveInput = Vector2.zero;
+            animator.SetBool("IsMoving", false);
+            return;
+        }
+
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput = moveInput.normalized;
