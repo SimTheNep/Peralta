@@ -18,6 +18,11 @@ public class HUDController : MonoBehaviour
     public HoverSkill hoverSkill;
     private HauntSkill hauntSkill;
 
+    public void SetHUDVisible(bool visible)
+    {
+        gameObject.SetActive(visible);
+    }
+
     void Start()
     {
         // Referências

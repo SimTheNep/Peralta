@@ -16,8 +16,13 @@ public class GabrielInventoryManager : MonoBehaviour
     public GameObject stonePrefab;
     public GameObject stickPrefab;
 
+    public bool canUseInventory = true;
+
     void Update()
     {
+        if (!canUseInventory) return; //para bloquear no dialogo
+
+
         // Cicla entre os 3 slots ao pressionar A
         if (Keyboard.current.aKey.wasPressedThisFrame)
         {

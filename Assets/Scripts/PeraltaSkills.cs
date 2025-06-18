@@ -20,6 +20,8 @@ public class PeraltaSkills : MonoBehaviour
 
     public bool isPossessing = false;
 
+    public bool canUseSkills = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +31,8 @@ public class PeraltaSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!canUseSkills) return;
         //se estiver a possuir só deixa usar haunt e n cicla
         if (isPossessing)
         {

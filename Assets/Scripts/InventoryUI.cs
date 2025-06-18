@@ -8,7 +8,23 @@ public class InventoryUI : MonoBehaviour
     public Sprite normalSlotSprite;      
     public Sprite selectedSlotSprite;    
     public Image[] itemIcons;            
-    public TMP_Text[] itemQuantities;        
+    public TMP_Text[] itemQuantities;
+
+    private Item[] items = new Item[3]; 
+
+    private int selectedSlot = 0;
+
+    public void SetInventoryVisible(bool visible)
+    {
+        gameObject.SetActive(visible);
+    }
+
+    private void Start()
+    {
+      
+        UpdateUI(items, selectedSlot);
+    }
+
     public void UpdateUI(Item[] items, int selectedSlot)
     {
         
@@ -19,11 +35,15 @@ public class InventoryUI : MonoBehaviour
             // muda a cor: vermelho se for o slot selecionado, branco caso contrário. só enquanto n temos o sprite final 
             slotBackgrounds[i].color = (i == selectedSlot) ? Color.red : Color.white;
 
-            if (items[i] != null)
+            if (items[i] != null && items[i].icon != null)
             {
                 
                 itemIcons[i].sprite = items[i].icon;
                 itemIcons[i].enabled = true;
+                itemIcons[i].color = Color.white;
+
+
+
 
                 if (items[i].isStackable && items[i].quantity > 1)
                     itemQuantities[i].text = items[i].quantity.ToString();
@@ -32,7 +52,7 @@ public class InventoryUI : MonoBehaviour
             }
             else
             {
-                
+                itemIcons[i].sprite = null;
                 itemIcons[i].enabled = false;
                 itemQuantities[i].text = "";
             }

@@ -82,4 +82,12 @@ public class CharacterSwitch : MonoBehaviour
 
         currentCharacter = characterToActivate;
     }
+    //para desativar coisas durante os dialogos
+    public void SetSwitchEnabled(bool enabled)
+    {
+        this.enabled = enabled;
+        gabrielUIGroup.SetActive(enabled);
+        peraltaUIGroup.SetActive(enabled);
+    }
+
 }

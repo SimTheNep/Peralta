@@ -60,7 +60,5 @@ public class ThrowSkill : MonoBehaviour
         novoProjetil.gabrielInventoryManager = gabrielInventoryManager;
 
 
-
-
     }
 }
