@@ -65,6 +65,68 @@ public class DialogueManager : MonoBehaviour
     public Transform gabrielTransform;
     public Transform peraltaTransform;
 
+    void Awake()
+{
+    // UI
+    if (dialogueUIGroup == null)
+        dialogueUIGroup = GameObject.Find("DialogueUIGroup");
+
+    if (dialogueBox == null)
+        dialogueBox = GameObject.Find("DialogueBox")?.GetComponent<Image>();
+
+    if (nameText == null)
+        nameText = GameObject.Find("NameText")?.GetComponent<TextMeshProUGUI>();
+
+    if (dialogueText == null)
+        dialogueText = GameObject.Find("DialogueText")?.GetComponent<TextMeshProUGUI>();
+
+     // Controladores
+    if (gabrielController == null)
+        gabrielController = FindFirstObjectByType<GabrielController>();
+
+    if (peraltaController == null)
+        peraltaController = FindFirstObjectByType<PeraltaController>();
+
+    if (characterSwitch == null)
+        characterSwitch = FindFirstObjectByType<CharacterSwitch>();
+
+        // Inventários
+
+    if (gabrielInventory == null)
+        gabrielInventory = FindFirstObjectByType<GabrielInventoryManager>();
+
+    if (peraltaInventory == null)
+        peraltaInventory = FindFirstObjectByType<PeraltaInventoryManager>();
+
+    if (gabrielInventoryUI == null)
+        gabrielInventoryUI = GameObject.Find("GabrielInventoryUI")?.GetComponent<InventoryUI>();
+
+    if (peraltaInventoryUI == null)
+        peraltaInventoryUI = GameObject.Find("PeraltaInventoryUI")?.GetComponent<InventoryUI>();
+
+    // Skills
+    if (gabrielSkills == null)
+        gabrielSkills = FindFirstObjectByType<GabrielSkills>();
+
+    if (peraltaSkills == null)
+        peraltaSkills = FindFirstObjectByType<PeraltaSkills>();
+
+    // HUD
+    if (hudController == null)
+        hudController = FindFirstObjectByType<HUDController>();
+
+    // Câmera
+    if (cameraFollow == null)
+        cameraFollow = FindFirstObjectByType<CameraFollow>();
+
+    // Transforms dos personagens
+    if (gabrielTransform == null)
+        gabrielTransform = GameObject.Find("Gabriel")?.transform;
+
+    if (peraltaTransform == null)
+        peraltaTransform = GameObject.Find("Peralta")?.transform;
+}
+
     void Update()
     {
         if (dialogueActive && Keyboard.current.bKey.wasPressedThisFrame)
