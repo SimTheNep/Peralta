@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8347108782317980094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8373012715316062995}
+  - component: {fileID: 1204059726625034464}
+  m_Layer: 0
+  m_Name: DialogueSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8373012715316062995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347108782317980094}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1204059726625034464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347108782317980094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25aec6d091720604b8d2796552ece8fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUIGroup: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  nameText: {fileID: 0}
+  dialogueText: {fileID: 0}
+  leftNamePos: {x: -450, y: 97.8}
+  rightNamePos: {x: 436, y: 97.8}
+  typingSpeed: 0.03
+  gabrielController: {fileID: 0}
+  peraltaController: {fileID: 0}
+  characterSwitch: {fileID: 0}
+  gabrielInventory: {fileID: 0}
+  peraltaInventory: {fileID: 0}
+  gabrielSkills: {fileID: 0}
+  peraltaSkills: {fileID: 0}
+  hudController: {fileID: 0}
+  gabrielInventoryUI: {fileID: 0}
+  peraltaInventoryUI: {fileID: 0}
+  cameraFollow: {fileID: 0}
+  gabrielTransform: {fileID: 0}
+  peraltaTransform: {fileID: 0}
