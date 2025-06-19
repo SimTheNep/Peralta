@@ -23,9 +23,7 @@ public class ControlEnemy : MonoBehaviour
     {
         Debug.Log($"[START] {gameObject.name} iniciado na layer {gameObject.layer} com tag {gameObject.tag}");
         animator = GetComponent<Animator>(); 
-        Velocidade = 4f;
             Estate = "Idle";
-            
             
     }
     
@@ -42,7 +40,6 @@ public class ControlEnemy : MonoBehaviour
         
         if (Df.magnitude < Radius && Estate=="Idle")
         {
-        
             Estate = "Active";
         }
 
@@ -62,6 +59,7 @@ public class ControlEnemy : MonoBehaviour
 
         if (Estate == "Idle")
         {
+            Velocidade = 1f;
             if (Pos.x >= 10)
             {
                 this.transform.eulerAngles = new Vector3(0, 180, 0);
@@ -89,7 +87,7 @@ public class ControlEnemy : MonoBehaviour
                 animator.Play("Active_Inimigo01");
             }
             
-            Velocidade = 5f;
+            Velocidade = 4f;
             Vector3 Dif = AlvoGOB.transform.position - this.transform.position;
             Dif.Normalize();
             Dif = Time.deltaTime * Velocidade * Dif;
@@ -133,7 +131,7 @@ public class ControlEnemy : MonoBehaviour
             }
             else
             {
-                Debug.Log("[ENEMY] GabrielHealth não encontrado ou estado não ativo.");
+                Debug.Log("[ENEMY] GabrielHealth nï¿½o encontrado ou estado nï¿½o ativo.");
             }
         }
     }
