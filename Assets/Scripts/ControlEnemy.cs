@@ -16,8 +16,10 @@ public class ControlEnemy : MonoBehaviour
     public float Radius;
     public float CoolDown;
 
-
     private Animator animator;
+
+    public GameObject soulPrefab; 
+    public int soulAmount = 1;
 
     void Start()
     {
@@ -51,6 +53,7 @@ public class ControlEnemy : MonoBehaviour
             {
                 animator.Play("Death_Inimigo01");
             }
+            DropSoul();
 
             Destroy(gameObject);
         }
@@ -108,7 +111,18 @@ public class ControlEnemy : MonoBehaviour
 
 
     }
-    
+    void DropSoul()
+    {
+        if (soulPrefab != null)
+        {
+            for (int i = 0; i < soulAmount; i++)
+            {
+                // instancia a alma na posição do inimigo 
+                Vector3 offset = new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(0f, 0.2f), 0);
+                Instantiate(soulPrefab, transform.position + offset, Quaternion.identity);
+            }
+        }
+    }
     void passaidle()
     {
         Estate = "Idle";

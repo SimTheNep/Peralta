@@ -1,35 +1,32 @@
 using UnityEngine;
-public enum ItemType
+
+public enum MagicItemType
 {
-    Healable,
-    Throwable,
-    Attackable
+    Soul,       // Stackable
+    PowerUp     // Não stackable
 }
 
 [System.Serializable]
-public class Item
+public class MagicItem
 {
     public string itemName;
     public Sprite icon;
-    public ItemType itemType;
+    public MagicItemType itemType;
     public bool isStackable;
     public int quantity;
-    public float damage;
-    public int price;
+    public int price; // Preço em almas
     public string description;
 
-    public Item() { }
+    public MagicItem() { }
 
-    public Item(Item other) // construtor de cópia para evitar referência direta
+    public MagicItem(MagicItem other)
     {
         itemName = other.itemName;
         icon = other.icon;
         itemType = other.itemType;
         isStackable = other.isStackable;
         quantity = other.quantity;
-        damage = other.damage;
         price = other.price;
         description = other.description;
     }
-
 }

@@ -58,4 +58,30 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
+
+    public void UpdateUI(MagicItem[] items, int selectedSlot)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            slotBackgrounds[i].sprite = (i == selectedSlot) ? selectedSlotSprite : normalSlotSprite;
+
+            if (items[i] != null && items[i].icon != null)
+            {
+                itemIcons[i].sprite = items[i].icon;
+                itemIcons[i].enabled = true;
+                itemIcons[i].color = Color.white;
+
+                if (items[i].isStackable && items[i].quantity > 1)
+                    itemQuantities[i].text = items[i].quantity.ToString();
+                else
+                    itemQuantities[i].text = "";
+            }
+            else
+            {
+                itemIcons[i].sprite = null;
+                itemIcons[i].enabled = false;
+                itemQuantities[i].text = "";
+            }
+        }
+    }
 }

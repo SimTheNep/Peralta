@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8870327549414350, guid: 0b082357a02e5e641b0e7bbe2b23cb5c, type: 3}
+  m_Sprite: {fileID: -7833671090200325546, guid: 7bb9735e66c99f747b9cff64f2aff53d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 6002150480373003360}
-  inventoryManager: {fileID: 0}
+  gabrielInventoryManager: {fileID: 0}
 --- !u!114 &6002150480373003360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +181,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Pedra
-  icon: {fileID: -8870327549414350, guid: 0b082357a02e5e641b0e7bbe2b23cb5c, type: 3}
+  icon: {fileID: -7833671090200325546, guid: 7bb9735e66c99f747b9cff64f2aff53d, type: 3}
   itemType: 1
   isStackable: 1
   quantity: 1
+  damage: 1
+  price: 0
+  description: 
