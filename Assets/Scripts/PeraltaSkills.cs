@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class PeraltaSkills : MonoBehaviour
 {
 
-    private enum SkillType { Hover, Phase, Haunt }
-    private SkillType currentSkill = SkillType.Hover;
+    private enum SkillType { Haunt, Phase, Hover }
+    private SkillType currentSkill = SkillType.Haunt;
 
     private bool isPerformingSkill = false;
     private bool isSkillStarted = false;
@@ -14,9 +14,9 @@ public class PeraltaSkills : MonoBehaviour
     public Image skillUIImage;
     public Sprite[] skillSprites;
 
-    public HoverSkill hoverSkill;
-    public PhaseSkill phaseSkill;
     public HauntSkill hauntSkill;
+    public PhaseSkill phaseSkill;
+    public HoverSkill hoverSkill;
 
     public bool isPossessing = false;
 
@@ -33,7 +33,7 @@ public class PeraltaSkills : MonoBehaviour
     {
 
         if (!canUseSkills) return;
-        //se estiver a possuir só deixa usar haunt e n cicla
+        //se estiver a possuir sï¿½ deixa usar haunt e n cicla
         if (isPossessing)
         {
             if (currentSkill != SkillType.Haunt)
@@ -44,7 +44,7 @@ public class PeraltaSkills : MonoBehaviour
         }
         else
         {
-            // Ciclar skill só se não estiver possuindo
+            // Ciclar skill sï¿½ se nï¿½o estiver possuindo
             if (Keyboard.current.yKey.wasPressedThisFrame && !Keyboard.current.bKey.isPressed)
             {
                 CycleSkill();
