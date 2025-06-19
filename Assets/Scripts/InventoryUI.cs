@@ -32,8 +32,8 @@ public class InventoryUI : MonoBehaviour
         {
             slotBackgrounds[i].sprite = (i == selectedSlot) ? selectedSlotSprite : normalSlotSprite;
 
-            // muda a cor: vermelho se for o slot selecionado, branco caso contrário. só enquanto n temos o sprite final 
-            slotBackgrounds[i].color = (i == selectedSlot) ? Color.red : Color.white;
+            // muda a cor: vermelho se for o slot selecionado, branco caso contrï¿½rio. sï¿½ enquanto n temos o sprite final 
+            // slotBackgrounds[i].color = (i == selectedSlot) ? Color.red : Color.white;
 
             if (items[i] != null && items[i].icon != null)
             {

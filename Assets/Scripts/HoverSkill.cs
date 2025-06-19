@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class HoverSkill : MonoBehaviour
 {
-    public float Time = 6f;          // tempo máximo 
-    public float timeRemaining = 0f; // tempo que diminui durante a execução
+    public float Time = 6f;          // tempo mï¿½ximo 
+    public float timeRemaining = 0f; // tempo que diminui durante a execuï¿½ï¿½o
 
     private Animator animator;
 
@@ -31,7 +31,7 @@ public class HoverSkill : MonoBehaviour
         }
         else
         {
-            // Quando não está ativo, regenera mana a 1 por segundo até o máximo
+            // Quando nï¿½o estï¿½ ativo, regenera mana a 1 por segundo atï¿½ o mï¿½ximo
             if (timeRemaining < Time)
             {
                 timeRemaining += UnityEngine.Time.deltaTime * 1f; // 1 por segundo
