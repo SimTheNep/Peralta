@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PhaseSkill : MonoBehaviour
 {
-    private Animator animator;
+    /* Animator animator;
 
     private void Start()
     {
@@ -11,11 +11,11 @@ public class PhaseSkill : MonoBehaviour
     }
     /*public void Execute()
     {*/
-    private void OnCollisionEnter2D(Collision2D collision)
+   /* private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Grade"))
         {
 
         }
-    }
+    }*/
 }
