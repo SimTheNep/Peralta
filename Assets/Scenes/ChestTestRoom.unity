@@ -479,42 +479,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb47ce2bdd93a1dc59d7f2522bedf8c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestType: 1
+  chestType: 2
   commonSprite: {fileID: -2807559565617576525, guid: 07cdd2f30a071bc46868eb6cabb84ad5, type: 3}
   rareSprite: {fileID: -773381378620126297, guid: 07cdd2f30a071bc46868eb6cabb84ad5, type: 3}
   goldSprite: {fileID: -7580170058173024286, guid: 07cdd2f30a071bc46868eb6cabb84ad5, type: 3}
   barrelSprite: {fileID: 3814173983084414224, guid: 07cdd2f30a071bc46868eb6cabb84ad5, type: 3}
   playerName: Gabriel
   interactKey: 98
-  lootTables:
-  - chestType: 0
-    possibleItems:
-    - {fileID: 5596868613322933132, guid: 190355b20e1823648921ba7044ed8e89, type: 3}
-    - {fileID: 5596868613322933132, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
-    - {fileID: 8355932442162324796, guid: 016e2f9f54e49e640a917a0ed2b1b9b3, type: 3}
-    itemCount: 3
-  - chestType: 3
-    possibleItems:
-    - {fileID: 5596868613322933132, guid: 231b55eabda28e71b89b4381f7422f4e, type: 3}
-    - {fileID: 5596868613322933132, guid: 3fa8bf96b06d65ebfa5f260395b0ccf6, type: 3}
-    - {fileID: 5596868613322933132, guid: 0165d7392ae9570f69ec47f4c0f7ec5e, type: 3}
-    itemCount: 3
-  - chestType: 2
-    possibleItems:
-    - {fileID: 8355932442162324796, guid: 016e2f9f54e49e640a917a0ed2b1b9b3, type: 3}
-    - {fileID: 5596868613322933132, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
-    - {fileID: 5596868613322933132, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
-    - {fileID: 5596868613322933132, guid: fe765169dd3245b83b0785cdfe62bbae, type: 3}
-    itemCount: 5
-  - chestType: 1
-    possibleItems:
-    - {fileID: 8355932442162324796, guid: 4088e4a89c8ce861e852809066416681, type: 3}
-    - {fileID: 8355932442162324796, guid: 22dc5bf9680b542dbabe5ea194d23baa, type: 3}
-    - {fileID: 8355932442162324796, guid: afe6878e1ceca01d695f284635b219a2, type: 3}
-    - {fileID: 5596868613322933132, guid: 33bfc4ce6224c3792b4c72064d1936d8, type: 3}
-    - {fileID: 5596868613322933132, guid: cc1a67c42f8e63fbdb3d067b0c3e6950, type: 3}
-    - {fileID: 8355932442162324796, guid: 016e2f9f54e49e640a917a0ed2b1b9b3, type: 3}
-    itemCount: 8
 --- !u!61 &73288311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -545,21 +516,21 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
 --- !u!212 &73288312
 SpriteRenderer:
@@ -605,7 +576,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2807559565617576525, guid: 07cdd2f30a071bc46868eb6cabb84ad5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -613,7 +584,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &73288313
@@ -625,7 +596,7 @@ Transform:
   m_GameObject: {fileID: 73288308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.18, y: -0.18, z: 0}
+  m_LocalPosition: {x: -0.09711, y: -1.61391, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7622,22 +7593,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.13
       objectReference: {fileID: 0}
-    - target: {fileID: 2692514466950442923, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-      propertyPath: gabrielController
-      value: 
-      objectReference: {fileID: 1020943816}
-    - target: {fileID: 3185626848438632142, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1020943821}
     - target: {fileID: 3185626848438632142, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: skillUIImage
       value: 
       objectReference: {fileID: 1977716829}
-    - target: {fileID: 3185626848438632142, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-      propertyPath: gabrielController
-      value: 
-      objectReference: {fileID: 1020943816}
     - target: {fileID: 3185626848438632142, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: 'skillSprites.Array.data[0]'
       value: 
@@ -7654,18 +7613,6 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 2021328142}
-    - target: {fileID: 3921725513960240834, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-      propertyPath: baseCooldown
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921725513960240834, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-      propertyPath: baseDuration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921725513960240834, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-      propertyPath: gabrielController
-      value: 
-      objectReference: {fileID: 1020943816}
     - target: {fileID: 4190031334972018040, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: m_Interpolate
       value: 1
@@ -7698,10 +7645,6 @@ PrefabInstance:
       propertyPath: groundTilemap
       value: 
       objectReference: {fileID: 537450965}
-    - target: {fileID: 7164898276760932456, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-      propertyPath: gabrielController
-      value: 
-      objectReference: {fileID: 1020943816}
     - target: {fileID: 7387227521552236484, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.548
@@ -7803,11 +7746,6 @@ MonoBehaviour:
 --- !u!4 &1020943820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7387227521552236484, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
-  m_PrefabInstance: {fileID: 1020943807}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1020943821 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4259193411201505744, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
   m_PrefabInstance: {fileID: 1020943807}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1038827577
@@ -9866,7 +9804,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 0, z: 0}
@@ -9894,7 +9832,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 1, z: 0}
@@ -9922,7 +9860,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 2, z: 0}
@@ -9936,7 +9874,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 3, z: 0}
@@ -10076,7 +10014,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 8, z: 0}
@@ -10132,7 +10070,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 14, y: 9, z: 0}
@@ -10699,7 +10637,7 @@ MonoBehaviour:
   - {fileID: 6132740405952125063, guid: 6b12b36c1fb80e44f9fd8bdbc13dfd33, type: 3}
   - {fileID: -7563208345386220316, guid: 6b12b36c1fb80e44f9fd8bdbc13dfd33, type: 3}
   gabrielHealth: {fileID: 1020943809}
-  hoverSkill: {fileID: 0}
+  hoverSkill: {fileID: 1349229959}
 --- !u!1001 &1349229953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10708,10 +10646,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: hoverSkill
-      value: 
-      objectReference: {fileID: 1349229980}
     - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: skillUIImage
       value: 
@@ -10804,24 +10738,27 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9029563595003164407, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: moveSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3918163314528630438, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      insertIndex: 9
-      addedObject: {fileID: 1349229980}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
 --- !u!1 &1349229954 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
   m_PrefabInstance: {fileID: 1349229953}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1349229959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3918163314528630438, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+  m_PrefabInstance: {fileID: 1349229953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349229954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e91b1674869dc54e9fd4b12a9f44962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1349229965 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5822462830057819704, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
@@ -10860,22 +10797,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6204006084127043361, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
   m_PrefabInstance: {fileID: 1349229953}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1349229980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349229954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22908531aba9281f2be9d4461b12f57a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Time: 6
-  timeRemaining: 0
-  Active: 0
-  Return: 0
 --- !u!1 &1392245917
 GameObject:
   m_ObjectHideFlags: 0
@@ -11841,7 +11762,7 @@ Tilemap:
       - {fileID: -683100154, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: -602400227, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: 1888922715, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -2, y: 6, z: 0}

@@ -103,10 +103,15 @@ public class PeraltaSkills : MonoBehaviour
             case SkillType.Hover:
                 if (hoverSkill != null)
                     hoverSkill.Execute();
+                /*if (GetComponent < HoverSkill > Active == true)
+                {
+                    GetComponent<HoverSkill>() Return = true;
+                }*/
                 break;
             case SkillType.Phase:
                 if (phaseSkill != null)
                     phaseSkill.Execute();
+
                 break;
             case SkillType.Haunt:
                 if (hauntSkill != null)

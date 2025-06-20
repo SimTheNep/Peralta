@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 public class HauntSkill : MonoBehaviour
 {
     public float hauntRange = 5f;
     public GameObject peraltaInventoryUI;
-    public GameObject peralta; 
+    public GameObject peralta;
 
     private SpriteRenderer[] spriteRenderers;
     private Animator animator;
@@ -25,6 +24,8 @@ public class HauntSkill : MonoBehaviour
 
     private CameraFollow cameraFollow;
 
+    private bool isActive = false;
+
     void Awake()
     {
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
@@ -40,8 +41,38 @@ public class HauntSkill : MonoBehaviour
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
     }
 
+    void Update()
+    {
+        if (hoverSkill == null)
+            return;
+
+        if (isActive)
+        {
+            hoverSkill.timeRemaining -= Time.deltaTime;
+            if (hoverSkill.timeRemaining <= 0f)
+            {
+                hoverSkill.timeRemaining = 0f;
+                EndSkillOrPossession();
+            }
+        }
+        else
+        {
+            if (hoverSkill.timeRemaining < hoverSkill.Time)
+            {
+                hoverSkill.timeRemaining += Time.deltaTime;
+                if (hoverSkill.timeRemaining > hoverSkill.Time)
+                    hoverSkill.timeRemaining = hoverSkill.Time;
+            }
+        }
+    }
+
+
+
     public void Execute()
     {
+        if (hoverSkill == null || hoverSkill.timeRemaining <= 0f)
+            return;
+
         Debug.Log("Executando HauntSkill...");
         if (isPossessing)
         {
@@ -51,6 +82,18 @@ public class HauntSkill : MonoBehaviour
         {
             TryPossessEnemy();
         }
+
+        isActive = true;
+    }
+
+    void EndSkillOrPossession()
+    {
+        if (isPossessing)
+        {
+            ReleasePossession();
+        }
+
+        isActive = false;
     }
 
     void TryPossessEnemy()
@@ -70,15 +113,7 @@ public class HauntSkill : MonoBehaviour
                 pc.Init(this);
 
                 Vector3 dir = possessedEnemy.transform.position - transform.position;
-                if (dir.x > 0)
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                else
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-
-
-                if (animator != null)
-                    animator.SetTrigger("Possess");
-
+                transform.eulerAngles = new Vector3(0, dir.x > 0 ? 0 : 180, 0);
 
                 if (animator != null)
                     StartCoroutine(PerformPossessionAnimationAndHide());
@@ -91,13 +126,11 @@ public class HauntSkill : MonoBehaviour
                         cameraFollow.SetTarget(possessedEnemy.transform);
                 }
 
-
                 Debug.Log("Possuído: " + possessedEnemy.name);
                 break;
             }
         }
     }
-
 
     void TrySwitchOrReleasePossession()
     {
@@ -106,7 +139,6 @@ public class HauntSkill : MonoBehaviour
         {
             if (hit.CompareTag("Enemy") && hit.gameObject != possessedEnemy)
             {
-                // Reativa o controle do inimigo antigo
                 if (originalEnemyControl != null)
                     originalEnemyControl.enabled = true;
 
@@ -114,7 +146,6 @@ public class HauntSkill : MonoBehaviour
                 if (oldPc != null)
                     Destroy(oldPc);
 
-                // Atualiza para o novo inimigo
                 possessedEnemy = hit.gameObject;
                 originalEnemyControl = possessedEnemy.GetComponent<ControlEnemy>();
                 if (originalEnemyControl != null)
@@ -123,24 +154,20 @@ public class HauntSkill : MonoBehaviour
                 PossessedEnemyController pc = possessedEnemy.AddComponent<PossessedEnemyController>();
                 pc.Init(this);
 
-              
-
-                // Muda a câmara para o novo corpo
                 if (cameraFollow != null)
                     cameraFollow.SetTarget(possessedEnemy.transform);
-
 
                 Debug.Log("Transferiu possessão para: " + possessedEnemy.name);
                 return;
             }
         }
 
-        // Nenhum novo inimigo encontrado → sai da possessão
         ReleasePossession();
     }
 
     void ReleasePossession()
     {
+        transform.eulerAngles = new Vector3(0, 0, 0);
         if (possessedEnemy != null)
         {
             var pc = possessedEnemy.GetComponent<PossessedEnemyController>();
@@ -149,7 +176,6 @@ public class HauntSkill : MonoBehaviour
             if (originalEnemyControl != null)
                 originalEnemyControl.enabled = true;
 
-            // Posiciona a Peralta perto do inimigo quando para de possuir
             Vector3 offset = new Vector3(1f, 0f, 0f);
             peralta.transform.position = possessedEnemy.transform.position + offset;
 
@@ -164,78 +190,63 @@ public class HauntSkill : MonoBehaviour
             possessedEnemy = null;
             originalEnemyControl = null;
             isPossessing = false;
+            isActive = false;
 
             Debug.Log("Despossuiu.");
         }
     }
 
-
     void HidePeralta()
     {
-        // Desativa todos os SpriteRenderers da Peralta para sumir visualmente
         if (spriteRenderers != null)
         {
             foreach (var sr in spriteRenderers)
-            {
                 sr.enabled = false;
-            }
         }
 
-        // Desativa o collider e rigidbody 2D
         if (col2D != null) col2D.enabled = false;
         if (rb2D != null) rb2D.simulated = false;
 
-        // Desativa scripts que bloqueiam movimento e habilidades
         if (peraltaController != null) peraltaController.enabled = false;
         if (inventoryManager != null) inventoryManager.enabled = false;
         if (hoverSkill != null) hoverSkill.enabled = false;
         if (phaseSkill != null) phaseSkill.enabled = false;
 
-        // Desativa o inventário visual no canvas
         if (peraltaInventoryUI != null)
             peraltaInventoryUI.SetActive(false);
 
-        // Diz para PeraltaSkills bloquear todas skills exceto Haunt
         if (peraltaSkills != null)
             peraltaSkills.isPossessing = true;
     }
 
-
     void ShowPeralta()
     {
-        // Reativa todos os SpriteRenderers da Peralta
         if (spriteRenderers != null)
         {
             foreach (var sr in spriteRenderers)
-            {
                 sr.enabled = true;
-            }
         }
 
-        // Reativa collider e rigidbody 2D
         if (col2D != null) col2D.enabled = true;
         if (rb2D != null) rb2D.simulated = true;
 
-        // Reativa scripts
         if (peraltaController != null) peraltaController.enabled = true;
         if (inventoryManager != null) inventoryManager.enabled = true;
         if (hoverSkill != null) hoverSkill.enabled = true;
         if (phaseSkill != null) phaseSkill.enabled = true;
 
-        // Reativa inventário visual no canvas
         if (peraltaInventoryUI != null)
             peraltaInventoryUI.SetActive(true);
 
-        // Diz para PeraltaSkills liberar todas skills
         if (peraltaSkills != null)
             peraltaSkills.isPossessing = false;
     }
-
 
     public bool IsPossessing()
     {
         return isPossessing;
     }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -248,12 +259,23 @@ public class HauntSkill : MonoBehaviour
             Gizmos.DrawRay(transform.position, dir * hauntRange);
         }
     }
-    IEnumerator PerformPossessionAnimationAndHide() //isto foi com o chatgpt, só para esperar antes de play e tal
+
+    IEnumerator PerformPossessionAnimationAndHide()
     {
         if (animator != null)
             animator.SetTrigger("Possess");
 
-        yield return new WaitForSeconds(0.5f); 
+        Vector3 startPosition = peralta.transform.position;
+        Vector3 targetPosition = possessedEnemy.transform.position;
+        float elapsed = 0f;
+        float dashDuration = 0.5f;
+
+        while (elapsed < dashDuration)
+        {
+            elapsed += Time.deltaTime;
+            peralta.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsed / dashDuration);
+            yield return null;
+        }
 
         HidePeralta();
         isPossessing = true;
@@ -261,14 +283,4 @@ public class HauntSkill : MonoBehaviour
         if (cameraFollow != null)
             cameraFollow.SetTarget(possessedEnemy.transform);
     }
-
-    IEnumerator HidePeraltaAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        HidePeralta();
-        isPossessing = true;
-    }
-
-
-
 }

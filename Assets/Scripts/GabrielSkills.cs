@@ -3,66 +3,76 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public enum SkillType { Push, Throw, Attack }
+
 public class GabrielSkills : MonoBehaviour
 {
+    public GabrielController gabrielController;
+    private float attackCooldownTimer = 0f;
 
     private SkillType currentSkill = SkillType.Push;
-
     private bool isPerformingSkill = false;
     private bool isSkillStarted = false;
 
     public Image skillUIImage;
     public Sprite[] skillSprites;
 
-
     public PushSkill pushSkill;
     public ThrowSkill throwSkill;
     public AttackSkill attackSkill;
 
     public GabrielInventoryManager gabrielnventory;
+    public Animator animator;
 
+    private bool isSkillExecuting = false;
     public bool canUseSkills = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         UpdateSkillUI();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!canUseSkills) return;
+        if (!canUseSkills || isSkillExecuting) return;
+
+        if (attackCooldownTimer > 0f)
+            attackCooldownTimer -= Time.deltaTime;
 
         bool yPressed = Keyboard.current.yKey.isPressed;
         bool bPressed = Keyboard.current.bKey.isPressed;
 
         isPerformingSkill = yPressed && bPressed;
 
-        if (Keyboard.current.yKey.wasPressedThisFrame && !Keyboard.current.bKey.isPressed)
+        if (Keyboard.current.yKey.wasPressedThisFrame && !bPressed)
         {
             CycleSkill();
         }
 
-        if (isPerformingSkill)
+        if (isPerformingSkill && !isSkillStarted)
         {
-            if (!isSkillStarted && gabrielnventory.HasItemForSkill(currentSkill))
-            {
-                Debug.Log("A executar skill: " + currentSkill);
-                isSkillStarted = true;
-                UseCurrentSkill();
-                gabrielnventory.ConsumeItemForSkill(currentSkill);
-            }
+            if (!gabrielnventory.HasItemForSkill(currentSkill)) return;
+
+            if (currentSkill == SkillType.Attack && attackCooldownTimer > 0f)
+                return;
+
+            isSkillStarted = true;
+            isSkillExecuting = true;
+            gabrielController.canMove = false;
+
+            Debug.Log("A executar skill: " + currentSkill);
+
+            gabrielnventory.ConsumeItemForSkill(currentSkill);
+            StartCoroutine(PerformSkillCoroutine(currentSkill));
         }
         else
         {
             if (isSkillStarted)
             {
-                Debug.Log("Fim da skill: " + currentSkill);
                 isSkillStarted = false;
             }
         }
     }
+
 
     void CycleSkill()
     {
@@ -83,36 +93,42 @@ public class GabrielSkills : MonoBehaviour
         }
     }
 
-    void UseCurrentSkill()
+    System.Collections.IEnumerator PerformSkillCoroutine(SkillType skill)
     {
-        switch (currentSkill)
+        switch (skill)
         {
             case SkillType.Push:
                 pushSkill.Execute();
+                yield return new WaitForSeconds(0.5f);
                 break;
+
             case SkillType.Throw:
-                if (gabrielnventory.HasItemForSkill(SkillType.Throw))
-                {
-                    Debug.Log("atirou script skills");
-                    throwSkill.Execute();
-                }
-                
+                throwSkill.Execute();
+                yield return new WaitForSeconds(0.5f);
                 break;
+
             case SkillType.Attack:
-                if (gabrielnventory.HasItemForSkill(SkillType.Attack))
-                {
-                    Debug.Log("atacou script skills");
-                    attackSkill.Execute();
-                }
+                attackSkill.Execute();
+                float duration = attackSkill.duration;
+                float cooldown = attackSkill.cooldown;
+
+                yield return new WaitForSeconds(duration);
+
+                attackCooldownTimer = cooldown;
+                attackSkill.animator.speed = 1f;
                 break;
         }
-    }
 
+        isSkillStarted = false;
+        isSkillExecuting = false;
+        gabrielController.canMove = true;
+        animator.speed = 1f;
+        Debug.Log("Fim de skill");
+    }
 
 
     public SkillType GetCurrentSkill()
     {
         return currentSkill;
     }
-    
 }

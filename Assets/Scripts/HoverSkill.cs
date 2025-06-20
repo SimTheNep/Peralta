@@ -3,23 +3,22 @@ using UnityEngine;
 
 public class HoverSkill : MonoBehaviour
 {
-    public float Time = 6f;          // tempo m�ximo 
-    public float timeRemaining = 0f; // tempo que diminui durante a execu��o
-
+    public float Time = 6f;            // Tempo máximo
+    public float timeRemaining = 0f;   // Tempo que diminui durante a execução
+    public bool Active;               
+    public bool Return;                
     private Animator animator;
-
     private bool isActive = false;
-
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         timeRemaining = Time;
-
     }
 
     private void Update()
     {
+
         if (isActive)
         {
             timeRemaining -= UnityEngine.Time.deltaTime;
@@ -31,36 +30,37 @@ public class HoverSkill : MonoBehaviour
         }
         else
         {
-            // Quando n�o est� ativo, regenera mana a 1 por segundo at� o m�ximo
+            // Mana regen
             if (timeRemaining < Time)
             {
-                timeRemaining += UnityEngine.Time.deltaTime * 1f; // 1 por segundo
+                timeRemaining += UnityEngine.Time.deltaTime;
                 if (timeRemaining > Time)
                     timeRemaining = Time;
             }
         }
     }
 
-
     public void Execute()
     {
+
         Debug.Log("Peralta executou HoverSkill");
-        print("Floot 0");
-
-
 
         if (!isActive)
         {
             isActive = true;
-            timeRemaining = Time;
 
             if (animator != null)
-                animator.SetBool("IsHovering", true);
-               
+                animator.SetTrigger("StartHover");
 
-            this.gameObject.layer = LayerMask.NameToLayer("Floot");
+            gameObject.layer = LayerMask.NameToLayer("Floot");
+
+            Debug.Log("Floot 0");
         }
-
+        else
+        {
+            Debug.Log("Desligou");
+            terminafloot();
+        }
     }
 
     void terminafloot()
@@ -68,10 +68,8 @@ public class HoverSkill : MonoBehaviour
         isActive = false;
 
         if (animator != null)
-            animator.SetBool("IsHovering", false);
+            animator.SetTrigger("StopHover");
 
-        this.gameObject.layer = LayerMask.NameToLayer("Peralta");
-
-        Debug.Log("Floot fim");
+        gameObject.layer = LayerMask.NameToLayer("Peralta");
     }
 }
