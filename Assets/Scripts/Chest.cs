@@ -26,6 +26,7 @@ public class Chest : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("start chest");
         chestAnimator = gameObject.GetComponent<Animator>();
         SetSprite(chestType);
     }
@@ -78,6 +79,16 @@ public class Chest : MonoBehaviour
 
     private void SetSprite(ChestType type)
     {
+
+        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+        if (sr == null)
+        {
+            Debug.LogError("sprite renderer n encontrado");
+            return;
+        }
+
+        Debug.Log("setsprite chamado paras" + type);
+
         switch (type)
         {
             case ChestType.Rare:
@@ -97,5 +108,10 @@ public class Chest : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().sprite = commonSprite;
                 break;
         }
+        if (sr.sprite == null)
+        {
+            Debug.Log("sprite n atribuido");
+        }
+            
     }
 }
