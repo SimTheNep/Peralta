@@ -19,8 +19,7 @@ public class Chest : MonoBehaviour
     public string playerName = "Gabriel";           
     public KeyCode interactKey = KeyCode.B;        
     
-    private Animator chestAnimator;                  
-    private GameObject indicator;                     
+    private Animator chestAnimator;                                 
     private bool isPlayerNearby = false;
     private GameObject player;
     private bool isOpened = false;
@@ -28,9 +27,6 @@ public class Chest : MonoBehaviour
     void Start()
     {
         chestAnimator = gameObject.GetComponent<Animator>();
-        indicator = transform.Find("InteractionIndicator")?.gameObject;
-        indicator.SetActive(false);
-
         SetSprite(chestType);
     }
 
@@ -43,9 +39,6 @@ public class Chest : MonoBehaviour
             string triggerName = GetTrigger(chestType);
             chestAnimator.SetTrigger(triggerName);
             isOpened = true;
-
-            if (indicator != null)
-                indicator.SetActive(false);
         }
     }
 
@@ -55,9 +48,6 @@ public class Chest : MonoBehaviour
         {
             isPlayerNearby = true;
             player = collision.gameObject;
-
-            if (indicator != null && !isOpened)
-                indicator.SetActive(true);
         }
     }
 
@@ -67,9 +57,6 @@ public class Chest : MonoBehaviour
         {
             isPlayerNearby = false;
             player = null;
-
-            if (indicator != null)
-                indicator.SetActive(false);
         }
     }
 
