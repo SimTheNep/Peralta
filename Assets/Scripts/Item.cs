@@ -20,7 +20,7 @@ public class Item
 
     public Item() { }
 
-    public Item(Item other) // construtor de cópia para evitar referência direta
+    public Item(Item other) // construtor de cï¿½pia para evitar referï¿½ncia direta
     {
         itemName = other.itemName;
         icon = other.icon;

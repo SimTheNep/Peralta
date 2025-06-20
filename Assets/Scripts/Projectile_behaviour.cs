@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Projectile_behaviour : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class Projectile_behaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("kaboom");
 
             if (collision.collider.CompareTag("Enemy"))
             {
@@ -77,6 +79,12 @@ public class Projectile_behaviour : MonoBehaviour
 
             }
 
+        StartCoroutine(DestroyAfterDelay());
+    }
+
+    private IEnumerator DestroyAfterDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
     }
 }
