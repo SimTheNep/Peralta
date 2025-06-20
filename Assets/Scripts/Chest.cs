@@ -28,6 +28,7 @@ public class Chest : MonoBehaviour
     {
         Debug.Log("start chest");
         chestAnimator = gameObject.GetComponent<Animator>();
+        chestAnimator.enabled = false;
         SetSprite(chestType);
     }
 
@@ -35,6 +36,7 @@ public class Chest : MonoBehaviour
     {
         if (isPlayerNearby && !isOpened && Input.GetKeyDown(interactKey))
         {
+            chestAnimator.enabled = true;
             player.GetComponent<Animator>().SetTrigger("Throw");
 
             string triggerName = GetTrigger(chestType);
