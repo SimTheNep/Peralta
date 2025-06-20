@@ -163,8 +163,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.9766828, y: -1.6332865}
-  m_Size: {x: 1.7144482, y: 1.7144482}
+  m_Offset: {x: -0.03999999, y: -0.6458262}
+  m_Size: {x: 0.70834756, y: 0.70834756}
   m_Direction: 0
 --- !u!50 &4190031334972018040
 Rigidbody2D:
@@ -189,7 +189,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -223,9 +223,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillUIImage: {fileID: 0}
   skillSprites:
-  - {fileID: 309436534, guid: 97746480137179d469a5168ccd422604, type: 3}
-  - {fileID: 746729296, guid: 97746480137179d469a5168ccd422604, type: 3}
-  - {fileID: -1294469630, guid: 97746480137179d469a5168ccd422604, type: 3}
+  - {fileID: 5967214536038645678, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
+  - {fileID: -3620139152132572271, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
+  - {fileID: 2386381102833436223, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
   pushSkill: {fileID: 2692514466950442923}
   throwSkill: {fileID: 7164898276760932456}
   attackSkill: {fileID: 3921725513960240834}
@@ -243,6 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb906fb79d0dc504289e6a8949305c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4259193411201505744}
+  playerTransform: {fileID: 7387227521552236484}
+  tileSize: 1
 --- !u!114 &7164898276760932456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,18 +297,24 @@ MonoBehaviour:
     isStackable: 0
     quantity: 0
     damage: 0
+    price: 0
+    description: 
   - itemName: 
     icon: {fileID: 0}
     itemType: 0
     isStackable: 0
     quantity: 0
     damage: 0
+    price: 0
+    description: 
   - itemName: 
     icon: {fileID: 0}
     itemType: 0
     isStackable: 0
     quantity: 0
     damage: 0
+    price: 0
+    description: 
   selectedSlot: 0
   gabrielskills: {fileID: 3185626848438632142}
   inventoryUI: {fileID: 0}

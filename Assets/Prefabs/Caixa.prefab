@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6418053440143275820}
   - component: {fileID: 2357990126022593017}
   - component: {fileID: 1206055987547447147}
-  m_Layer: 0
+  - component: {fileID: 4040023259403229668}
+  m_Layer: 8
   m_Name: Caixa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,11 +127,24 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.0625, y: 2.0625}
+    oldSize: {x: 1.03125, y: 1.03125}
     newSize: {x: 0.33, y: 0.33}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.0625, y: 2.0625}
+  m_Size: {x: 1.03125, y: 1.03125}
   m_EdgeRadius: 0
+--- !u!114 &4040023259403229668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70691592601376398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71dd2a3941cc8f42aaf63e3078fdc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxType: 0

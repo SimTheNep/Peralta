@@ -6859,7 +6859,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &752309919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9748,7 +9748,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -2, z: 0}
@@ -9762,7 +9762,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: -1, z: 0}
@@ -9804,7 +9804,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 0, z: 0}
@@ -9832,7 +9832,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 1, z: 0}
@@ -9874,7 +9874,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 3, z: 0}
@@ -9916,7 +9916,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 4, z: 0}
@@ -10000,7 +10000,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 8, z: 0}
@@ -10042,7 +10042,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 19, y: 8, z: 0}
@@ -10070,7 +10070,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 14, y: 9, z: 0}
@@ -11000,52 +11000,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654858003}
   m_CullTransparentMesh: 1
---- !u!1 &1665174144
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1665174146}
-  - component: {fileID: 1665174145}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1665174145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665174144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d10eeadf9d9ab8c4cbcda3949290316e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 2063174182}
-  testSequence: {fileID: 11400000, guid: 40b8587781a528a4ba965ccf7b014ccd, type: 2}
---- !u!4 &1665174146
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665174144}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1896322, y: -0.24200852, z: -0.004500015}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1689005870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11808,7 +11762,7 @@ Tilemap:
       - {fileID: -683100154, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: -602400227, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: 1888922715, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -2, y: 6, z: 0}
@@ -15474,7 +15428,7 @@ Tilemap:
       - {fileID: 1347640450, guid: 0e7413876e105074d9d9f82caab1b830, type: 3}
       - {fileID: 2105203554, guid: 0e7413876e105074d9d9f82caab1b830, type: 3}
       - {fileID: -294324518, guid: 0e7413876e105074d9d9f82caab1b830, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -8, z: 0}
@@ -15718,17 +15672,6 @@ MonoBehaviour:
   - {fileID: 856474696}
   - {fileID: 1828459252}
   - {fileID: 783824451}
---- !u!114 &2063174182 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1204059726625034464, guid: 6d81c61a9caff5445bdc1cae02bf2a65, type: 3}
-  m_PrefabInstance: {fileID: 3734905631093967685}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25aec6d091720604b8d2796552ece8fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3734905631093967685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16064,7 +16007,6 @@ SceneRoots:
   - {fileID: 1349229953}
   - {fileID: 1020943807}
   - {fileID: 7088534332652786693}
-  - {fileID: 1665174146}
   - {fileID: 3734905631093967685}
   - {fileID: 159967030}
   - {fileID: 40144131}
