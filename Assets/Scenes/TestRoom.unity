@@ -8287,7 +8287,7 @@ TilemapCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -9527,7 +9527,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: -1, z: 0}
@@ -9569,7 +9569,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 0, z: 0}
@@ -9779,7 +9779,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 8, z: 0}
@@ -9807,7 +9807,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 19, y: 8, z: 0}
@@ -15331,7 +15331,7 @@ Tilemap:
       - {fileID: 1347640450, guid: 0e7413876e105074d9d9f82caab1b830, type: 3}
       - {fileID: 2105203554, guid: 0e7413876e105074d9d9f82caab1b830, type: 3}
       - {fileID: -294324518, guid: 0e7413876e105074d9d9f82caab1b830, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -8, z: 0}
@@ -15711,21 +15711,69 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo
       objectReference: {fileID: 0}
+    - target: {fileID: 453373434740894049, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 453373434740894049, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 453373434740894049, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: Dano
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: VIdle
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: AlvoGOB
       value: 
       objectReference: {fileID: 1020943808}
     - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: Limites
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: CoolDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: DeathTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: PersueTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: Velocidade
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: soulAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: soulPrefab
+      value: 
+      objectReference: {fileID: 8355932442162324796, guid: 016e2f9f54e49e640a917a0ed2b1b9b3, type: 3}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: "VPersegui\xE7\xE3o"
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2963371153354486200, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.78
+      value: -1.14
       objectReference: {fileID: 0}
     - target: {fileID: 2963371153354486200, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6
+      value: 2.89
       objectReference: {fileID: 0}
     - target: {fileID: 2963371153354486200, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: m_LocalPosition.z

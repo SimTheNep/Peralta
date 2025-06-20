@@ -15,18 +15,25 @@ public class ControlEnemy : MonoBehaviour
     public float Life;
     public float Radius;
     public float CoolDown;
+    public float VPerseguição;
+    public float VIdle;
+    public float Limites;
+    public float Dano;
+    public float DeathTime;
+    public float PersueTime;
 
     private Animator animator;
 
     public GameObject soulPrefab; 
-    public int soulAmount = 1;
+    public int soulAmount;
 
     void Start()
     {
         Debug.Log($"[START] {gameObject.name} iniciado na layer {gameObject.layer} com tag {gameObject.tag}");
         animator = GetComponent<Animator>(); 
-            Estate = "Idle";
-            
+        Estate = "Idle";
+        Velocidade = VIdle;
+
     }
     
 
@@ -49,30 +56,31 @@ public class ControlEnemy : MonoBehaviour
 
         if (Life <= 0)
         {
-            if (animator != null)
-            {
-                animator.Play("Death_Inimigo01");
-            }
-            DropSoul();
+            animator.Play("Death_Inimigo01");
+            Estate = "Dead";
+            Invoke("Death", DeathTime);
 
-            Destroy(gameObject);
+           /* DropSoul();
+            Destroy(gameObject);*/
+
         }
+        
+ 
         
         //sistema de movimento base
 
         if (Estate == "Idle")
         {
-            Velocidade = 1f;
-            if (Pos.x >= 10)
+            
+            if (Pos.x >= Limites)
             {
                 this.transform.eulerAngles = new Vector3(0, 180, 0);
                 direcao = true;
                 Velocidade = Velocidade * -1;
 
             }
-            if (direcao == true && Pos.x <= -10)
+            if (direcao == true && Pos.x <= -Limites)
             {
-                print("Vira");
                 this.transform.eulerAngles = new Vector3(0, 0, 0);
                 direcao = false;
                 Velocidade = Velocidade * -1;
@@ -90,11 +98,12 @@ public class ControlEnemy : MonoBehaviour
                 animator.Play("Active_Inimigo01");
             }
             
-            Velocidade = 4f;
+            Velocidade = VPerseguição;
             Vector3 Dif = AlvoGOB.transform.position - this.transform.position;
             Dif.Normalize();
             Dif = Time.deltaTime * Velocidade * Dif;
             this.transform.Translate(Dif, Space.World);
+            Invoke("passaTired", PersueTime);
 
         }
         //sistema de rest
@@ -123,11 +132,23 @@ public class ControlEnemy : MonoBehaviour
             }
         }
     }
+
+    void Death()
+    {
+        DropSoul();
+
+        Destroy(gameObject);
+    }
     void passaidle()
     {
         Estate = "Idle";
     }
-    
+
+    void passaTired()
+    {
+        Estate = "Tired";
+    }
+
     //Sistema de dano
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -136,16 +157,17 @@ public class ControlEnemy : MonoBehaviour
         {
             GabrielHealth gabrielHealth = collision.gameObject.GetComponent<GabrielHealth>();
 
-            if (gabrielHealth != null && Estate == "Active")
+            if (gabrielHealth != null)
             {
                 Debug.Log("[ENEMY] Gabriel encontrado e estado ativo. Aplicando dano.");
-                gabrielHealth.TakeDamage(1f);
+                gabrielHealth.TakeDamage(Dano);
 
                 Estate = "Tired";
             }
             else
             {
                 Debug.Log("[ENEMY] GabrielHealth n�o encontrado ou estado n�o ativo.");
+                
             }
         }
     }
