@@ -1,29 +1,30 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
+using System.Collections;
+
 
 public class PhaseSkill : MonoBehaviour
 {
+    private Tilemap gradeTilemap;
+    
+
     Animator animator;
     private Vector3 Bpoint;
     private bool OnTileGrade;
+    private Vector3 gradeTileWorldPos;
 
     private bool isActive = false;
     public float timeRemaining = 0f;
     public float Time = 2f;
+    public float teleportOffsetY = 5f;
+
+    private PeraltaController peraltaController;
 
     private void Start()
     {
+        peraltaController = GetComponent<PeraltaController>();
         animator = GetComponent<Animator>();
         timeRemaining = Time;
-
-        /* if (== null)
-         {
-             GameObject gabriel = GameObject.FindGameObjectWithTag("Gabriel");
-             if (gabriel != null)
-             {
-                 gabrielInventoryManager = gabriel.GetComponentInChildren<GabrielInventoryManager>();
-             }
-         }*/
-
     }
 
     private void Update()
@@ -39,10 +40,9 @@ public class PhaseSkill : MonoBehaviour
         }
         else
         {
-            // Quando n�o est� ativo, regenera mana a 1 por segundo at� o m�ximo
             if (timeRemaining < Time)
             {
-                timeRemaining += UnityEngine.Time.deltaTime * 1f; // 1 por segundo
+                timeRemaining += UnityEngine.Time.deltaTime * 1f;
                 if (timeRemaining > Time)
                     timeRemaining = Time;
             }
@@ -51,35 +51,51 @@ public class PhaseSkill : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.collider.CompareTag("Grade")))
+        if (collision.collider.CompareTag("Grade"))
         {
             print("tocou");
             OnTileGrade = true;
-        }
 
+            ContactPoint2D contact = collision.GetContact(0);
+            Vector3 contactPoint = contact.point;
+
+            gradeTilemap = collision.collider.GetComponentInParent<Tilemap>();
+            if (gradeTilemap != null)
+            {
+                Vector3Int cell = gradeTilemap.WorldToCell(contactPoint);
+                gradeTileWorldPos = gradeTilemap.GetCellCenterWorld(cell);
+            }
+            else
+            {
+                print("Não encontrou grade");
+                gradeTileWorldPos = collision.collider.transform.position;
+            }
+        }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Grade"))
+        {
+            OnTileGrade = false;
+        }
+    }
+
     public void Execute()
     {
-        if (OnTileGrade == true)
+        if (OnTileGrade == true && !isActive)
         {
+            peraltaController.canMove = false;
             print("tentou atravessar");
-           /* if (animator != null)
-            {
-                animator.SetTrigger("Phase");
 
-            }*/
             Bpoint = transform.position;
             animator.Play("Peralta_Fase_01");
 
-            if (!isActive)
-            {
-                isActive = true;
-                timeRemaining = Time;
-            
-                this.gameObject.layer = LayerMask.NameToLayer("Fase");
-            }
-           // transform.position = Bpoint * new Vector2(-1, 0);
-            //terminaFase();
+            isActive = true;
+            timeRemaining = Time;
+            this.gameObject.layer = LayerMask.NameToLayer("Fase");
+
+            StartCoroutine(PhaseRoutine());
         }
         else
         {
@@ -87,20 +103,31 @@ public class PhaseSkill : MonoBehaviour
         }
     }
 
+    private IEnumerator PhaseRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (transform.position.y < gradeTileWorldPos.y)
+        {
+            transform.position += new Vector3(0f, teleportOffsetY, 0f); // go up
+        }
+        else
+        {
+            transform.position -= new Vector3(0f, teleportOffsetY, 0f); // go down
+        }
+
+        animator.Play("Peralta_Fase_02");
+        yield return new WaitForSeconds(1f);
+        terminaFase();
+    }
+
     void terminaFase()
     {
-        animator.Play("Peralta_Fase_02");
+        peraltaController.canMove = true;
         isActive = false;
 
         if (animator != null)
             animator.SetBool("IsHovering", false);
 
-        //transform.forward = new Vector3(-1, 0, 0);
-
         this.gameObject.layer = LayerMask.NameToLayer("Peralta");
-
-       
     }
 }
-
-

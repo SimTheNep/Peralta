@@ -12,7 +12,7 @@ public class PushSkill : MonoBehaviour
 
     public void Execute()
     {
-        //primeiro dá sempre a animação de push, mesmo sendo pesada
+        //primeiro dï¿½ sempre a animaï¿½ï¿½o de push, mesmo sendo pesada
         animator.SetTrigger("Push");
 
 
@@ -35,12 +35,12 @@ public class PushSkill : MonoBehaviour
 
         if (box.boxType == BoxType.Light)
         {
-            // Move a caixa 1 tile na direção
+            // Move a caixa 1 tile na direï¿½ï¿½o
             box.transform.position += (Vector3)direction * tileSize;
         }
         else
         {
-            // Empurra Gabriel para trás
+            // Empurra Gabriel para trï¿½s
             playerTransform.position -= (Vector3)direction * tileSize;
             animator.SetTrigger("Damage");
         }

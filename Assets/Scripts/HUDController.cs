@@ -12,11 +12,15 @@ public class HUDController : MonoBehaviour
     public Sprite[] peraltaManaSprites; // 0 (cheio) a 6 (vazio)
 
     public Image peraltaPossessionImage;
-    public Sprite[] peraltaPossessionSprites; // 0 (não possuído) até 6 (totalmente possuído)
+    public Sprite[] peraltaPossessionSprites; // 0 (nï¿½o possuï¿½do) atï¿½ 6 (totalmente possuï¿½do)
 
     public GabrielHealth gabrielHealth;
     public HoverSkill hoverSkill;
     private HauntSkill hauntSkill;
+
+    private float possessionFill = 0f;  
+    private float possessionTarget = 6f; 
+    private float possessionSpeed = 6f; 
 
     public void SetHUDVisible(bool visible)
     {
@@ -25,7 +29,7 @@ public class HUDController : MonoBehaviour
 
     void Start()
     {
-        // Referências
+        // Referï¿½ncias
         GabrielHealth gabrielHealth = FindAnyObjectByType<GabrielHealth>();
 
         hoverSkill = FindFirstObjectByType<HoverSkill>();
@@ -61,17 +65,14 @@ public class HUDController : MonoBehaviour
 
     void UpdatePeraltaPossession()
     {
-        if (hauntSkill != null && peraltaPossessionImage != null && peraltaPossessionSprites.Length > 0)
-        {
-            // Para este exemplo simples:
-            // Possuído = index 6
-            // Não possuído = index 0
-            // Transições poderiam ser animadas com coroutines ou outro sistema
+        if (peraltaPossessionSprites == null || peraltaPossessionSprites.Length == 0 || peraltaPossessionImage == null || hauntSkill == null)
+            return;
 
-            if (hauntSkill.IsPossessing())
-                peraltaPossessionImage.sprite = peraltaPossessionSprites[6];
-            else
-                peraltaPossessionImage.sprite = peraltaPossessionSprites[0];
-        }
+        possessionTarget = hauntSkill.IsPossessing() ? 6f : 0f;
+
+        possessionFill = Mathf.MoveTowards(possessionFill, possessionTarget, possessionSpeed * Time.deltaTime);
+
+        int index = Mathf.Clamp(Mathf.RoundToInt(possessionFill), 0, 6);
+        peraltaPossessionImage.sprite = peraltaPossessionSprites[index];
     }
 }

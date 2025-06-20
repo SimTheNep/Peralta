@@ -186,5 +186,5 @@ MonoBehaviour:
   isStackable: 1
   quantity: 1
   damage: 1
-  price: 0
+  price: 6
   description: 

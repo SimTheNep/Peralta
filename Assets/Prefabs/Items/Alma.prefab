@@ -156,5 +156,5 @@ MonoBehaviour:
   itemType: 0
   isStackable: 1
   quantity: 1
-  price: 0
+  price: 10
   description: As almas dos teus inimigos.
