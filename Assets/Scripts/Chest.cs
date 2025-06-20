@@ -36,7 +36,7 @@ public class Chest : MonoBehaviour
     private Animator chestAnimator;                                 
     private bool isPlayerNearby = false;
     private GameObject player;
-    private bool isOpened = false;
+    public bool isOpened = false;
 
     void Start()
     {

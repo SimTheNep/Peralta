@@ -6,7 +6,8 @@ public enum IndicatorType
     PushLight, 
     PushHeavy, 
     Phase, 
-    KeyDoor 
+    KeyDoor,
+    Chest
 }
 
 public class InteractiveIndicator : MonoBehaviour
@@ -19,6 +20,7 @@ public class InteractiveIndicator : MonoBehaviour
     public Sprite[] pushHeavyAnimation;
     public Sprite[] phaseAnimation;
     public Sprite[] keyDoorAnimation;
+    public Sprite[] chestAnimation;
 
     public float frameRate = 10f; // fps
     private float timer = 0f;
@@ -115,6 +117,19 @@ public class InteractiveIndicator : MonoBehaviour
             currentAnimation = keyDoorAnimation;
         }
 
+        //barris e baus
+        if (indicatorType == IndicatorType.Chest)
+        {
+            if (characterSwitch.currentCharacter == characterSwitch.gabriel)
+            {
+                Chest chest = GetComponentInParent<Chest>();
+                if (chest != null && !chest.isOpened)
+                {
+                    showIndicator = true;
+                    currentAnimation = chestAnimation;
+                }
+            }
+        }
 
 
 
@@ -161,4 +176,6 @@ public class InteractiveIndicator : MonoBehaviour
         }
         return false;
     }
+
+
 }
