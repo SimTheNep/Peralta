@@ -5,6 +5,9 @@ public class HoverSkill : MonoBehaviour
 {
     public float Time = 6f;          // tempo m�ximo 
     public float timeRemaining = 0f; // tempo que diminui durante a execu��o
+    public bool Active;
+    public bool Return;
+
 
     private Animator animator;
 
@@ -49,16 +52,25 @@ public class HoverSkill : MonoBehaviour
 
 
 
-        if (!isActive)
+        if (isActive == false)
         {
             isActive = true;
             timeRemaining = Time;
 
             if (animator != null)
                 animator.SetBool("IsHovering", true);
-               
+
 
             this.gameObject.layer = LayerMask.NameToLayer("Floot");
+        }
+        else
+        {
+            if (isActive == true)
+            {
+                print("desligou");
+                terminafloot();
+            }
+
         }
 
     }
