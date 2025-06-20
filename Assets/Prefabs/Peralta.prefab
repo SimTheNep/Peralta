@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5822462830057819704}
   - component: {fileID: 2448324745921832461}
   - component: {fileID: 6504016026059253130}
-  - component: {fileID: 3918163314528630438}
+  - component: {fileID: 8342265527225143512}
   - component: {fileID: 7538798837028385987}
   - component: {fileID: 3171885917608872271}
   - component: {fileID: 6532183511238774704}
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6532183511238774704}
-  moveSpeed: 5
+  moveSpeed: 3
   canMove: 1
 --- !u!114 &392852926930219903
 MonoBehaviour:
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75de6261b4128174299164e6379fb0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSkill: 0
   skillUIImage: {fileID: 0}
   skillSprites:
   - {fileID: -3832181338920144071, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
@@ -196,7 +197,7 @@ MonoBehaviour:
   - {fileID: -5010137586301057519, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
   hauntSkill: {fileID: 6504016026059253130}
   phaseSkill: {fileID: 2448324745921832461}
-  hoverSkill: {fileID: 3918163314528630438}
+  hoverSkill: {fileID: 8342265527225143512}
   isPossessing: 0
   canUseSkills: 1
 --- !u!114 &5822462830057819704
@@ -251,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeRemaining: 0
   Time: 2
+  teleportOffsetY: 5
 --- !u!114 &6504016026059253130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +268,7 @@ MonoBehaviour:
   hauntRange: 2
   peraltaInventoryUI: {fileID: 0}
   peralta: {fileID: 2844302221783558123}
---- !u!114 &3918163314528630438
+--- !u!114 &8342265527225143512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,11 +277,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2844302221783558123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e91b1674869dc54e9fd4b12a9f44962, type: 3}
+  m_Script: {fileID: 11500000, guid: 22908531aba9281f2be9d4461b12f57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Time: 6
   timeRemaining: 0
+  Active: 0
+  Return: 0
 --- !u!114 &7538798837028385987
 MonoBehaviour:
   m_ObjectHideFlags: 0

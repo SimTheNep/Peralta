@@ -9581,7 +9581,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -5, z: 0}
@@ -9777,7 +9777,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 2, z: 0}
@@ -9847,7 +9847,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 5, z: 0}
@@ -9987,7 +9987,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 14, y: 9, z: 0}
@@ -10571,34 +10571,6 @@ PrefabInstance:
       propertyPath: skillUIImage
       value: 
       objectReference: {fileID: 49927634}
-    - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: 'skillSprites.Array.data[0]'
-      value: 
-      objectReference: {fileID: -3832181338920144071, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
-    - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: 'skillSprites.Array.data[1]'
-      value: 
-      objectReference: {fileID: 7606015881366008548, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
-    - target: {fileID: 392852926930219903, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: 'skillSprites.Array.data[2]'
-      value: 
-      objectReference: {fileID: -5010137586301057519, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
-    - target: {fileID: 2497631749754111364, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_Size.x
-      value: 0.798615
-      objectReference: {fileID: 0}
-    - target: {fileID: 2497631749754111364, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_Size.y
-      value: 0.798615
-      objectReference: {fileID: 0}
-    - target: {fileID: 2497631749754111364, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 2497631749754111364, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: m_Name
       value: Peralta
@@ -10648,29 +10620,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6504016026059253130, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: hauntRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504016026059253130, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: peraltaInventoryUI
       value: 
       objectReference: {fileID: 228737963}
-    - target: {fileID: 8239754030985306017, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9029563595003164407, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: moveSpeed
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3918163314528630438, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2844302221783558123, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
-      insertIndex: 9
-      addedObject: {fileID: 1349229980}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
 --- !u!1 &1349229954 stripped
 GameObject:
@@ -10715,11 +10675,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6204006084127043361, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
   m_PrefabInstance: {fileID: 1349229953}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1349229980
+--- !u!114 &1349229980 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8342265527225143512, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+  m_PrefabInstance: {fileID: 1349229953}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349229954}
   m_Enabled: 1
@@ -10727,10 +10686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22908531aba9281f2be9d4461b12f57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Time: 6
-  timeRemaining: 0
-  Active: 0
-  Return: 0
 --- !u!1 &1392245917
 GameObject:
   m_ObjectHideFlags: 0
@@ -11735,7 +11690,7 @@ Tilemap:
       - {fileID: -683100154, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: -602400227, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: 1888922715, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 13, y: 6, z: 0}
@@ -15832,6 +15787,10 @@ PrefabInstance:
       propertyPath: peraltaUIGroup
       value: 
       objectReference: {fileID: 832083138}
+    - target: {fileID: 4259098230731431319, guid: 0c9d91ce82b0c45478c4988dc0a71571, type: 3}
+      propertyPath: currentCharacter
+      value: 
+      objectReference: {fileID: 1020943808}
     - target: {fileID: 4584619084944679694, guid: 0c9d91ce82b0c45478c4988dc0a71571, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1896322

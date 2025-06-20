@@ -48,3 +48,4 @@ MonoBehaviour:
   peralta: {fileID: 0}
   gabrielUIGroup: {fileID: 0}
   peraltaUIGroup: {fileID: 0}
+  currentCharacter: {fileID: 0}
