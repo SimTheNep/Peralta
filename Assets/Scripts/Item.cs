@@ -3,7 +3,8 @@ public enum ItemType
 {
     Healable,
     Throwable,
-    Attackable
+    Attackable,
+    Key
 }
 
 [System.Serializable]

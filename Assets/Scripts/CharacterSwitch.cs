@@ -11,13 +11,13 @@ public class CharacterSwitch : MonoBehaviour
     public GameObject peraltaUIGroup;  
 
 
-    private GameObject currentCharacter;
+    public GameObject currentCharacter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentCharacter = gabriel;
-        SetActiveCharacter(gabriel);
+        SetActiveCharacter(currentCharacter);
     }
 
     // Update is called once per frame
