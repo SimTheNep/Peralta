@@ -8,43 +8,69 @@ public class GabrielHealth : MonoBehaviour
 
     public Animator animator;
 
+    public GameObject gameOverOverlay;
+
+    public int rosasDeAragao = 1; //temporario
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log($"[START] {gameObject.name} iniciado na layer {gameObject.layer} com tag {gameObject.tag}");
         currentHealth = maxHealth;
 
         if (animator == null)
-            animator = GetComponentInChildren<Animator>(); 
+            animator = GetComponentInChildren<Animator>();
     }
 
     public void TakeDamage(float amount)
     {
-        Debug.Log($"[GABRIEL] TakeDamage chamado. Dano: {amount}");
+
         currentHealth -= amount;
 
-        Debug.Log($"Gabriel levou {amount} de dano. Vida restante: {currentHealth}");
 
         if (animator != null)
         {
-            animator.SetTrigger("Damage"); 
+            animator.SetTrigger("Damage");
         }
 
         if (currentHealth <= 0)
         {
-           
+
             Die();
         }
     }
 
     void Die()
     {
-        Debug.Log("Gabriel morreu!");
+        Debug.Log("morrreu");
         if (animator != null)
+            animator.SetTrigger("Die");
+
+        //Time.timeScale = 0f;
+        if (gameOverOverlay != null)
         {
-            //animator.SetTrigger("Die"); 
+            gameOverOverlay.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("overlay esta null");
         }
 
-        
+
+    }
+
+    public void ContinuarComRosa()
+    {
+        if (rosasDeAragao > 0)
+        {
+            rosasDeAragao--;
+            currentHealth = maxHealth;
+            if (gameOverOverlay != null)
+                gameOverOverlay.SetActive(false);
+            //Time.timeScale = 1f;
+        }
+        else
+        {
+            //n tem rosas, meter qualquer cena
+        }
     }
 }
