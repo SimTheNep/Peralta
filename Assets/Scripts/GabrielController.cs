@@ -30,13 +30,20 @@ public class GabrielController : MonoBehaviour
 
     void Update()
     {
-
+        bool HasAsaIcaro = inventoryManager != null && inventoryManager.HasAsaIcaro();
         bool hasSerpenteEncantada = inventoryManager != null && inventoryManager.HasSerpenteEncantada();
+
         if(hasSerpenteEncantada){
             moveSpeed = 6f;
         }
         else {
             moveSpeed = 5f;
+        }
+        if(HasAsaIcaro){
+            gameObject.layer = LayerMask.NameToLayer("Floot2");
+        }
+        else{
+            gameObject.layer = LayerMask.NameToLayer("PlayerCharacters");
         }
 
         // Check for pause key

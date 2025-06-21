@@ -167,7 +167,7 @@ public class PeraltaInventoryManager : MonoBehaviour
     {
         foreach (var item in slots)
         {
-            if (item != null && item.itemName == "SerpenteEncantada" && item.quantity > 0)
+            if (item != null && item.itemName == "Serpente Encantada" && item.quantity > 0)
                 return true;
         }
         return false;
