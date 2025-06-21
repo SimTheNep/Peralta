@@ -8,6 +8,7 @@ TagManager:
   - Peralta
   - Enemy
   - Grade
+  - Water_Entry
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Floot
   - Box
   - Fase
-  - 
+  - Floot 2
   - 
   - 
   - 
