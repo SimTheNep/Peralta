@@ -6,26 +6,31 @@ public class PeraltaController : MonoBehaviour
     public float moveSpeed = 5f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
-
-   
-
     private SpriteRenderer spriteRenderer;
 
-    public bool canMove = true; //para os dialogos
+    public bool canMove = true; // para os dialogos
+    public GameObject pauseMenu;
+    public GameObject canvas;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool isPaused = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
+
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (KeybindManager.GetKeyDown("Pause"))
+        {
+            TogglePause();
+        }
 
-        if (!canMove)
+        if (!canMove || isPaused)
         {
             moveInput = Vector2.zero;
             animator.SetBool("IsMoving", false);
@@ -42,12 +47,35 @@ public class PeraltaController : MonoBehaviour
         {
             spriteRenderer.flipX = moveInput.x < 0;
         }
-        
-
     }
 
     void FixedUpdate()
     {
-         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        if (!isPaused)
+        {
+            rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            if (pauseMenu != null)
+                pauseMenu.SetActive(true);
+            if (canvas != null)
+                canvas.SetActive(false);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            if (pauseMenu != null)
+                pauseMenu.SetActive(false);
+            if (canvas != null)
+                canvas.SetActive(true); 
+        }
     }
 }
