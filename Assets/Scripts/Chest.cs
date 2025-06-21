@@ -30,7 +30,7 @@ public class Chest : MonoBehaviour
     public Sprite barrelSprite;
 
     public string playerName = "Gabriel";           
-    public KeyCode interactKey = KeyCode.B; // ignored now, since we use KeybindManager
+    public KeyCode interactKey = KeyCode.B; // ignored
 
     public List<ChestLootEntry> lootTables;
     

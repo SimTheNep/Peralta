@@ -7,6 +7,7 @@ public class ControlEnemy : MonoBehaviour
     public string Estate;
     public GameObject AlvoGOB;
     public float Life;
+    public float maxHealth = 100f; // Ajustar a vida
     public float Radius;
     public float CoolDown;
     public float VPerseguição;
@@ -21,7 +22,10 @@ public class ControlEnemy : MonoBehaviour
     public GameObject soulPrefab;
     public int soulAmount;
 
-    public string enemyID;  // <--- Identifica o tipo de Inimigo para o bestiário
+    public string enemyID;  // Identifica o tipo de Inimigo para o bestiário
+
+    public SpriteRenderer healthBarRenderer;
+    public Sprite[] healthBarSprites; // 6 sprites from empty to full
 
     void Start()
     {
@@ -29,15 +33,18 @@ public class ControlEnemy : MonoBehaviour
         animator = GetComponent<Animator>();
         Estate = "Idle";
         Velocidade = VIdle;
+        Life = maxHealth; // Initialize Life full
     }
 
     void Update()
     {
-        Vector3 Pos = this.transform.position;
-        Pos.x = Pos.x + Velocidade * Time.deltaTime;
+        UpdateHealthBar();
 
-        // decidir estado
-        Vector3 Df = AlvoGOB.transform.position - this.transform.position;
+        Vector3 Pos = transform.position;
+        Pos.x += Velocidade * Time.deltaTime;
+
+        // Decidir estado
+        Vector3 Df = AlvoGOB.transform.position - transform.position;
 
         if (Df.magnitude < Radius && Estate == "Idle")
         {
@@ -46,6 +53,7 @@ public class ControlEnemy : MonoBehaviour
 
         if (Life <= 0 && Estate != "Dead")
         {
+            // Trigger death animation & disable enemy
             animator.Play("Death_Inimigo01");
             Estate = "Dead";
 
@@ -54,6 +62,9 @@ public class ControlEnemy : MonoBehaviour
                 BestiaryManager.Instance.RegisterEnemyKill(enemyID);
                 Debug.Log($"[Bestiary] Registered kill: {enemyID}");
             }
+
+            if (healthBarRenderer != null)
+                healthBarRenderer.enabled = false;
 
             Invoke("Death", DeathTime);
         }
@@ -64,48 +75,100 @@ public class ControlEnemy : MonoBehaviour
             Estate = "Idle";
         }
 
-        //sistema de movimento base
+        // Movimento base (patrolling)
         if (Estate == "Idle")
         {
             if (Pos.x >= Limites)
             {
-                this.transform.eulerAngles = new Vector3(0, 180, 0);
+                transform.eulerAngles = new Vector3(0, 180, 0);
                 direcao = true;
-                Velocidade = Velocidade * -1;
+                Velocidade = -Mathf.Abs(VIdle);
             }
-            if (direcao == true && Pos.x <= -Limites)
+            if (direcao && Pos.x <= -Limites)
             {
-                this.transform.eulerAngles = new Vector3(0, 0, 0);
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 direcao = false;
-                Velocidade = Velocidade * -1;
+                Velocidade = Mathf.Abs(VIdle);
             }
 
-            this.transform.position = Pos;
+            transform.position = Pos;
         }
-        //sistema de ataque perto
+
+        // Perseguir Alvo (Attack/Chase)
         if (Estate == "Active")
         {
             if (animator != null)
-            {
                 animator.Play("Active_Inimigo01");
-            }
 
             Velocidade = VPerseguição;
-            Vector3 Dif = AlvoGOB.transform.position - this.transform.position;
+            Vector3 Dif = AlvoGOB.transform.position - transform.position;
             Dif.Normalize();
-            Dif = Time.deltaTime * Velocidade * Dif;
-            this.transform.Translate(Dif, Space.World);
+            Dif *= Velocidade * Time.deltaTime;
+            transform.Translate(Dif, Space.World);
+
             Invoke("passaTired", PersueTime);
         }
-        //sistema de rest
+
+        // Estado cansado (Tired)
         if (Estate == "Tired")
         {
             if (animator != null)
-            {
                 animator.Play("Tired_Inimigo01");
-            }
 
             Invoke("passaidle", CoolDown);
+        }
+    }
+
+    // Update health bar sprite based on current health
+    void UpdateHealthBar()
+    {
+        if (healthBarRenderer == null || healthBarSprites.Length == 0)
+            return;
+
+        if (Life <= 0)
+        {
+            healthBarRenderer.enabled = false;
+            return;
+        }
+
+        healthBarRenderer.enabled = true;
+
+        Life = Mathf.Clamp(Life, 0f, maxHealth);
+
+        float healthPercent = Life / maxHealth;
+        int index = Mathf.FloorToInt(healthPercent * (healthBarSprites.Length - 1));
+        index = Mathf.Clamp(index, 0, healthBarSprites.Length - 1);
+
+        Debug.Log($"[HealthBar] Life: {Life}, Percent: {healthPercent}, Sprite Index: {index}");
+
+        healthBarRenderer.sprite = healthBarSprites[index];
+    }
+
+    // Public method to apply damage safely
+    public void TakeDamage(float amount)
+    {
+        if (Estate == "Dead") return;
+
+        Life -= amount;
+        Life = Mathf.Clamp(Life, 0, maxHealth);
+
+        Debug.Log($"[Enemy] Took {amount} damage, Life now {Life}");
+
+        if (Life <= 0)
+        {
+            animator.Play("Death_Inimigo01");
+            Estate = "Dead";
+
+            if (!string.IsNullOrEmpty(enemyID) && BestiaryManager.Instance != null)
+            {
+                BestiaryManager.Instance.RegisterEnemyKill(enemyID);
+                Debug.Log($"[Bestiary] Registered kill: {enemyID}");
+            }
+
+            if (healthBarRenderer != null)
+                healthBarRenderer.enabled = false;
+
+            Invoke("Death", DeathTime);
         }
     }
 
@@ -139,20 +202,20 @@ public class ControlEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log($"[ENEMY] OnCollisionEnter2D com: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
+        Debug.Log($"[ENEMY] OnCollisionEnter2D with: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
         if (collision.gameObject.CompareTag("Gabriel"))
         {
             GabrielHealth gabrielHealth = collision.gameObject.GetComponent<GabrielHealth>();
 
             if (gabrielHealth != null)
             {
-                Debug.Log("[ENEMY] Gabriel encontrado e estado ativo. Aplicando dano.");
+                Debug.Log("[ENEMY] Gabriel found and active. Applying damage.");
                 gabrielHealth.TakeDamage(Dano);
                 Estate = "Tired";
             }
             else
             {
-                Debug.Log("[ENEMY] GabrielHealth não encontrado ou estado não ativo.");
+                Debug.Log("[ENEMY] GabrielHealth not found or inactive.");
             }
         }
     }
