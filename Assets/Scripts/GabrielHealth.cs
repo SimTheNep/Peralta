@@ -9,6 +9,7 @@ public class GabrielHealth : MonoBehaviour
     public Animator animator;
 
     public GameObject gameOverOverlay;
+    public GabrielController movementScript;
 
     public int rosasDeAragao = 1; //temporario
 
@@ -45,10 +46,12 @@ public class GabrielHealth : MonoBehaviour
         if (animator != null)
             animator.SetTrigger("Die");
 
+
         //Time.timeScale = 0f;
-        if (gameOverOverlay != null)
+        if (gameOverOverlay != null && movementScript != null)
         {
             gameOverOverlay.SetActive(true);
+            movementScript.canMove = false;
         }
         else
         {
