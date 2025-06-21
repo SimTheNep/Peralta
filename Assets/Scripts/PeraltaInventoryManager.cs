@@ -21,14 +21,20 @@ public class PeraltaInventoryManager : MonoBehaviour
     {
         if (!canUseInventory) return;
 
-        if (Keyboard.current.aKey.wasPressedThisFrame)
+        KeyCode itemKeyCode = KeybindManager.GetKeyCode("Item"); 
+        KeyCode actionKeyCode = KeybindManager.GetKeyCode("Action");
+
+        Key itemKey = InputHelpers.KeyCodeToKey(itemKeyCode);
+        Key actionKey = InputHelpers.KeyCodeToKey(actionKeyCode);
+
+        if (Keyboard.current[itemKey].wasPressedThisFrame)
         {
             selectedSlot = (selectedSlot + 1) % slots.Length;
             Debug.Log("Slot selecionado: " + selectedSlot);
             inventoryUI?.UpdateUI(slots, selectedSlot);
         }
 
-        if (Keyboard.current.bKey.wasPressedThisFrame)
+        if (Keyboard.current[actionKey].wasPressedThisFrame)
         {
             TryPickupNearbyItem();
         }
@@ -136,6 +142,37 @@ public class PeraltaInventoryManager : MonoBehaviour
         }
         return false;
     }
+
+    public bool HasSorteNavegador()
+    {
+        foreach (var item in slots)
+        {
+            if (item != null && item.itemName == "Sorte de Navegador" && item.quantity > 0)
+                return true;
+        }
+        return false;
+    }
+
+    public bool HasAsaIcaro()
+    {
+        foreach (var item in slots)
+        {
+            if (item != null && item.itemName == "Asa de Ícaro" && item.quantity > 0)
+                return true;
+        }
+        return false;
+    }
+
+    public bool HasSerpenteEncantada()
+    {
+        foreach (var item in slots)
+        {
+            if (item != null && item.itemName == "SerpenteEncantada" && item.quantity > 0)
+                return true;
+        }
+        return false;
+    }
+
 
     public bool ConsumeRosaDeAragao()
     {

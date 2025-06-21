@@ -3,7 +3,7 @@ using UnityEngine;
 public class PeraltaController : MonoBehaviour
 {
     public Animator animator;   
-    public float moveSpeed = 5f;
+    public float moveSpeed = 3f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -13,6 +13,8 @@ public class PeraltaController : MonoBehaviour
     public GameObject canvas;
 
     private bool isPaused = false;
+
+    public PeraltaInventoryManager inventoryManager;
 
     void Start()
     {
@@ -25,6 +27,14 @@ public class PeraltaController : MonoBehaviour
 
     void Update()
     {
+        bool hasSerpenteEncantada = inventoryManager != null && inventoryManager.HasSerpenteEncantada();
+        if(hasSerpenteEncantada){
+            moveSpeed = 4f;
+        }
+        else {
+            moveSpeed = 3f;
+        }
+
         if (KeybindManager.GetKeyDown("Pause"))
         {
             TogglePause();

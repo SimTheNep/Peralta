@@ -16,8 +16,11 @@ public class GabrielController : MonoBehaviour
 
     private bool isPaused = false;
 
+    public PeraltaInventoryManager inventoryManager;
+
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -27,6 +30,15 @@ public class GabrielController : MonoBehaviour
 
     void Update()
     {
+
+        bool hasSerpenteEncantada = inventoryManager != null && inventoryManager.HasSerpenteEncantada();
+        if(hasSerpenteEncantada){
+            moveSpeed = 6f;
+        }
+        else {
+            moveSpeed = 5f;
+        }
+
         // Check for pause key
         if (KeybindManager.GetKeyDown("Pause"))
         {

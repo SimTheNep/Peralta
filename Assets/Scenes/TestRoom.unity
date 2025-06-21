@@ -2053,6 +2053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cbfe5536fe3a4b287a498d915632c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemaps: []
 --- !u!1 &537450962
 GameObject:
   m_ObjectHideFlags: 0
@@ -6331,6 +6332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cbfe5536fe3a4b287a498d915632c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemaps: []
 --- !u!1 &569187830
 GameObject:
   m_ObjectHideFlags: 0
@@ -7652,6 +7654,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2692514466950442923, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+      propertyPath: inventoryManager
+      value: 
+      objectReference: {fileID: 1349229965}
+    - target: {fileID: 2692514466950442923, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: gabrielController
       value: 
       objectReference: {fileID: 1020943816}
@@ -7739,6 +7745,10 @@ PrefabInstance:
       propertyPath: groundTilemap
       value: 
       objectReference: {fileID: 537450965}
+    - target: {fileID: 6286003293019696449, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+      propertyPath: inventoryManager
+      value: 
+      objectReference: {fileID: 1349229965}
     - target: {fileID: 7164898276760932456, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: gabrielController
       value: 
@@ -9820,7 +9830,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -5, z: 0}
@@ -10226,7 +10236,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 14, y: 9, z: 0}
@@ -10296,7 +10306,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 19, y: 9, z: 0}
@@ -10380,7 +10390,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: 10, z: 0}
@@ -10794,6 +10804,7 @@ MonoBehaviour:
   - {fileID: -7563208345386220316, guid: 6b12b36c1fb80e44f9fd8bdbc13dfd33, type: 3}
   gabrielHealth: {fileID: 1020943809}
   hoverSkill: {fileID: 0}
+  manaSystem: {fileID: 0}
 --- !u!1001 &1349229953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10874,6 +10885,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 149220736}
+    - target: {fileID: 9029563595003164407, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      propertyPath: inventoryManager
+      value: 
+      objectReference: {fileID: 1349229965}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12025,7 +12040,7 @@ Tilemap:
       - {fileID: -683100154, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: -602400227, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
       - {fileID: 1888922715, guid: b601c6a77b4d9ec479402e2547f60984, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 1, y: 6, z: 0}
@@ -14359,6 +14374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cbfe5536fe3a4b287a498d915632c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemaps: []
 --- !u!1 &1972325458
 GameObject:
   m_ObjectHideFlags: 0
@@ -15857,6 +15873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cbfe5536fe3a4b287a498d915632c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemaps: []
 --- !u!1 &2021328140
 GameObject:
   m_ObjectHideFlags: 0
