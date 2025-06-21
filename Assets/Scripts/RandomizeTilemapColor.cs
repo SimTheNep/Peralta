@@ -3,16 +3,25 @@ using UnityEngine.Tilemaps;
 
 public class RandomizeTilemapColor : MonoBehaviour
 {
-    private Tilemap tilemap;
+    public Tilemap[] tilemaps;
 
     void Start()
     {
-        tilemap = GetComponent<Tilemap>();
+        if (tilemaps == null || tilemaps.Length == 0)
+        {
+            Debug.LogWarning("Não há tilemaps para randomizar.");
+            return;
+        }
 
-        float r = Random.Range(165, 211) / 255f;
-        float g = Random.Range(165, 211) / 255f;
-        float b = Random.Range(165, 211) / 255f;
+        foreach (Tilemap tilemap in tilemaps)
+        {
+            if (tilemap == null) continue;
 
-        tilemap.color = new Color(r, g, b, 1f);
+            float r = Random.Range(165, 211) / 255f;
+            float g = Random.Range(165, 211) / 255f;
+            float b = Random.Range(165, 211) / 255f;
+
+            tilemap.color = new Color(r, g, b, 1f);
+        }
     }
 }

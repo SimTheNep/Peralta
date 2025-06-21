@@ -21,23 +21,14 @@ public class PeraltaInventoryManager : MonoBehaviour
     {
         if (!canUseInventory) return;
 
-        KeyCode itemKeyCode = KeybindManager.GetKeyCode("Item");  
-        KeyCode actionKeyCode = KeybindManager.GetKeyCode("Action");
-
-        Key itemKey = InputHelpers.KeyCodeToKey(itemKeyCode);
-        Key actionKey = InputHelpers.KeyCodeToKey(actionKeyCode);
-
-        if (itemKey == Key.None || actionKey == Key.None)
-            return;
-
-        if (Keyboard.current[itemKey].wasPressedThisFrame)
+        if (Keyboard.current.aKey.wasPressedThisFrame)
         {
             selectedSlot = (selectedSlot + 1) % slots.Length;
             Debug.Log("Slot selecionado: " + selectedSlot);
             inventoryUI?.UpdateUI(slots, selectedSlot);
         }
 
-        if (Keyboard.current[actionKey].wasPressedThisFrame)
+        if (Keyboard.current.bKey.wasPressedThisFrame)
         {
             TryPickupNearbyItem();
         }
@@ -135,6 +126,7 @@ public class PeraltaInventoryManager : MonoBehaviour
         return total;
     }
 
+
     public bool HasRosaDeAragao()
     {
         foreach (var item in slots)
@@ -160,4 +152,5 @@ public class PeraltaInventoryManager : MonoBehaviour
         }
         return false;
     }
+
 }

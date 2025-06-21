@@ -12,7 +12,7 @@ public class SoulPickup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Sempre vai para o inventário do Peralta
+        // Sempre vai para o inventï¿½rio do Peralta
         PeraltaInventoryManager peraltaInventory = FindFirstObjectByType<PeraltaInventoryManager>();
         if (peraltaInventory != null && magicItemData != null)
         {
