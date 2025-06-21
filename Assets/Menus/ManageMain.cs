@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 using TMPro;
 
 public class MenuNavigation : MonoBehaviour
@@ -18,10 +19,16 @@ public class MenuNavigation : MonoBehaviour
     public Slider musicSlider;
     public Slider sfxSlider;
 
+    public AudioMixer audioMixer;
+
+    private const string MusicVolumeParam = "MusicVol";  // Must exactly match exposed param in mixer
+    private const string SFXVolumeParam = "SFXVol";      // Must exactly match exposed param in mixer
+
     void Start()
     {
         ShowInicial();
-        RegisterSettings();
+        LoadSettings();
+        TestMixerSet();
 
         resolucaoDropdown.onValueChanged.AddListener(delegate { ApplyResolution(); RegisterSettings(); });
         musicSlider.onValueChanged.AddListener(delegate { ApplyMusicVolume(); RegisterSettings(); });
@@ -61,7 +68,7 @@ public class MenuNavigation : MonoBehaviour
     public void StartNewGame()
     {
         RegisterSettings();
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         SceneManager.LoadScene("TestRoom");
     }
 
@@ -72,11 +79,25 @@ public class MenuNavigation : MonoBehaviour
         float sfxVolume = sfxSlider.value;
 
         PlayerPrefs.SetString("Resolution", selectedResolution);
-        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
-        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
+        PlayerPrefs.SetFloat("MusicVol", musicVolume);
+        PlayerPrefs.SetFloat("SFXVol", sfxVolume);
         PlayerPrefs.Save();
 
-        Debug.Log($"Res: {selectedResolution}, Music: {musicVolume}, SFX: {sfxVolume}");
+        Debug.Log($"Saved Settings -> Resolution: {selectedResolution}, Music Volume: {musicVolume}, SFX Volume: {sfxVolume}");
+    }
+
+    public void LoadSettings()
+    {
+        float musicVolume = PlayerPrefs.GetFloat("MusicVol", 0.5f);
+        float sfxVolume = PlayerPrefs.GetFloat("SFXVol", 0.5f);
+
+        musicSlider.value = musicVolume;
+        sfxSlider.value = sfxVolume;
+
+        Debug.Log($"Loaded Settings -> Music Volume: {musicVolume}, SFX Volume: {sfxVolume}");
+
+        SetMixerVolume(MusicVolumeParam, musicVolume);
+        SetMixerVolume(SFXVolumeParam, sfxVolume);
     }
 
     public void ApplyResolution()
@@ -93,13 +114,41 @@ public class MenuNavigation : MonoBehaviour
 
     public void ApplyMusicVolume()
     {
-        AudioListener.volume = musicSlider.value;
-        Debug.Log($"Music volume applied: {musicSlider.value}");
+        float volume = musicSlider.value;
+        SetMixerVolume(MusicVolumeParam, volume);
+
+        if (audioMixer.GetFloat(MusicVolumeParam, out float mixerValue))
+            Debug.Log($"Applied Music Volume: slider={volume}, mixer dB={mixerValue}");
     }
 
     public void ApplySFXVolume()
     {
-        // Placeholder: use separate mixer for SFX in a real setup
-        Debug.Log($"SFX volume applied: {sfxSlider.value}");
+        float volume = sfxSlider.value;
+        SetMixerVolume(SFXVolumeParam, volume);
+
+        if (audioMixer.GetFloat(SFXVolumeParam, out float mixerValue))
+            Debug.Log($"Applied SFX Volume: slider={volume}, mixer dB={mixerValue}");
+    }
+
+    private void SetMixerVolume(string parameter, float sliderValue)
+    {
+
+        int steps = 8;
+        int value = Mathf.Clamp(Mathf.RoundToInt(sliderValue), 0, steps);
+
+        float dB = -80f + (value * 10f);
+
+        dB = Mathf.Clamp(dB, -80f, 0f);
+
+        bool success = audioMixer.SetFloat(parameter, dB);
+        Debug.Log($"SetMixerVolume('{parameter}', sliderValue={sliderValue}) => dB={dB}, success={success}");
+    }
+
+
+    private void TestMixerSet()
+    {
+        bool musicSet = audioMixer.SetFloat(MusicVolumeParam, -10f);
+        bool sfxSet = audioMixer.SetFloat(SFXVolumeParam, -10f);
+        Debug.Log($"TestMixerSet called: Music set? {musicSet}, SFX set? {sfxSet}");
     }
 }

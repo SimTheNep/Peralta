@@ -284,10 +284,33 @@ PrefabInstance:
     - {fileID: 675454998899250896, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3575889841104802666, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5444300154609105301}
     - targetCorrespondingSourceObject: {fileID: 6372820480081295677, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4614924147028604083}
   m_SourcePrefab: {fileID: 100100000, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+--- !u!1 &1754214945709762760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3575889841104802666, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+  m_PrefabInstance: {fileID: 3024208861365861282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5444300154609105301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754214945709762760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a3ba5237a0958028ccaf4230eb212c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectSound: {fileID: 8300000, guid: 0b2d42e1f33ef6f44a46debf68d64f2a, type: 3}
+  pressSound: {fileID: 8300000, guid: 8b6fea5518a6f0a558803f7a87c8a4e8, type: 3}
+  sfxMixerGroup: {fileID: -335272564409616844, guid: 9063c8220b71e3427850a174aace8be4, type: 2}
 --- !u!1 &2742970791254166638 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1146404189794400204, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
