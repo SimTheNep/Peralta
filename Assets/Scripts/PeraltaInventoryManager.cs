@@ -114,4 +114,43 @@ public class PeraltaInventoryManager : MonoBehaviour
             }
         }
     }
+
+    public int GetQuantidadeRosasDeAragao()
+    {
+        int total = 0;
+        foreach (var item in slots)
+        {
+            if (item != null && item.itemName == "Rosa de Aragão")
+                total += item.quantity;
+        }
+        return total;
+    }
+
+
+    public bool HasRosaDeAragao()
+    {
+        foreach (var item in slots)
+        {
+            if (item != null && item.itemName == "Rosa de Aragão" && item.quantity > 0)
+                return true;
+        }
+        return false;
+    }
+
+    public bool ConsumeRosaDeAragao()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i] != null && slots[i].itemName == "Rosa de Aragão" && slots[i].quantity > 0)
+            {
+                slots[i].quantity--;
+                if (slots[i].quantity <= 0)
+                    slots[i] = null;
+                inventoryUI?.UpdateUI(slots, selectedSlot);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

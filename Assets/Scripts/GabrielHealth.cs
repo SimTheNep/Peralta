@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GabrielHealth : MonoBehaviour
@@ -9,9 +10,19 @@ public class GabrielHealth : MonoBehaviour
     public Animator animator;
 
     public GameObject gameOverOverlay;
-    public GabrielController movementScript;
 
-    public int rosasDeAragao = 1; //temporario
+    public GabrielController gabrielController;
+    public PeraltaController peraltaController;
+    public GabrielSkills gabrielSkills;
+    public PeraltaSkills peraltaSkills;
+    public CharacterSwitch characterSwitch;
+    public GabrielInventoryManager gabrielInventory;
+    public PeraltaInventoryManager peraltaInventory;
+
+    public GameOverScreen gameOverScreen;
+
+    public int checkpointLevel = 1;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,7 +44,7 @@ public class GabrielHealth : MonoBehaviour
             animator.SetTrigger("Damage");
         }
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
 
             Die();
@@ -42,34 +53,59 @@ public class GabrielHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("morrreu");
-        movementScript.canMove = false;
+        Debug.Log("morreu");
+        if (gabrielController != null)
+            gabrielController.canMove = false;
         if (animator != null)
             animator.SetTrigger("Die");
+        StartCoroutine(GameOverDelay());
 
+    }
 
-        //Time.timeScale = 0f;
-        if (gameOverOverlay != null && movementScript != null)
-        {
+    IEnumerator GameOverDelay()
+    {
+    
+        yield return new WaitForSeconds(1f);
+
+        if (gameOverOverlay != null)
             gameOverOverlay.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("overlay esta null");
-        }
 
+        int rosas = peraltaInventory != null ? peraltaInventory.GetQuantidadeRosasDeAragao() : 0;
+        if (gameOverScreen != null)
+            gameOverScreen.Setup(rosas, checkpointLevel);
 
+        // desativar todoos os scripts de input aqui
+
+        Time.timeScale = 0f;
+
+        if (peraltaController != null) peraltaController.enabled = false;
+        if (gabrielController != null) gabrielController.enabled = false;
+        if (peraltaSkills != null) peraltaSkills.enabled = false;
+        if (gabrielSkills != null) gabrielSkills.enabled = false;
+        if (characterSwitch != null) characterSwitch.enabled = false;
+        if (peraltaInventory != null) peraltaInventory.canUseInventory = false;
+        if (gabrielInventory != null) gabrielInventory.canUseInventory = false;
     }
 
     public void ContinuarComRosa()
     {
-        if (rosasDeAragao > 0)
+        if (peraltaInventory != null && peraltaInventory.ConsumeRosaDeAragao())
         {
-            rosasDeAragao--;
             currentHealth = maxHealth;
             if (gameOverOverlay != null)
                 gameOverOverlay.SetActive(false);
-            //Time.timeScale = 1f;
+
+
+            //reativar todos os scripts aqui
+            Time.timeScale = 1f;
+
+            if (peraltaController != null) peraltaController.enabled = true;
+            if (gabrielController != null) gabrielController.enabled = true;
+            if (peraltaSkills != null) peraltaSkills.enabled = true;
+            if (gabrielSkills != null) gabrielSkills.enabled = true;
+            if (characterSwitch != null) characterSwitch.enabled = true;
+            if (peraltaInventory != null) peraltaInventory.canUseInventory = true;
+            if (gabrielInventory != null) gabrielInventory.canUseInventory = true;
         }
         else
         {
