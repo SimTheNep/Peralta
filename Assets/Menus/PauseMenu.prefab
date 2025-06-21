@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2209223681879190831
+--- !u!1001 &3024208861365861282
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -40,13 +40,33 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 548847333674793065, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 675454998899250896, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912906087896219815, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_Name
+      value: CabriolaPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912906087896219815, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2162537892975356165, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 4614924147028604083}
+    - target: {fileID: 2162537892975356165, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ShowStatistics
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162537892975356165, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ManagePause, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2696817545382733484, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_LocalPosition.x
@@ -110,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3575889841104802666, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_Name
-      value: PauseMenu Variant
+      value: PauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3575889841104802666, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_IsActive
@@ -131,6 +151,10 @@ PrefabInstance:
     - target: {fileID: 4610929395249993786, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -109.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275157855247187091, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_Name
+      value: Cabriola
       objectReference: {fileID: 0}
     - target: {fileID: 5378176493498058333, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_AnchorMax.x
@@ -159,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 5850107707135151926, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7196259214425315394}
+      objectReference: {fileID: 4614924147028604083}
     - target: {fileID: 5850107707135151926, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -183,6 +207,14 @@ PrefabInstance:
     - target: {fileID: 6294263609964667204, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 4614924147028604083}
+    - target: {fileID: 6294263609964667204, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ShowInicial
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294263609964667204, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ManagePause, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7153502629987472286, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -224,6 +256,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8356270924095530019, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_Name
+      value: CabriolaImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8356270924095530019, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9034068108409571224, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -683
@@ -233,6 +273,7 @@ PrefabInstance:
       value: -20
       objectReference: {fileID: 0}
     m_RemovedComponents:
+    - {fileID: 3008770676178600451, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
     - {fileID: 2284703837179488594, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6365520548781470848, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
@@ -245,46 +286,46 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6372820480081295677, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7196259214425315394}
+      addedObject: {fileID: 4614924147028604083}
   m_SourcePrefab: {fileID: 100100000, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
---- !u!1 &1243105315394476771 stripped
+--- !u!1 &2742970791254166638 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1146404189794400204, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
-  m_PrefabInstance: {fileID: 2209223681879190831}
+  m_PrefabInstance: {fileID: 3024208861365861282}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1799657611118925645 stripped
+--- !u!1 &3343289758084744139 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 455169450603739746, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
-  m_PrefabInstance: {fileID: 2209223681879190831}
+  m_CorrespondingSourceObject: {fileID: 548847333674793065, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+  m_PrefabInstance: {fileID: 3024208861365861282}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5104956954713674770 stripped
+--- !u!1 &4750806622896530970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7500292852188896696, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+  m_PrefabInstance: {fileID: 3024208861365861282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7213677634007857635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5612615953876189761, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
+  m_PrefabInstance: {fileID: 3024208861365861282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8181047769655968415 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6372820480081295677, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
-  m_PrefabInstance: {fileID: 2209223681879190831}
+  m_PrefabInstance: {fileID: 3024208861365861282}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7196259214425315394
+--- !u!114 &4614924147028604083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5104956954713674770}
+  m_GameObject: {fileID: 8181047769655968415}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 868c18ab4ffc8be938685960c6b4f5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inicialCanvas: {fileID: 1243105315394476771}
-  statisticsCanvas: {fileID: 1799657611118925645}
-  novoJogoButton: {fileID: 6002376099931172718}
-  pontuacaoButton: {fileID: 8556515655712829591}
---- !u!1 &6002376099931172718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5612615953876189761, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
-  m_PrefabInstance: {fileID: 2209223681879190831}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8556515655712829591 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7500292852188896696, guid: 22095a17fc862d9acb247390aeb2e277, type: 3}
-  m_PrefabInstance: {fileID: 2209223681879190831}
-  m_PrefabAsset: {fileID: 0}
+  inicialCanvas: {fileID: 2742970791254166638}
+  statisticsCanvas: {fileID: 3343289758084744139}
+  novoJogoButton: {fileID: 7213677634007857635}
+  pontuacaoButton: {fileID: 4750806622896530970}

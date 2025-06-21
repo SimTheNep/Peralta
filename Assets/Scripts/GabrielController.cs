@@ -40,7 +40,7 @@ public class GabrielController : MonoBehaviour
             moveSpeed = 5f;
         }
         if(HasAsaIcaro){
-            gameObject.layer = LayerMask.NameToLayer("Floot2");
+            gameObject.layer = LayerMask.NameToLayer("Floot 2");
         }
         else{
             gameObject.layer = LayerMask.NameToLayer("PlayerCharacters");
@@ -49,7 +49,7 @@ public class GabrielController : MonoBehaviour
         // Check for pause key
         if (KeybindManager.GetKeyDown("Pause"))
         {
-            TogglePause();
+            TogglePause();  
         }
 
         if (!canMove || isPaused)
