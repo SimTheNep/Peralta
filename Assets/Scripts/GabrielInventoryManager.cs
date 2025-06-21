@@ -2,16 +2,13 @@ using NUnit.Framework.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class GabrielInventoryManager : MonoBehaviour
 {
-
     public Item[] slots = new Item[3];
     public int selectedSlot = 0;
 
     public GabrielSkills gabrielskills;
     public InventoryUI inventoryUI;
-
 
     public GameObject pedra;
     public GameObject chanfana;
@@ -31,22 +28,29 @@ public class GabrielInventoryManager : MonoBehaviour
     {
         if (!canUseInventory) return; //para bloquear no dialogo
 
+        KeyCode itemKeyCode = KeybindManager.GetKeyCode("Item"); 
+        KeyCode actionKeyCode = KeybindManager.GetKeyCode("Action");
 
-        // Cicla entre os 3 slots ao pressionar A
-        if (Keyboard.current.aKey.wasPressedThisFrame)
+        Key itemKey = InputHelpers.KeyCodeToKey(itemKeyCode);
+        Key actionKey = InputHelpers.KeyCodeToKey(actionKeyCode);
+
+        if (itemKey == Key.None || actionKey == Key.None)
+            return;
+
+        if (Keyboard.current[itemKey].wasPressedThisFrame)
         {
             selectedSlot = (selectedSlot + 1) % 3;
             Debug.Log("Slot selecionado: " + selectedSlot);
             inventoryUI.UpdateUI(slots, selectedSlot);
         }
-        if (Keyboard.current.bKey.wasPressedThisFrame)
+
+        if (Keyboard.current[actionKey].wasPressedThisFrame)
         {
             TryPickupNearbyItem();
         }
 
-
         // Usa item de cura com A + B
-        if (Keyboard.current.aKey.isPressed && Keyboard.current.bKey.wasPressedThisFrame)
+        if (Keyboard.current[itemKey].isPressed && Keyboard.current[actionKey].wasPressedThisFrame)
         {
             UseHealableItem();
         }
@@ -65,7 +69,7 @@ public class GabrielInventoryManager : MonoBehaviour
                 Item newItem = pickup.itemData.GetItem();
                 TryPickupItem(newItem);
                 Destroy(pickup.gameObject);
-                break;//faz com que apanhe s� 1 de cada vez, mesmo tendo varios objetos no raio
+                break; //faz com que apanhe s� 1 de cada vez, mesmo tendo varios objetos no raio
             }
         }
     }
@@ -100,13 +104,11 @@ public class GabrielInventoryManager : MonoBehaviour
         inventoryUI?.UpdateUI(slots, selectedSlot);
     }
 
-
     void UseHealableItem()
     {
         var item = slots[selectedSlot];
         if (item != null && item.itemType == ItemType.Healable)
         {
-            
             slots[selectedSlot] = null;
             inventoryUI.UpdateUI(slots, selectedSlot);
         }
@@ -142,7 +144,7 @@ public class GabrielInventoryManager : MonoBehaviour
         /*else if (skill == SkillType.Attack)
         {
             slots[selectedSlot] = null;
-        }*/ 
+        }*/
         //o codigo comentado acima faz desparecer a arma de ataque, mas n�o � suposto isso acontecer, mas se no futuro quisermos meter durabilidade � aqui
     }
 
@@ -160,31 +162,31 @@ public class GabrielInventoryManager : MonoBehaviour
                 break;
             case "Crânio":
                 prefab = cranio;
-            break;
+                break;
             case "Espada de Antenas":
                 prefab = espadaDeAntenas;
-            break;
+                break;
             case "Espada Enferrujada":
                 prefab = espadaEnferrujada;
-            break;
+                break;
             case "Falcata":
                 prefab = falcata;
-            break;
+                break;
             case "Montante":
                 prefab = montante;
-            break;
+                break;
             case "Frasco de Àgua":
                 prefab = frascoDeAgua;
-            break;
+                break;
             case "Chave":
                 prefab = chave;
-            break;
+                break;
             case "Cabrito Assado":
                 prefab = cabritoAssado;
-            break;
+                break;
             case "Tigelada":
                 prefab = tigelada;
-            break;
+                break;
         }
 
         if (prefab != null)
@@ -198,5 +200,4 @@ public class GabrielInventoryManager : MonoBehaviour
             }
         }
     }
-
 }

@@ -38,12 +38,21 @@ public class GabrielSkills : MonoBehaviour
         if (attackCooldownTimer > 0f)
             attackCooldownTimer -= Time.deltaTime;
 
-        bool yPressed = Keyboard.current.yKey.isPressed;
-        bool bPressed = Keyboard.current.bKey.isPressed;
+        KeyCode skillKeyCode = KeybindManager.GetKeyCode("Skill");  
+        KeyCode actionKeyCode = KeybindManager.GetKeyCode("Action");
+        Key actionKey = InputHelpers.KeyCodeToKey(actionKeyCode);
+        Key skillKey = InputHelpers.KeyCodeToKey(skillKeyCode);
+        
 
-        isPerformingSkill = yPressed && bPressed;
+        if (skillKey == Key.None || actionKey == Key.None)
+            return;
 
-        if (Keyboard.current.yKey.wasPressedThisFrame && !bPressed)
+        bool skillPressed = Keyboard.current[skillKey].isPressed;
+        bool actionPressed = Keyboard.current[actionKey].isPressed;
+
+        isPerformingSkill = skillPressed && actionPressed;
+
+        if (Keyboard.current[skillKey].wasPressedThisFrame && !actionPressed)
         {
             CycleSkill();
         }

@@ -17,7 +17,10 @@ public class MagicItemPickup : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Peralta") && Keyboard.current.bKey.wasPressedThisFrame)
+        KeyCode bKeyCode = KeybindManager.GetKeyCode("Action");
+        Key bKey = InputHelpers.KeyCodeToKey(bKeyCode);
+
+        if (other.CompareTag("Peralta") && bKey != Key.None && Keyboard.current[bKey].wasPressedThisFrame)
         {
             if (peraltaInventoryManager != null && itemData != null)
             {

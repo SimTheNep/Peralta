@@ -90,7 +90,7 @@ public class DialogueManager : MonoBehaviour
     if (characterSwitch == null)
         characterSwitch = FindFirstObjectByType<CharacterSwitch>();
 
-        // Inventários
+        // Inventï¿½rios
 
     if (gabrielInventory == null)
         gabrielInventory = FindFirstObjectByType<GabrielInventoryManager>();
@@ -115,7 +115,7 @@ public class DialogueManager : MonoBehaviour
     if (hudController == null)
         hudController = FindFirstObjectByType<HUDController>();
 
-    // Câmera
+    // Cï¿½mera
     if (cameraFollow == null)
         cameraFollow = FindFirstObjectByType<CameraFollow>();
 
@@ -129,7 +129,10 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (dialogueActive && Keyboard.current.bKey.wasPressedThisFrame)
+        KeyCode bKeyCode = KeybindManager.GetKeyCode("Action");
+        Key bKey = InputHelpers.KeyCodeToKey(bKeyCode);
+
+        if (dialogueActive && Keyboard.current[bKey].wasPressedThisFrame)
         {
             if (isTyping)
             {
@@ -163,12 +166,12 @@ public class DialogueManager : MonoBehaviour
         line.onLineEvent?.Invoke();
 
 
-        // Mudar a câmara para o personagem que fala
+        // Mudar a cï¿½mara para o personagem que fala
         if (line.speakerName == "Gabriel")
             cameraFollow.SetTarget(gabrielTransform);
         else if (line.speakerName == "Peralta")
             cameraFollow.SetTarget(peraltaTransform);
-        // Adapta para outros personagens se necessário
+        // Adapta para outros personagens se necessï¿½rio
     }
 
     IEnumerator TypeText(string text)
@@ -214,7 +217,7 @@ public class DialogueManager : MonoBehaviour
         gabrielSkills.canUseSkills = !block;
         peraltaSkills.canUseSkills = !block;
 
-        // Inventário
+        // Inventï¿½rio
         gabrielInventory.canUseInventory = !block;
         peraltaInventory.canUseInventory = !block;
 
@@ -233,7 +236,7 @@ public class DialogueManager : MonoBehaviour
         // Espelha apenas a imagem de fundo
         dialogueBox.rectTransform.localScale = new Vector3(isRightSide ? -1 : 1, 1, 1);
 
-        // Muda a posição do nome
+        // Muda a posiï¿½ï¿½o do nome
         nameText.rectTransform.anchoredPosition = isRightSide ? rightNamePos : leftNamePos;
 
         // Alinha o texto do nome

@@ -7,7 +7,6 @@ public class Chest : MonoBehaviour
 
     public enum ChestType
     {
-    
         Common,
         Rare,
         Gold,
@@ -29,7 +28,7 @@ public class Chest : MonoBehaviour
     public Sprite barrelSprite;
 
     public string playerName = "Gabriel";           
-    public KeyCode interactKey = KeyCode.B;
+    public KeyCode interactKey = KeyCode.B; // ignored now, since we use KeybindManager
 
     public List<ChestLootEntry> lootTables;
     
@@ -48,7 +47,7 @@ public class Chest : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerNearby && !isOpened && Input.GetKeyDown(interactKey))
+        if (isPlayerNearby && !isOpened && KeybindManager.GetKeyDown("Action"))
         {
             chestAnimator.enabled = true;
             player.GetComponent<Animator>().SetTrigger("Throw");
@@ -96,7 +95,6 @@ public class Chest : MonoBehaviour
         }
     }
 
-
     private GameObject GetWeight(List<GameObject> itemList)
     {
         float totalWeight = 0f;
@@ -132,8 +130,6 @@ public class Chest : MonoBehaviour
         Debug.LogWarning("Prefab missing price component: " + prefab.name);
         return 1; 
     }
-
-
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -171,7 +167,6 @@ public class Chest : MonoBehaviour
 
     private void SetSprite(ChestType type)
     {
-
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
         if (sr == null)
         {
@@ -200,10 +195,10 @@ public class Chest : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().sprite = commonSprite;
                 break;
         }
+
         if (sr.sprite == null)
         {
             Debug.Log("sprite n atribuido");
         }
-            
     }
 }

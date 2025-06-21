@@ -5,7 +5,6 @@ public class ItemPickup : MonoBehaviour
 {
     public ItemData itemData;
 
-
     public GabrielInventoryManager gabrielInventoryManager;
 
     void Start()
@@ -22,8 +21,10 @@ public class ItemPickup : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        
-        if (other.CompareTag("Gabriel") && Keyboard.current.bKey.wasPressedThisFrame)
+        KeyCode bKeyCode = KeybindManager.GetKeyCode("Action"); 
+        Key bKey = InputHelpers.KeyCodeToKey(bKeyCode);
+
+        if (other.CompareTag("Gabriel") && bKey != Key.None && Keyboard.current[bKey].wasPressedThisFrame)
         {
             if (gabrielInventoryManager != null && itemData != null)
             {
@@ -31,10 +32,6 @@ public class ItemPickup : MonoBehaviour
                 gabrielInventoryManager.TryPickupItem(newItem);
                 Destroy(gameObject); 
             }
-
         }
     }
-
-   
-
 }

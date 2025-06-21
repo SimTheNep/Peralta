@@ -31,23 +31,33 @@ public class PeraltaSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (!canUseSkills) return;
 
-        // Durante possessão, só permite Haunt
         if (isPossessing && currentSkill != SkillType.Haunt)
             return;
 
-        // Ciclar skills apenas se não estiver a possuir
-        if (!isPossessing && Keyboard.current.yKey.wasPressedThisFrame && !Keyboard.current.bKey.isPressed) //rever este input
+       
+        KeyCode skillKeyCode = KeybindManager.GetKeyCode("Skill"); 
+        KeyCode actionKeyCode = KeybindManager.GetKeyCode("Action"); 
+
+        Key skillKey = InputHelpers.KeyCodeToKey(skillKeyCode);
+        Key actionKey = InputHelpers.KeyCodeToKey(actionKeyCode);
+
+        if (skillKey == Key.None || actionKey == Key.None)
+            return;
+
+        bool skillPressedThisFrame = Keyboard.current[skillKey].wasPressedThisFrame;
+        bool actionPressed = Keyboard.current[actionKey].isPressed;
+
+        if (!isPossessing && skillPressedThisFrame && !actionPressed)
+        {
             CycleSkill();
+        }
 
+        bool skillPressed = Keyboard.current[skillKey].isPressed;
+        bool actionPressedNow = Keyboard.current[actionKey].isPressed;
 
-        bool yPressed = Keyboard.current.yKey.isPressed;
-        bool bPressed = Keyboard.current.bKey.isPressed;
-
-        isPerformingSkill = yPressed && bPressed;
-
+        isPerformingSkill = skillPressed && actionPressedNow;
 
         if (isPerformingSkill)
         {

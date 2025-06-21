@@ -24,7 +24,13 @@ public class CharacterSwitch : MonoBehaviour
     void Update()
     {
         var peraltaSkills = peralta.GetComponent<PeraltaSkills>();
-        if (Keyboard.current.tabKey.wasPressedThisFrame)
+
+        KeyCode swapKeyCode = KeybindManager.GetKeyCode("Swap");  
+        Key swapKey = InputHelpers.KeyCodeToKey(swapKeyCode);
+
+        if (swapKey == Key.None) return;
+
+        if (Keyboard.current[swapKey].wasPressedThisFrame)
         {
             if (peraltaSkills != null && peraltaSkills.isPossessing)
                 return;

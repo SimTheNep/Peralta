@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class KeybindManager : MonoBehaviour
 {
@@ -26,11 +27,12 @@ public class KeybindManager : MonoBehaviour
 
             if (!PlayerPrefs.HasKey(kb.actionName))
             {
-                if (kb.actionName == "Action") PlayerPrefs.SetString("Action", "C");
-                else if (kb.actionName == "Skill") PlayerPrefs.SetString("Skill", "V");
-                else if (kb.actionName == "Item") PlayerPrefs.SetString("Item", "B");
-                else if (kb.actionName == "Pause") PlayerPrefs.SetString("Pause", "Escape");
-                else if (kb.actionName == "Swap") PlayerPrefs.SetString("Swap", "Tab");
+                // Defaults
+                if (kb.actionName == "Action") PlayerPrefs.SetString("Action", Key.C.ToString());
+                else if (kb.actionName == "Skill") PlayerPrefs.SetString("Skill", Key.V.ToString());
+                else if (kb.actionName == "Item") PlayerPrefs.SetString("Item", Key.B.ToString());
+                else if (kb.actionName == "Pause") PlayerPrefs.SetString("Pause", Key.Escape.ToString());
+                else if (kb.actionName == "Swap") PlayerPrefs.SetString("Swap", Key.Tab.ToString());
                 PlayerPrefs.Save();
             }
 
@@ -56,20 +58,21 @@ public class KeybindManager : MonoBehaviour
     {
         if (waitingForKeyRelease)
         {
-            if (!Input.anyKey)
+
+            if (!Keyboard.current.anyKey.isPressed)
                 waitingForKeyRelease = false;
             return;
         }
 
         if (waitingForKey != null)
         {
-            foreach (KeyCode kc in System.Enum.GetValues(typeof(KeyCode)))
+            foreach (Key key in System.Enum.GetValues(typeof(Key)))
             {
-                if (Input.GetKeyDown(kc))
-                {
-                    if (kc == KeyCode.Return) continue;
+                if (key == Key.None || key == Key.Enter) continue;
 
-                    SetKey(waitingForKey, kc.ToString());
+                if (Keyboard.current[key].wasPressedThisFrame)
+                {
+                    SetKey(waitingForKey, key.ToString());
                     waitingForKey = null;
                     break;
                 }
@@ -87,11 +90,22 @@ public class KeybindManager : MonoBehaviour
             kb.buttonText.text = keyName;
     }
 
-    public static bool GetKeyDown(string actionName)
+    public static KeyCode GetKeyCode(string actionName)
     {
         string keyName = PlayerPrefs.GetString(actionName, "");
         if (System.Enum.TryParse(keyName, out KeyCode kc))
-            return Input.GetKeyDown(kc);
+            return kc;
+        return KeyCode.None;
+    }
+
+
+    public static bool GetKeyDown(string actionName)
+    {
+        string keyName = PlayerPrefs.GetString(actionName, "");
+        if (System.Enum.TryParse<Key>(keyName, out Key key))
+        {
+            return Keyboard.current[key].wasPressedThisFrame;
+        }
         return false;
     }
 }
