@@ -10,6 +10,11 @@ public class Projectile_behaviour : MonoBehaviour
     public bool Flip;
     private SpriteRenderer spriteRenderer;
 
+
+    public AudioSource audioSource;
+    public AudioClip impactSound;
+    private bool hasPlayedImpactSound = false;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,7 +37,11 @@ public class Projectile_behaviour : MonoBehaviour
             }
         }
 
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
 
+        if (audioSource == null)
+            Debug.LogWarning("Projétil n tem audio");
     }
 
     void Update()
@@ -55,33 +64,26 @@ public class Projectile_behaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!hasPlayedImpactSound && audioSource != null && impactSound != null)
+        {
+            audioSource.PlayOneShot(impactSound);
+            hasPlayedImpactSound = true;
+        }
+
         gameObject.GetComponentInChildren<Animator>().SetTrigger("kaboom");
 
-            if (collision.collider.CompareTag("Enemy"))
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            var enemy = collision.collider.GetComponent<ControlEnemy>();
+            if (enemy != null && gabrielInventoryManager != null)
             {
-                
-                var enemy = collision.collider.GetComponent<ControlEnemy>();
-                if (enemy != null && gabrielInventoryManager != null)
-                {
-                    
-                    Item item = gabrielInventoryManager.slots[gabrielInventoryManager.selectedSlot];
-                
-                    float damage;
+                Item item = gabrielInventoryManager.slots[gabrielInventoryManager.selectedSlot];
 
-                    if (item != null)
-                    {
-                        damage = item.damage;
-                    }
-                    else
-                    {
-                        damage = 1f;
-                    }
+                float damage = (item != null) ? item.damage : 1f;
 
-                    enemy.Life -= damage;
-                   
-                }
-
+                enemy.Life -= damage;
             }
+        }
 
         StartCoroutine(DestroyAfterDelay());
     }

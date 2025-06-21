@@ -7536,6 +7536,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8475484436776837456, guid: ee8fb8bcfc1232f37bb0df0e9e7aee00, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 944379743}
+    - target: {fileID: 8475484436776837456, guid: ee8fb8bcfc1232f37bb0df0e9e7aee00, type: 3}
       propertyPath: inventoryManager
       value: 
       objectReference: {fileID: 1349229965}
@@ -7548,6 +7552,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee8fb8bcfc1232f37bb0df0e9e7aee00, type: 3}
+--- !u!82 &944379743 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7308869410590789865, guid: ee8fb8bcfc1232f37bb0df0e9e7aee00, type: 3}
+  m_PrefabInstance: {fileID: 944379742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &960886139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10640,7 +10649,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 1, z: 0}
@@ -10696,7 +10705,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 3, z: 0}
@@ -10794,7 +10803,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 15, y: 8, z: 0}
@@ -10864,7 +10873,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 13, y: 9, z: 0}
@@ -11467,6 +11476,14 @@ PrefabInstance:
       propertyPath: skillUIImage
       value: 
       objectReference: {fileID: 49927634}
+    - target: {fileID: 1739608285953190528, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      propertyPath: AudioSource
+      value: 
+      objectReference: {fileID: 1349229990}
+    - target: {fileID: 1739608285953190528, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      propertyPath: manaAudioSource
+      value: 
+      objectReference: {fileID: 1020943822}
     - target: {fileID: 2448324745921832461, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: audioSource
       value: 
@@ -11475,6 +11492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peralta
       objectReference: {fileID: 0}
+    - target: {fileID: 5822462830057819704, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1349229990}
     - target: {fileID: 5822462830057819704, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: inventoryUI
       value: 
@@ -11531,6 +11552,10 @@ PrefabInstance:
       propertyPath: AudioSource
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8342265527225143512, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
+      propertyPath: hoverAudioSource
+      value: 
+      objectReference: {fileID: 336098061}
     - target: {fileID: 9029563595003164407, guid: b2765a64bf744ff4ca7fac44f4f4e9ee, type: 3}
       propertyPath: canvas
       value: 
@@ -16882,6 +16907,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 5144644484707012479}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: "VPersegui\xE7\xE3o"
       value: 3
       objectReference: {fileID: 0}
@@ -16942,6 +16971,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+--- !u!82 &5144644484707012479 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: -4522911916120284059, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+  m_PrefabInstance: {fileID: 5144644484707012478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7088534332652786693
 PrefabInstance:
   m_ObjectHideFlags: 0

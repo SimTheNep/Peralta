@@ -25,7 +25,20 @@ public class ControlEnemy : MonoBehaviour
     public string enemyID;  // Identifica o tipo de Inimigo para o bestiário
 
     public SpriteRenderer healthBarRenderer;
-    public Sprite[] healthBarSprites; // 6 sprites from empty to full
+    public Sprite[] healthBarSprites;
+
+    public AudioSource audioSource;                 
+    public AudioClip[] footstepClips;               
+    public float footstepBaseInterval = 0.5f;       
+    private float footstepTimer = 0f;
+
+    public AudioClip activeSound;
+    public AudioClip tiredSound;
+    public AudioClip deathSound;
+
+    private bool playedActiveSound = false;
+    private bool playedTiredSound = false;
+    private bool playedDeathSound = false;
 
     void Start()
     {
@@ -33,7 +46,13 @@ public class ControlEnemy : MonoBehaviour
         animator = GetComponent<Animator>();
         Estate = "Idle";
         Velocidade = VIdle;
-        Life = maxHealth; // Initialize Life full
+        Life = maxHealth; 
+
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+            Debug.LogWarning("[Audio] No AudioSource assigned or found on enemy!");
     }
 
     void Update()
@@ -43,7 +62,9 @@ public class ControlEnemy : MonoBehaviour
         Vector3 Pos = transform.position;
         Pos.x += Velocidade * Time.deltaTime;
 
-        // Decidir estado
+        HandleFootsteps();
+
+        // Decide state
         Vector3 Df = AlvoGOB.transform.position - transform.position;
 
         if (Df.magnitude < Radius && Estate == "Idle")
@@ -53,7 +74,7 @@ public class ControlEnemy : MonoBehaviour
 
         if (Life <= 0 && Estate != "Dead")
         {
-            // Trigger death animation & disable enemy
+            PlayDeathSoundOnce();
             animator.Play("Death_Inimigo01");
             Estate = "Dead";
 
@@ -75,9 +96,11 @@ public class ControlEnemy : MonoBehaviour
             Estate = "Idle";
         }
 
-        // Movimento base (patrolling)
+        // Movement base (patrolling)
         if (Estate == "Idle")
         {
+            ResetStateSounds();
+
             if (Pos.x >= Limites)
             {
                 transform.eulerAngles = new Vector3(0, 180, 0);
@@ -94,9 +117,11 @@ public class ControlEnemy : MonoBehaviour
             transform.position = Pos;
         }
 
-        // Perseguir Alvo (Attack/Chase)
+        // Chase / Attack
         if (Estate == "Active")
         {
+            PlayActiveSoundOnce();
+
             if (animator != null)
                 animator.Play("Active_Inimigo01");
 
@@ -109,9 +134,11 @@ public class ControlEnemy : MonoBehaviour
             Invoke("passaTired", PersueTime);
         }
 
-        // Estado cansado (Tired)
+        // Tired State
         if (Estate == "Tired")
         {
+            PlayTiredSoundOnce();
+
             if (animator != null)
                 animator.Play("Tired_Inimigo01");
 
@@ -119,7 +146,76 @@ public class ControlEnemy : MonoBehaviour
         }
     }
 
-    // Update health bar sprite based on current health
+    void HandleFootsteps()
+    {
+        if (Estate == "Dead") return;
+
+        float speed = Mathf.Abs(Velocidade);
+
+        if (speed > 0.1f)
+        {
+            float interval = footstepBaseInterval / speed;
+
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                PlayRandomFootstep(interval);
+                footstepTimer = interval;
+            }
+        }
+        else
+        {
+            footstepTimer = 0f;
+        }
+    }
+
+    void PlayRandomFootstep(float volumeScale)
+    {
+        if (audioSource == null || footstepClips == null || footstepClips.Length == 0) return;
+
+        AudioClip clip = footstepClips[Random.Range(0, footstepClips.Length)];
+
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+
+        float volume = Mathf.Clamp(volumeScale, 0.1f, 1f);
+        audioSource.PlayOneShot(clip, volume);
+    }
+
+    void PlayActiveSoundOnce()
+    {
+        if (!playedActiveSound && audioSource != null && activeSound != null)
+        {
+            audioSource.PlayOneShot(activeSound);
+            playedActiveSound = true;
+            playedTiredSound = false;
+        }
+    }
+
+    void PlayTiredSoundOnce()
+    {
+        if (!playedTiredSound && audioSource != null && tiredSound != null)
+        {
+            audioSource.PlayOneShot(tiredSound);
+            playedTiredSound = true;
+            playedActiveSound = false;
+        }
+    }
+
+    void PlayDeathSoundOnce()
+    {
+        if (!playedDeathSound && audioSource != null && deathSound != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+            playedDeathSound = true;
+        }
+    }
+
+    void ResetStateSounds()
+    {
+        playedActiveSound = false;
+        playedTiredSound = false;
+    }
+
     void UpdateHealthBar()
     {
         if (healthBarRenderer == null || healthBarSprites.Length == 0)
@@ -156,6 +252,7 @@ public class ControlEnemy : MonoBehaviour
 
         if (Life <= 0)
         {
+            PlayDeathSoundOnce();
             animator.Play("Death_Inimigo01");
             Estate = "Dead";
 
@@ -193,11 +290,13 @@ public class ControlEnemy : MonoBehaviour
     void passaidle()
     {
         Estate = "Idle";
+        ResetStateSounds();
     }
 
     void passaTired()
     {
         Estate = "Tired";
+        ResetStateSounds();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -212,6 +311,7 @@ public class ControlEnemy : MonoBehaviour
                 Debug.Log("[ENEMY] Gabriel found and active. Applying damage.");
                 gabrielHealth.TakeDamage(Dano);
                 Estate = "Tired";
+                ResetStateSounds();
             }
             else
             {

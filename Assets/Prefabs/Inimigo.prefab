@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8686775513681081679}
   - component: {fileID: 6308415244401191880}
   - component: {fileID: 6857694774464971895}
+  - component: {fileID: -4522911916120284059}
   m_Layer: 0
   m_Name: Inimigo
   m_TagString: Enemy
@@ -120,6 +121,7 @@ MonoBehaviour:
   Estate: 
   AlvoGOB: {fileID: 0}
   Life: 3
+  maxHealth: 100
   Radius: 3
   CoolDown: 2
   "VPersegui\xE7\xE3o": 4
@@ -139,6 +141,13 @@ MonoBehaviour:
   - {fileID: -4812005211464974513, guid: 8740d23dcdba883438e27c6e39447477, type: 3}
   - {fileID: 6160393805637950799, guid: 8740d23dcdba883438e27c6e39447477, type: 3}
   - {fileID: 8936506528420859925, guid: 8740d23dcdba883438e27c6e39447477, type: 3}
+  audioSource: {fileID: 0}
+  footstepClips:
+  - {fileID: 8300000, guid: 5cf170145a90e18eabd11c476353dc9d, type: 3}
+  footstepBaseInterval: 2
+  activeSound: {fileID: 8300000, guid: b55c70bbd41eeb735b97f1041b3c4b02, type: 3}
+  tiredSound: {fileID: 8300000, guid: 1e7fc15a68ed8656f83d30ed53a2c285, type: 3}
+  deathSound: {fileID: 8300000, guid: b0cd3b9536039989e88c072390e10b9d, type: 3}
 --- !u!114 &8686775513681081679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +200,103 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &-4522911916120284059
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147359820142258766}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -335272564409616844, guid: 9063c8220b71e3427850a174aace8be4, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4583062100416015231
 GameObject:
   m_ObjectHideFlags: 0

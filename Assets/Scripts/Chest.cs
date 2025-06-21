@@ -33,11 +33,14 @@ public class Chest : MonoBehaviour
     public KeyCode interactKey = KeyCode.B; // ignored
 
     public List<ChestLootEntry> lootTables;
-    
+
     private Animator chestAnimator;                                 
     private bool isPlayerNearby = false;
     private GameObject player;
     public bool isOpened = false;
+
+    public AudioSource audioSource;    
+    public AudioClip openSound;       
 
     void Start()
     {
@@ -45,6 +48,9 @@ public class Chest : MonoBehaviour
         chestAnimator = gameObject.GetComponent<Animator>();
         chestAnimator.enabled = false;
         SetSprite(chestType);
+
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -58,6 +64,11 @@ public class Chest : MonoBehaviour
             chestAnimator.SetTrigger(triggerName);
             isOpened = true;
             DropItems();
+
+            if (audioSource != null && openSound != null)
+            {
+                audioSource.PlayOneShot(openSound);
+            }
         }
     }
 
@@ -103,7 +114,6 @@ public class Chest : MonoBehaviour
 
         float totalWeight = 0f;
 
-        
         float multiplier = 1.5f;
 
         if (HasSorteNavegador)
