@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Linq.Expressions;
-using UnityEditor.Rendering.Analytics;
-using UnityEditor.ShaderGraph.Internal;
+
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEditor.PlayerSettings;
+
 
 public class ControlEnemy : MonoBehaviour
 {
