@@ -11,7 +11,6 @@ public class Box : MonoBehaviour
     private void Start()
     {
         Water = GetComponent<Tilemap>();
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
