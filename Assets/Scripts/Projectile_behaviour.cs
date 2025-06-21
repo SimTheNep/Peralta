@@ -7,9 +7,12 @@ public class Projectile_behaviour : MonoBehaviour
     public GabrielInventoryManager gabrielInventoryManager;
     public float Speed;
     public bool goingRight = true;
+    public bool Flip;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (gabrielInventoryManager == null)
         {
@@ -42,6 +45,7 @@ public class Projectile_behaviour : MonoBehaviour
         }
         else
         {
+            this.transform.eulerAngles = new Vector3(0, 180, 0);
             direcao = Vector3.left;
         }
 
