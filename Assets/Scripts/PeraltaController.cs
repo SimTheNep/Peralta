@@ -16,6 +16,15 @@ public class PeraltaController : MonoBehaviour
 
     public PeraltaInventoryManager inventoryManager;
 
+    public AudioSource audioSource;
+    public AudioClip groundFootstepClip;
+
+    public float footstepInterval = 0.45f;
+    private float footstepTimer = 0f;
+
+    // Added: flag to enable/disable footsteps externally
+    public bool footstepsEnabled = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,9 +39,11 @@ public class PeraltaController : MonoBehaviour
         bool hasSerpenteEncantada = inventoryManager != null && inventoryManager.HasSerpenteEncantada();
         if(hasSerpenteEncantada){
             moveSpeed = 4f;
+            footstepInterval = 0.35f;
         }
         else {
             moveSpeed = 3f;
+            footstepInterval = 0.45f;
         }
 
         if (KeybindManager.GetKeyDown("Pause"))
@@ -44,6 +55,7 @@ public class PeraltaController : MonoBehaviour
         {
             moveInput = Vector2.zero;
             animator.SetBool("IsMoving", false);
+            ResetFootstepAudio();
             return;
         }
 
@@ -57,6 +69,8 @@ public class PeraltaController : MonoBehaviour
         {
             spriteRenderer.flipX = moveInput.x < 0;
         }
+
+        HandleFootsteps();
     }
 
     void FixedUpdate()
@@ -78,6 +92,7 @@ public class PeraltaController : MonoBehaviour
             if (canvas != null)
                 canvas.SetActive(false);
             Time.timeScale = 0f;
+            ResetFootstepAudio();
         }
         else
         {
@@ -85,7 +100,43 @@ public class PeraltaController : MonoBehaviour
             if (pauseMenu != null)
                 pauseMenu.SetActive(false);
             if (canvas != null)
-                canvas.SetActive(true); 
+                canvas.SetActive(true);
+        }
+    }
+
+    private void HandleFootsteps()
+    {
+        // Added check for footstepsEnabled here
+        if (footstepsEnabled && moveInput.magnitude > 0)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                PlayFootstepSound();
+                footstepTimer = footstepInterval;
+            }
+        }
+        else
+        {
+            footstepTimer = 0f;
+            ResetFootstepAudio();
+        }
+    }
+
+    private void PlayFootstepSound()
+    {
+        if (audioSource == null || groundFootstepClip == null)
+            return;
+
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
+        audioSource.PlayOneShot(groundFootstepClip);
+    }
+
+    private void ResetFootstepAudio()
+    {
+        if (audioSource != null)
+        {
+            audioSource.pitch = 1f;
         }
     }
 }

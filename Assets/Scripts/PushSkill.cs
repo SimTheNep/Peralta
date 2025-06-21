@@ -10,6 +10,10 @@ public class PushSkill : MonoBehaviour
 
     public PeraltaInventoryManager inventoryManager;
 
+    // New: Audio
+    public AudioSource audioSource;  
+    public AudioClip pushMoveSound;  
+
     public void Execute()
     {
         animator.SetTrigger("Push");
@@ -38,16 +42,13 @@ public class PushSkill : MonoBehaviour
 
         Vector3 targetPos = box.transform.position + (Vector3)direction * tileSize;
 
-
         int tilemapLayer = LayerMask.NameToLayer("Tilemap_Halls");
         int tilemapMask = 1 << tilemapLayer;
 
-        
         Collider2D blockingCollider = Physics2D.OverlapBox(targetPos, box.GetComponent<Collider2D>().bounds.size * 0.9f, 0f, tilemapMask);
 
         if (blockingCollider != null)
         {
-
             yield break;
         }
 
@@ -69,6 +70,11 @@ public class PushSkill : MonoBehaviour
 
     private IEnumerator animation(Transform target, Vector3 offset)
     {
+        if (audioSource != null && pushMoveSound != null)
+        {
+            audioSource.PlayOneShot(pushMoveSound);
+        }
+
         Vector3 start = target.position;
         Vector3 end = start + offset;
         float elapsed = 0f;

@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 3710009515345946728}
   - component: {fileID: 4259193411201505744}
   - component: {fileID: 3539610634938790255}
+  - component: {fileID: -4663558926995789584}
   m_Layer: 3
   m_Name: Gabriel
   m_TagString: Gabriel
@@ -211,6 +212,12 @@ MonoBehaviour:
   canMove: 1
   pauseMenu: {fileID: 0}
   canvas: {fileID: 0}
+  inventoryManager: {fileID: 0}
+  audioSource: {fileID: 0}
+  defaultFootstepClip: {fileID: 8300000, guid: 5cf170145a90e18eabd11c476353dc9d, type: 3}
+  waterFootstepClip: {fileID: 8300000, guid: 839295524b89b635da0020de3481259b, type: 3}
+  waterTile: {fileID: 0}
+  footstepInterval: 0.35
 --- !u!114 &3185626848438632142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +242,8 @@ MonoBehaviour:
   gabrielnventory: {fileID: 3710009515345946728}
   animator: {fileID: 4259193411201505744}
   canUseSkills: 1
+  audioSource: {fileID: 0}
+  skillExecuteClip: {fileID: 8300000, guid: 77c59f367852757a486865ee683d8dbd, type: 3}
 --- !u!114 &2692514466950442923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +260,9 @@ MonoBehaviour:
   playerTransform: {fileID: 7387227521552236484}
   tileSize: 1
   moveDuration: 0.2
+  inventoryManager: {fileID: 0}
+  audioSource: {fileID: 0}
+  pushMoveSound: {fileID: 8300000, guid: fb90ee246d14a4421bdc8b87f8978c71, type: 3}
 --- !u!114 &7164898276760932456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +338,7 @@ MonoBehaviour:
     description: 
   selectedSlot: 0
   gabrielskills: {fileID: 3185626848438632142}
+  gabrielHealth: {fileID: 0}
   inventoryUI: {fileID: 0}
   pedra: {fileID: 5596868613322933132, guid: 190355b20e1823648921ba7044ed8e89, type: 3}
   chanfana: {fileID: 5596868613322933132, guid: 231b55eabda28e71b89b4381f7422f4e, type: 3}
@@ -338,6 +351,9 @@ MonoBehaviour:
   montante: {fileID: 5596868613322933132, guid: 33bfc4ce6224c3792b4c72064d1936d8, type: 3}
   cranio: {fileID: 5596868613322933132, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
   chave: {fileID: 306348430091817049, guid: dc973ef54405aaf4e881d36ea2e35057, type: 3}
+  audioSource: {fileID: 0}
+  itemPickupClip: {fileID: 8300000, guid: 7785e2fbefb44b54682ed8f30c67b75f, type: 3}
+  healItemConsumeClip: {fileID: 8300000, guid: 8f56b5836b2375fd8866a9f8dccc971a, type: 3}
   canUseInventory: 1
 --- !u!95 &4259193411201505744
 Animator:
@@ -386,3 +402,102 @@ MonoBehaviour:
   peraltaInventory: {fileID: 0}
   gameOverScreen: {fileID: 0}
   checkpointLevel: 1
+  audioSource: {fileID: 0}
+  damageClip: {fileID: 8300000, guid: 92ae831b5ea138813bf76c8af0c3dd60, type: 3}
+--- !u!82 &-4663558926995789584
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8910304432982592667}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -335272564409616844, guid: 9063c8220b71e3427850a174aace8be4, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

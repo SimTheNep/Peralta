@@ -29,7 +29,8 @@ public class HauntSkill : MonoBehaviour
     public ManaSystem manaSystem;
     public float manaCostPerSecond = 1f;
 
-
+    public AudioSource audioSource;
+    public AudioClip hauntSound;
 
     void Awake()
     {
@@ -47,7 +48,6 @@ public class HauntSkill : MonoBehaviour
 
         if (manaSystem == null)
             manaSystem = FindFirstObjectByType<ManaSystem>();
-
     }
 
     void Update()
@@ -62,8 +62,6 @@ public class HauntSkill : MonoBehaviour
                 isActive = false;
             }
         }
-
-
     }
 
     void EndSkillOrPossession()
@@ -76,23 +74,28 @@ public class HauntSkill : MonoBehaviour
         isActive = false;
     }
 
-    public void Execute()
+    public bool Execute()
     {
-        if (manaSystem.HasMana(0.1f)) // valor min para ativar
-        {
-            isActive = true;
-            Debug.Log("Executando HauntSkill...");
-            if (isPossessing)
-            {
-                TrySwitchOrReleasePossession();
-            }
-            else
-            {
-                TryPossessEnemy();
-            }
-        }
-    }
+        if (!manaSystem.HasMana(0.1f))
+            return false;
 
+        isActive = true;
+        Debug.Log("Executando HauntSkill...");
+
+        if (audioSource != null && hauntSound != null)
+            audioSource.PlayOneShot(hauntSound);
+
+        if (isPossessing)
+        {
+            TrySwitchOrReleasePossession();
+        }
+        else
+        {
+            TryPossessEnemy();
+        }
+
+        return true;
+    }
 
     void TryPossessEnemy()
     {
@@ -174,7 +177,7 @@ public class HauntSkill : MonoBehaviour
             var pc = possessedEnemy.GetComponent<PossessedEnemyController>();
             if (pc != null)
             {
-                pc.RestoreOriginalFlip(); 
+                pc.RestoreOriginalFlip();
                 Destroy(pc);
             }
             var peraltaSprite = peralta.GetComponent<SpriteRenderer>();
@@ -204,8 +207,6 @@ public class HauntSkill : MonoBehaviour
                 peraltaSkills.isPossessing = false;
 
             Debug.Log("Despossuiu.");
-
-            
         }
     }
 
@@ -260,7 +261,7 @@ public class HauntSkill : MonoBehaviour
         return isPossessing;
     }
 
-    void OnDrawGizmosSelected() //serve apenas para vermos o raio
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, hauntRange);

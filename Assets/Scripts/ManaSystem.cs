@@ -20,7 +20,7 @@ public class ManaSystem : MonoBehaviour
 
     void Update()
     {
-        // Só regenera se NENHUMA skill estiver ativa
+        // Sï¿½ regenera se NENHUMA skill estiver ativa
         bool anySkillActive = (hoverSkill != null && hoverSkill.isActive) || (hauntSkill != null && hauntSkill.isActive);
 
         if (!anySkillActive && currentMana < maxMana)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class GabrielController : MonoBehaviour
 {
@@ -6,10 +7,11 @@ public class GabrielController : MonoBehaviour
     public float moveSpeed = 5f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
-    public bool Flip;
     private SpriteRenderer spriteRenderer;
 
-    public bool canMove = true; // para os diálogos
+    public bool Flip;
+
+    public bool canMove = true;
 
     public GameObject pauseMenu;
     public GameObject canvas;
@@ -18,14 +20,21 @@ public class GabrielController : MonoBehaviour
 
     public PeraltaInventoryManager inventoryManager;
 
+    public AudioSource audioSource;        
+    public AudioClip defaultFootstepClip;  
+    public AudioClip waterFootstepClip;  
+    public Tilemap waterTile;          
+
+    public float footstepInterval = 0.35f;   
+    private float footstepTimer = 0f;
+
     void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (pauseMenu != null)
-            pauseMenu.SetActive(false);  // pausa fica escondida
+            pauseMenu.SetActive(false);
     }
 
     void Update()
@@ -33,23 +42,30 @@ public class GabrielController : MonoBehaviour
         bool HasAsaIcaro = inventoryManager != null && inventoryManager.HasAsaIcaro();
         bool hasSerpenteEncantada = inventoryManager != null && inventoryManager.HasSerpenteEncantada();
 
-        if(hasSerpenteEncantada){
+        if (hasSerpenteEncantada)
+        {
             moveSpeed = 6f;
+            footstepInterval = 0.25f;   
         }
-        else {
+        else
+        {
             moveSpeed = 5f;
+            footstepInterval = 0.35f;
         }
-        if(HasAsaIcaro){
+
+        if (HasAsaIcaro)
+        {
             gameObject.layer = LayerMask.NameToLayer("Floot 2");
         }
-        else{
+        else
+        {
             gameObject.layer = LayerMask.NameToLayer("PlayerCharacters");
         }
 
         // Check for pause key
         if (KeybindManager.GetKeyDown("Pause"))
         {
-            TogglePause();  
+            TogglePause();
         }
 
         if (!canMove || isPaused)
@@ -61,8 +77,8 @@ public class GabrielController : MonoBehaviour
 
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
-
         moveInput = moveInput.normalized;
+
         animator.SetBool("IsMoving", moveInput.magnitude > 0);
 
         if (moveInput.x != 0)
@@ -70,6 +86,9 @@ public class GabrielController : MonoBehaviour
             Flip = moveInput.x > 0;
             spriteRenderer.flipX = moveInput.x < 0;
         }
+
+        // FOOTSTEP SOUND HANDLING
+        HandleFootsteps();
     }
 
     void FixedUpdate()
@@ -98,7 +117,49 @@ public class GabrielController : MonoBehaviour
             if (pauseMenu != null)
                 pauseMenu.SetActive(false);
             if (canvas != null)
-                canvas.SetActive(true); 
+                canvas.SetActive(true);
         }
+    }
+
+    private void HandleFootsteps()
+    {
+        if (moveInput.magnitude > 0)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                PlayFootstepSound();
+                footstepTimer = footstepInterval;
+            }
+        }
+        else
+        {
+            footstepTimer = 0f;
+            if (audioSource != null)
+            {
+                audioSource.pitch = 1f; 
+            }
+        }
+    }
+
+    private void PlayFootstepSound()
+    {
+        if (audioSource == null) return;
+
+        AudioClip clipToPlay = defaultFootstepClip;
+
+        if (waterTile != null)
+        {
+            Vector3Int tilePosition = waterTile.WorldToCell(transform.position);
+            TileBase tile = waterTile.GetTile(tilePosition);
+
+            if (tile != null)
+            {
+                clipToPlay = waterFootstepClip;
+            }
+        }
+
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
+        audioSource.PlayOneShot(clipToPlay);
     }
 }

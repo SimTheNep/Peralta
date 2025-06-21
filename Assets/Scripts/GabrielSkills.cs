@@ -26,6 +26,9 @@ public class GabrielSkills : MonoBehaviour
     private bool isSkillExecuting = false;
     public bool canUseSkills = true;
 
+    public AudioSource audioSource;       // AudioSource component to play sound
+    public AudioClip skillExecuteClip;    // Single audio clip for all skills
+
     void Start()
     {
         UpdateSkillUI();
@@ -38,11 +41,10 @@ public class GabrielSkills : MonoBehaviour
         if (attackCooldownTimer > 0f)
             attackCooldownTimer -= Time.deltaTime;
 
-        KeyCode skillKeyCode = KeybindManager.GetKeyCode("Skill");  
+        KeyCode skillKeyCode = KeybindManager.GetKeyCode("Skill");
         KeyCode actionKeyCode = KeybindManager.GetKeyCode("Action");
         Key actionKey = InputHelpers.KeyCodeToKey(actionKeyCode);
         Key skillKey = InputHelpers.KeyCodeToKey(skillKeyCode);
-        
 
         if (skillKey == Key.None || actionKey == Key.None)
             return;
@@ -71,6 +73,13 @@ public class GabrielSkills : MonoBehaviour
             Debug.Log("A executar skill: " + currentSkill);
 
             gabrielnventory.ConsumeItemForSkill(currentSkill);
+
+            // Play the single skill audio clip here
+            if (audioSource != null && skillExecuteClip != null)
+            {
+                audioSource.PlayOneShot(skillExecuteClip);
+            }
+
             StartCoroutine(PerformSkillCoroutine(currentSkill));
         }
         else
@@ -81,7 +90,6 @@ public class GabrielSkills : MonoBehaviour
             }
         }
     }
-
 
     void CycleSkill()
     {
@@ -134,7 +142,6 @@ public class GabrielSkills : MonoBehaviour
         animator.speed = 1f;
         Debug.Log("Fim de skill");
     }
-
 
     public SkillType GetCurrentSkill()
     {

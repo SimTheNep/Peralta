@@ -2,11 +2,9 @@
 using UnityEngine.Tilemaps;
 using System.Collections;
 
-
 public class PhaseSkill : MonoBehaviour
 {
     private Tilemap gradeTilemap;
-    
 
     Animator animator;
     private Vector3 Bpoint;
@@ -19,6 +17,9 @@ public class PhaseSkill : MonoBehaviour
     public float teleportOffsetY = 5f;
 
     private PeraltaController peraltaController;
+
+    public AudioSource audioSource;
+    public AudioClip phaseSound;
 
     private void Start()
     {
@@ -81,10 +82,13 @@ public class PhaseSkill : MonoBehaviour
         }
     }
 
-    public void Execute()
+    public bool Execute()
     {
         if (OnTileGrade == true && !isActive)
         {
+            if (audioSource != null && phaseSound != null)
+                audioSource.PlayOneShot(phaseSound);
+
             peraltaController.canMove = false;
             print("tentou atravessar");
 
@@ -96,38 +100,26 @@ public class PhaseSkill : MonoBehaviour
             this.gameObject.layer = LayerMask.NameToLayer("Fase");
 
             StartCoroutine(PhaseRoutine());
+
+            return true;
         }
         else
         {
             print("Sem grade para atravessar");
+            return false;
         }
     }
 
-    private IEnumerator PhaseRoutine()
+    IEnumerator PhaseRoutine()
     {
-        yield return new WaitForSeconds(0.5f);
-        if (transform.position.y < gradeTileWorldPos.y)
-        {
-            transform.position += new Vector3(0f, teleportOffsetY, 0f); // go up
-        }
-        else
-        {
-            transform.position -= new Vector3(0f, teleportOffsetY, 0f); // go down
-        }
-
-        animator.Play("Peralta_Fase_02");
-        yield return new WaitForSeconds(1f);
-        terminaFase();
+        yield return new WaitForSeconds(0.2f);
+        transform.position = new Vector3(gradeTileWorldPos.x, gradeTileWorldPos.y + teleportOffsetY, transform.position.z);
     }
 
     void terminaFase()
     {
-        peraltaController.canMove = true;
         isActive = false;
-
-        if (animator != null)
-            animator.SetBool("IsHovering", false);
-
         this.gameObject.layer = LayerMask.NameToLayer("Peralta");
+        peraltaController.canMove = true;
     }
 }

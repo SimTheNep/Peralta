@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 3171885917608872271}
   - component: {fileID: 6532183511238774704}
   - component: {fileID: 1739608285953190528}
+  - component: {fileID: -2856555983286996136}
   m_Layer: 6
   m_Name: Peralta
   m_TagString: Peralta
@@ -180,6 +181,11 @@ MonoBehaviour:
   canMove: 1
   pauseMenu: {fileID: 0}
   canvas: {fileID: 0}
+  inventoryManager: {fileID: 0}
+  audioSource: {fileID: 0}
+  groundFootstepClip: {fileID: 8300000, guid: f57f2c0709f9690769f443bebbb26e40, type: 3}
+  footstepInterval: 0.45
+  footstepsEnabled: 1
 --- !u!114 &392852926930219903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +252,8 @@ MonoBehaviour:
   sorteDeNavegador: {fileID: 8355932442162324796, guid: 22dc5bf9680b542dbabe5ea194d23baa, type: 3}
   rosaDeAragao: {fileID: 8355932442162324796, guid: 328bf2d9210caca87bf6741a0f402f9f, type: 3}
   canUseInventory: 1
+  audioSource: {fileID: 0}
+  pickupSoundClip: {fileID: 8300000, guid: 7785e2fbefb44b54682ed8f30c67b75f, type: 3}
 --- !u!114 &2448324745921832461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +269,8 @@ MonoBehaviour:
   timeRemaining: 0
   Time: 2
   teleportOffsetY: 5
+  audioSource: {fileID: 0}
+  phaseSound: {fileID: 8300000, guid: e6e502d47f22c48358461e91f21de07f, type: 3}
 --- !u!114 &6504016026059253130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +290,8 @@ MonoBehaviour:
   isActive: 0
   manaSystem: {fileID: 1739608285953190528}
   manaCostPerSecond: 1
+  audioSource: {fileID: 0}
+  hauntSound: {fileID: 8300000, guid: e6e502d47f22c48358461e91f21de07f, type: 3}
 --- !u!114 &8342265527225143512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +309,8 @@ MonoBehaviour:
   Active: 0
   Return: 0
   isActive: 0
+  hoverAudioSource: {fileID: 0}
+  hoverAudioClip: {fileID: 8300000, guid: a3a9d7a9154eb3aa6bd736a316fbafb3, type: 3}
 --- !u!114 &7538798837028385987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,3 +380,102 @@ MonoBehaviour:
   regenRate: 1
   hoverSkill: {fileID: 8342265527225143512}
   hauntSkill: {fileID: 6504016026059253130}
+  manaAudioSource: {fileID: 0}
+  manaSpendClip: {fileID: 8300000, guid: 6d9fabc7cbc924fd4b4c37a1acd24f7f, type: 3}
+--- !u!82 &-2856555983286996136
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844302221783558123}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -335272564409616844, guid: 9063c8220b71e3427850a174aace8be4, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

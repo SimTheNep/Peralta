@@ -140,6 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicItemData: {fileID: 312585279397157312}
+  audioSource: {fileID: 0}
+  pickupSoundClip: {fileID: 8300000, guid: 8f56b5836b2375fd8866a9f8dccc971a, type: 3}
 --- !u!114 &312585279397157312
 MonoBehaviour:
   m_ObjectHideFlags: 0

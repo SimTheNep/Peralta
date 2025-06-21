@@ -22,8 +22,9 @@ public class GabrielHealth : MonoBehaviour
 
     public int checkpointLevel = 1;
 
+    public AudioSource audioSource;       
+    public AudioClip damageClip;           
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
@@ -34,18 +35,20 @@ public class GabrielHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-
         currentHealth -= amount;
-
 
         if (animator != null)
         {
             animator.SetTrigger("Damage");
         }
 
+        if (audioSource != null && damageClip != null)
+        {
+            audioSource.PlayOneShot(damageClip);
+        }
+
         if (currentHealth <= 0)
         {
-
             Die();
         }
     }
@@ -58,12 +61,10 @@ public class GabrielHealth : MonoBehaviour
         if (animator != null)
             animator.SetTrigger("Die");
         StartCoroutine(GameOverDelay());
-
     }
 
     IEnumerator GameOverDelay()
     {
-    
         yield return new WaitForSeconds(1f);
 
         if (gameOverOverlay != null)
@@ -72,8 +73,6 @@ public class GabrielHealth : MonoBehaviour
         int rosas = peraltaInventory != null ? peraltaInventory.GetQuantidadeRosasDeAragao() : 0;
         if (gameOverScreen != null)
             gameOverScreen.Setup(rosas, checkpointLevel);
-
-        // desativar todoos os scripts de input aqui
 
         Time.timeScale = 0f;
 
@@ -94,8 +93,6 @@ public class GabrielHealth : MonoBehaviour
             if (gameOverOverlay != null)
                 gameOverOverlay.SetActive(false);
 
-
-            //reativar todos os scripts aqui
             Time.timeScale = 1f;
 
             if (peraltaController != null) peraltaController.enabled = true;
@@ -108,11 +105,9 @@ public class GabrielHealth : MonoBehaviour
         }
         else
         {
-            //n tem rosas, meter qualquer cena
+            // No roses - add any alternative here
         }
     }
-
-    // == Cura == 
 
     public void Heal(float amount)
     {
@@ -132,7 +127,6 @@ public class GabrielHealth : MonoBehaviour
         {
             if (currentHealth >= maxHealth)
             {
-                // Stacking
                 yield return new WaitUntil(() => currentHealth < maxHealth);
             }
 

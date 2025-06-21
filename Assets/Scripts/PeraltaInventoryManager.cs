@@ -17,6 +17,9 @@ public class PeraltaInventoryManager : MonoBehaviour
 
     public bool canUseInventory = true;
 
+    public AudioSource audioSource;       
+    public AudioClip pickupSoundClip;     
+    
     void Update()
     {
         if (!canUseInventory) return;
@@ -51,14 +54,18 @@ public class PeraltaInventoryManager : MonoBehaviour
             if (pickup != null && pickup.itemData != null)
             {
                 MagicItem newItem = pickup.itemData.GetMagicItem();
-                TryPickupMagicItem(newItem);
-                Destroy(pickup.gameObject);
-                break;
+                bool pickedUp = TryPickupMagicItem(newItem);
+                if (pickedUp)
+                {
+                    PlayPickupSound();
+                    Destroy(pickup.gameObject);
+                    break;
+                }
             }
         }
     }
 
-    public void TryPickupMagicItem(MagicItem newItem)
+    public bool TryPickupMagicItem(MagicItem newItem)
     {
         for (int i = 0; i < slots.Length; i++)
         {
@@ -66,7 +73,7 @@ public class PeraltaInventoryManager : MonoBehaviour
             {
                 slots[i].quantity += newItem.quantity;
                 inventoryUI?.UpdateUI(slots, selectedSlot);
-                return;
+                return true;
             }
         }
 
@@ -76,13 +83,14 @@ public class PeraltaInventoryManager : MonoBehaviour
             {
                 slots[i] = new MagicItem(newItem);
                 inventoryUI?.UpdateUI(slots, selectedSlot);
-                return;
+                return true;
             }
         }
 
         DropItemToScene(slots[selectedSlot]);
         slots[selectedSlot] = new MagicItem(newItem);
         inventoryUI?.UpdateUI(slots, selectedSlot);
+        return true;
     }
 
     void DropItemToScene(MagicItem item)
@@ -118,6 +126,14 @@ public class PeraltaInventoryManager : MonoBehaviour
                 Vector3 dropPos = transform.position + Vector3.right * 1f + offset;
                 Instantiate(prefab, dropPos, Quaternion.identity);
             }
+        }
+    }
+
+    void PlayPickupSound()
+    {
+        if (audioSource != null && pickupSoundClip != null)
+        {
+            audioSource.PlayOneShot(pickupSoundClip);
         }
     }
 

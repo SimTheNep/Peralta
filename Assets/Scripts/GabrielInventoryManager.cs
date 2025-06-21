@@ -24,6 +24,10 @@ public class GabrielInventoryManager : MonoBehaviour
     public GameObject cranio;
     public GameObject chave;
 
+    public AudioSource audioSource;          
+    public AudioClip itemPickupClip;         
+    public AudioClip healItemConsumeClip;    
+
     public void Heal(float amount)
     {
         if (gabrielHealth != null)
@@ -83,8 +87,14 @@ public class GabrielInventoryManager : MonoBehaviour
             {
                 Item newItem = pickup.itemData.GetItem();
                 TryPickupItem(newItem);
+
+                if (audioSource != null && itemPickupClip != null)
+                {
+                    audioSource.PlayOneShot(itemPickupClip);
+                }
+
                 Destroy(pickup.gameObject);
-                break; //faz com que apanhe s� 1 de cada vez, mesmo tendo varios objetos no raio
+                break; //faz com que apanhe só 1 de cada vez, mesmo tendo vários objetos no raio
             }
         }
     }
@@ -154,6 +164,11 @@ public class GabrielInventoryManager : MonoBehaviour
         var item = slots[slotIndex];
         if (item == null) return;
 
+        if (audioSource != null && healItemConsumeClip != null)
+        {
+            audioSource.PlayOneShot(healItemConsumeClip);
+        }
+
         item.quantity--;
         if (item.quantity <= 0)
         {
@@ -193,7 +208,7 @@ public class GabrielInventoryManager : MonoBehaviour
         {
             slots[selectedSlot] = null;
         }*/
-        //o codigo comentado acima faz desparecer a arma de ataque, mas n�o � suposto isso acontecer, mas se no futuro quisermos meter durabilidade � aqui
+        //o código comentado acima faz desaparecer a arma de ataque, mas não é suposto isso acontecer, mas se no futuro quisermos meter durabilidade é aqui
     }
 
     void DropItemToScene(Item item)
@@ -241,7 +256,6 @@ public class GabrielInventoryManager : MonoBehaviour
         {
             for (int i = 0; i < item.quantity; i++)
             {
-                // Distribui os itens com leve offset para evitar sobreposi��o total
                 Vector3 dropOffset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.2f, 0.2f), 0);
                 Vector3 dropPosition = transform.position + Vector3.right * 1f + dropOffset;
                 Instantiate(prefab, dropPosition, Quaternion.identity);
