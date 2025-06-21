@@ -9861,7 +9861,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: -6, z: 0}
@@ -9875,7 +9875,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -6, z: 0}
@@ -9903,7 +9903,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -5, z: 0}
@@ -9959,7 +9959,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -3, z: 0}
@@ -10001,7 +10001,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: -1, z: 0}
@@ -10043,7 +10043,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 0, z: 0}
@@ -10057,7 +10057,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 1, z: 0}
@@ -10169,7 +10169,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 5, z: 0}
@@ -10267,7 +10267,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: 8, z: 0}
@@ -10295,7 +10295,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 13, y: 9, z: 0}
@@ -14448,6 +14448,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemaps: []
+--- !u!1 &1911070053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6175805980231434230, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+  m_PrefabInstance: {fileID: 7827081571098562888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1911070055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911070053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46afa3ba0bf170c858bf8b514c4e9eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1972325458
 GameObject:
   m_ObjectHideFlags: 0
@@ -16210,6 +16227,10 @@ PrefabInstance:
       propertyPath: AlvoGOB
       value: 
       objectReference: {fileID: 1020943808}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: enemyID
+      value: Cabriola
+      objectReference: {fileID: 0}
     - target: {fileID: 2963371153354486200, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.14
@@ -16364,6 +16385,42 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: ManagePause, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 298571044144721288, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_Name
+      value: CabriolaPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 298571044144721288, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 327249566797705524, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 327249566797705524, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 327249566797705524, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 327249566797705524, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 327249566797705524, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 327249566797705524, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 327249566797705524, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1816455357872018758, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -16456,15 +16513,30 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6313375034946916796, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_Name
+      value: Cabriola
+      objectReference: {fileID: 0}
     - target: {fileID: 7196259214425315394, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
       propertyPath: statisticsCanvas
       value: 
       objectReference: {fileID: 605135668}
+    - target: {fileID: 7881243384984733964, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_Name
+      value: CabriolaImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881243384984733964, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3992988381506629420, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6175805980231434230, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1911070055}
   m_SourcePrefab: {fileID: 100100000, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
