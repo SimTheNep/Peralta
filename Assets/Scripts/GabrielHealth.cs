@@ -43,6 +43,7 @@ public class GabrielHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("morrreu");
+        movementScript.canMove = false;
         if (animator != null)
             animator.SetTrigger("Die");
 
@@ -51,7 +52,6 @@ public class GabrielHealth : MonoBehaviour
         if (gameOverOverlay != null && movementScript != null)
         {
             gameOverOverlay.SetActive(true);
-            movementScript.canMove = false;
         }
         else
         {
