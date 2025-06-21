@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GabrielHealth : MonoBehaviour
 {
-
     public float maxHealth = 6f;
     public float currentHealth;
 
@@ -111,5 +110,44 @@ public class GabrielHealth : MonoBehaviour
         {
             //n tem rosas, meter qualquer cena
         }
+    }
+
+    // == Cura == 
+
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        Debug.Log($"Curou {amount} de vida");
+    }
+
+    public IEnumerator RegenerateHealthOverTime(float totalAmount, float duration)
+    {
+        float amountHealed = 0f;
+        float healPerSecond = totalAmount / duration;
+
+        while (amountHealed < totalAmount)
+        {
+            if (currentHealth >= maxHealth)
+            {
+                // Stacking
+                yield return new WaitUntil(() => currentHealth < maxHealth);
+            }
+
+            float healThisFrame = healPerSecond * Time.deltaTime;
+
+            float possibleHeal = Mathf.Min(healThisFrame, totalAmount - amountHealed);
+            currentHealth += possibleHeal;
+            amountHealed += possibleHeal;
+
+            if (currentHealth > maxHealth)
+                currentHealth = maxHealth;
+
+            yield return null;
+        }
+
+        Debug.Log($"Regenerou {amountHealed} de vida sobre {duration} segundos");
     }
 }

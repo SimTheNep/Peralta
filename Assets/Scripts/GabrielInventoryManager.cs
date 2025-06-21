@@ -1,6 +1,7 @@
 using NUnit.Framework.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class GabrielInventoryManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GabrielInventoryManager : MonoBehaviour
     public int selectedSlot = 0;
 
     public GabrielSkills gabrielskills;
+    public GabrielHealth gabrielHealth;
     public InventoryUI inventoryUI;
 
     public GameObject pedra;
@@ -21,6 +23,12 @@ public class GabrielInventoryManager : MonoBehaviour
     public GameObject montante;
     public GameObject cranio;
     public GameObject chave;
+
+    public void Heal(float amount)
+    {
+        if (gabrielHealth != null)
+            gabrielHealth.Heal(amount);
+    }
 
     public bool canUseInventory = true;
 
@@ -37,7 +45,7 @@ public class GabrielInventoryManager : MonoBehaviour
         if (itemKey == Key.None || actionKey == Key.None)
             return;
 
-        if (Keyboard.current[itemKey].wasPressedThisFrame)
+        if (!Keyboard.current[actionKey].isPressed && Keyboard.current[itemKey].wasPressedThisFrame)
         {
             selectedSlot = (selectedSlot + 1) % 3;
             Debug.Log("Slot selecionado: " + selectedSlot);
@@ -50,9 +58,16 @@ public class GabrielInventoryManager : MonoBehaviour
         }
 
         // Usa item de cura com A + B
-        if (Keyboard.current[itemKey].isPressed && Keyboard.current[actionKey].wasPressedThisFrame)
+        if (Keyboard.current[actionKey].isPressed && Keyboard.current[itemKey].wasPressedThisFrame)
         {
-            UseHealableItem();
+            if (gabrielHealth != null && gabrielHealth.currentHealth < gabrielHealth.maxHealth)
+            {
+                UseHealableItem();
+            }
+            else
+            {
+                Debug.Log("Vida cheia");
+            }
         }
     }
 
@@ -109,9 +124,42 @@ public class GabrielInventoryManager : MonoBehaviour
         var item = slots[selectedSlot];
         if (item != null && item.itemType == ItemType.Healable)
         {
-            slots[selectedSlot] = null;
-            inventoryUI.UpdateUI(slots, selectedSlot);
+            switch (item.itemName)
+            {
+                case "Chanfana":
+                    Heal(6f);
+                    consumeForHeal(selectedSlot);
+                    break;
+
+                case "Cabrito Assado":
+                    Heal(1f);
+                    consumeForHeal(selectedSlot);
+                    break;
+
+                case "Tigelada":
+                    if (gabrielHealth != null)
+                        StartCoroutine(gabrielHealth.RegenerateHealthOverTime(8f, 12f));
+                    consumeForHeal(selectedSlot);
+                    break;
+
+                default:
+                    Debug.Log($"Item {item.itemName} is healable but has no defined effect.");
+                    break;
+            }
         }
+    }
+
+    void consumeForHeal(int slotIndex)
+    {
+        var item = slots[slotIndex];
+        if (item == null) return;
+
+        item.quantity--;
+        if (item.quantity <= 0)
+        {
+            slots[slotIndex] = null;
+        }
+        inventoryUI.UpdateUI(slots, selectedSlot);
     }
 
     public bool HasItemForSkill(SkillType skill)
