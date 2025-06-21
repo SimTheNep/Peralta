@@ -90,6 +90,13 @@ public class GabrielHealth : MonoBehaviour
         if (peraltaInventory != null && peraltaInventory.ConsumeRosaDeAragao())
         {
             currentHealth = maxHealth;
+
+            if (animator != null)
+            {
+                animator.ResetTrigger("Die");
+                animator.SetTrigger("Idle"); 
+            }
+
             if (gameOverOverlay != null)
                 gameOverOverlay.SetActive(false);
 
@@ -100,12 +107,13 @@ public class GabrielHealth : MonoBehaviour
             if (peraltaSkills != null) peraltaSkills.enabled = true;
             if (gabrielSkills != null) gabrielSkills.enabled = true;
             if (characterSwitch != null) characterSwitch.enabled = true;
+
             if (peraltaInventory != null) peraltaInventory.canUseInventory = true;
             if (gabrielInventory != null) gabrielInventory.canUseInventory = true;
         }
         else
         {
-            // No roses - add any alternative here
+            Debug.Log("No Rosa de Aragão to consume.");
         }
     }
 
