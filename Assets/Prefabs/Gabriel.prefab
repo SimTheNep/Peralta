@@ -209,6 +209,8 @@ MonoBehaviour:
   moveSpeed: 5
   Flip: 0
   canMove: 1
+  pauseMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!114 &3185626848438632142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415a59a1268720f4bafdeb2a506d6174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gabrielController: {fileID: 0}
+  gabrielController: {fileID: 6286003293019696449}
   skillUIImage: {fileID: 0}
   skillSprites:
   - {fileID: 5967214536038645678, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
@@ -231,7 +233,7 @@ MonoBehaviour:
   throwSkill: {fileID: 7164898276760932456}
   attackSkill: {fileID: 3921725513960240834}
   gabrielnventory: {fileID: 3710009515345946728}
-  animator: {fileID: 0}
+  animator: {fileID: 4259193411201505744}
   canUseSkills: 1
 --- !u!114 &2692514466950442923
 MonoBehaviour:
@@ -248,6 +250,7 @@ MonoBehaviour:
   animator: {fileID: 4259193411201505744}
   playerTransform: {fileID: 7387227521552236484}
   tileSize: 1
+  moveDuration: 0.2
 --- !u!114 &7164898276760932456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +267,7 @@ MonoBehaviour:
   LauchOffset: {fileID: 539780229686443007}
   animator: {fileID: 4259193411201505744}
   gabrielInventoryManager: {fileID: 3710009515345946728}
-  gabrielController: {fileID: 0}
+  gabrielController: {fileID: 6286003293019696449}
 --- !u!114 &3921725513960240834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,4 +377,12 @@ MonoBehaviour:
   currentHealth: 0
   animator: {fileID: 4259193411201505744}
   gameOverOverlay: {fileID: 0}
-  rosasDeAragao: 1
+  gabrielController: {fileID: 6286003293019696449}
+  peraltaController: {fileID: 0}
+  gabrielSkills: {fileID: 3185626848438632142}
+  peraltaSkills: {fileID: 0}
+  characterSwitch: {fileID: 0}
+  gabrielInventory: {fileID: 3710009515345946728}
+  peraltaInventory: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  checkpointLevel: 1

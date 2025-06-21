@@ -8,6 +8,8 @@ public class PushSkill : MonoBehaviour
     public float tileSize = 1f;
     public float moveDuration = 0.2f;
 
+    public PeraltaInventoryManager inventoryManager;
+
     public void Execute()
     {
         animator.SetTrigger("Push");
@@ -49,14 +51,19 @@ public class PushSkill : MonoBehaviour
             yield break;
         }
 
-        if (box.boxType == BoxType.Light)
+        bool hasSerpenteEncantada = inventoryManager != null && inventoryManager.HasSerpenteEncantada();
+
+        if (box.boxType == BoxType.Light || hasSerpenteEncantada)
         {
             yield return StartCoroutine(animation(box.transform, (Vector3)direction * tileSize));
         }
         else
         {
-            yield return StartCoroutine(animation(playerTransform, -(Vector3)direction * tileSize));
-            animator.SetTrigger("Damage");
+            if (!hasSerpenteEncantada) 
+            {
+                yield return StartCoroutine(animation(playerTransform, -(Vector3)direction * tileSize));
+                animator.SetTrigger("Damage");
+            }
         }
     }
 

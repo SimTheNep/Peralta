@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class Chest : MonoBehaviour
 {
+    public PeraltaInventoryManager inventoryManager;
+
     private static List<string> droppedAttackables = new List<string>();
 
     public enum ChestType
@@ -97,12 +99,23 @@ public class Chest : MonoBehaviour
 
     private GameObject GetWeight(List<GameObject> itemList)
     {
+        bool HasSorteNavegador = inventoryManager != null && inventoryManager.HasSorteNavegador();
+
         float totalWeight = 0f;
+
+        
+        float multiplier = 1.5f;
+
+        if (HasSorteNavegador)
+        {
+            print("Aumentou chances");
+            multiplier = 3f;
+        }
 
         foreach (var prefab in itemList)
         {
             int price = GetPrice(prefab);
-            totalWeight += 1f / Mathf.Max(price, 1.5f);
+            totalWeight += 1f / Mathf.Max(price, multiplier);
         }
 
         float randomValue = Random.Range(0f, totalWeight);
@@ -111,7 +124,7 @@ public class Chest : MonoBehaviour
         foreach (var prefab in itemList)
         {
             int price = GetPrice(prefab);
-            cumulative += 1f / Mathf.Max(price, 1.5f);
+            cumulative += 1f / Mathf.Max(price, multiplier);
             if (randomValue <= cumulative)
                 return prefab;
         }

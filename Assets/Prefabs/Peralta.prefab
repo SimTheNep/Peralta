@@ -178,6 +178,8 @@ MonoBehaviour:
   animator: {fileID: 6532183511238774704}
   moveSpeed: 3
   canMove: 1
+  pauseMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!114 &392852926930219903
 MonoBehaviour:
   m_ObjectHideFlags: 0
