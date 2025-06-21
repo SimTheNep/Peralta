@@ -10,7 +10,7 @@ public class Box : MonoBehaviour
 
     private void Start()
     {
-        Water = GetComponent<Grid/>();
+        Water = GetComponent<Tilemap>();
 
     }
 
