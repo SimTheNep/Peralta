@@ -20,11 +20,16 @@ public class HauntSkill : MonoBehaviour
     private GameObject possessedEnemy = null;
     private ControlEnemy originalEnemyControl = null;
 
-    private bool isPossessing = false;
+    public bool isPossessing = false;
 
     private CameraFollow cameraFollow;
 
-    private bool isActive = false;
+    public bool isActive = false;
+
+    public ManaSystem manaSystem;
+    public float manaCostPerSecond = 1f;
+
+
 
     void Awake()
     {
@@ -39,51 +44,26 @@ public class HauntSkill : MonoBehaviour
         phaseSkill = GetComponent<PhaseSkill>();
 
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
+
+        if (manaSystem == null)
+            manaSystem = FindFirstObjectByType<ManaSystem>();
+
     }
 
     void Update()
     {
-        if (hoverSkill == null)
-            return;
-
         if (isActive)
         {
-            hoverSkill.timeRemaining -= Time.deltaTime;
-            if (hoverSkill.timeRemaining <= 0f)
+            manaSystem.SpendMana(manaCostPerSecond * Time.deltaTime);
+            if (manaSystem.currentMana <= 0f)
             {
-                hoverSkill.timeRemaining = 0f;
+                manaSystem.currentMana = 0f;
                 EndSkillOrPossession();
+                isActive = false;
             }
         }
-        else
-        {
-            if (hoverSkill.timeRemaining < hoverSkill.Time)
-            {
-                hoverSkill.timeRemaining += Time.deltaTime;
-                if (hoverSkill.timeRemaining > hoverSkill.Time)
-                    hoverSkill.timeRemaining = hoverSkill.Time;
-            }
-        }
-    }
 
 
-
-    public void Execute()
-    {
-        if (hoverSkill == null || hoverSkill.timeRemaining <= 0f)
-            return;
-
-        Debug.Log("Executando HauntSkill...");
-        if (isPossessing)
-        {
-            TrySwitchOrReleasePossession();
-        }
-        else
-        {
-            TryPossessEnemy();
-        }
-
-        isActive = true;
     }
 
     void EndSkillOrPossession()
@@ -95,6 +75,24 @@ public class HauntSkill : MonoBehaviour
 
         isActive = false;
     }
+
+    public void Execute()
+    {
+        if (manaSystem.HasMana(0.1f)) // valor min para ativar
+        {
+            isActive = true;
+            Debug.Log("Executando HauntSkill...");
+            if (isPossessing)
+            {
+                TrySwitchOrReleasePossession();
+            }
+            else
+            {
+                TryPossessEnemy();
+            }
+        }
+    }
+
 
     void TryPossessEnemy()
     {
@@ -121,6 +119,9 @@ public class HauntSkill : MonoBehaviour
                 {
                     HidePeralta();
                     isPossessing = true;
+
+                    if (peraltaSkills != null)
+                        peraltaSkills.isPossessing = true;
 
                     if (cameraFollow != null)
                         cameraFollow.SetTarget(possessedEnemy.transform);
@@ -171,7 +172,14 @@ public class HauntSkill : MonoBehaviour
         if (possessedEnemy != null)
         {
             var pc = possessedEnemy.GetComponent<PossessedEnemyController>();
-            if (pc != null) Destroy(pc);
+            if (pc != null)
+            {
+                pc.RestoreOriginalFlip(); 
+                Destroy(pc);
+            }
+            var peraltaSprite = peralta.GetComponent<SpriteRenderer>();
+            if (peraltaSprite != null)
+                peraltaSprite.flipX = false;
 
             if (originalEnemyControl != null)
                 originalEnemyControl.enabled = true;
@@ -189,10 +197,15 @@ public class HauntSkill : MonoBehaviour
 
             possessedEnemy = null;
             originalEnemyControl = null;
+
             isPossessing = false;
             isActive = false;
+            if (peraltaSkills != null)
+                peraltaSkills.isPossessing = false;
 
             Debug.Log("Despossuiu.");
+
+            
         }
     }
 
@@ -247,7 +260,7 @@ public class HauntSkill : MonoBehaviour
         return isPossessing;
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected() //serve apenas para vermos o raio
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, hauntRange);

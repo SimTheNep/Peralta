@@ -20,7 +20,9 @@ public class HUDController : MonoBehaviour
 
     private float possessionFill = 0f;  
     private float possessionTarget = 6f; 
-    private float possessionSpeed = 6f; 
+    private float possessionSpeed = 6f;
+
+    public ManaSystem manaSystem;
 
     public void SetHUDVisible(bool visible)
     {
@@ -29,18 +31,22 @@ public class HUDController : MonoBehaviour
 
     void Start()
     {
-        // Refer�ncias
+        //refs
         GabrielHealth gabrielHealth = FindAnyObjectByType<GabrielHealth>();
 
         hoverSkill = FindFirstObjectByType<HoverSkill>();
         hauntSkill = FindFirstObjectByType<HauntSkill>();
+
+        if (manaSystem == null)
+            manaSystem = FindFirstObjectByType<ManaSystem>();
     }
 
     void Update()
     {
         UpdateGabrielHUD();
         UpdatePeraltaMana();
-        UpdatePeraltaPossession();
+        UpdatePossessionHUD();
+        
     }
 
     void UpdateGabrielHUD()
@@ -54,25 +60,30 @@ public class HUDController : MonoBehaviour
 
     void UpdatePeraltaMana()
     {
-        if (hoverSkill != null && peraltaManaImage != null && peraltaManaSprites.Length > 0)
+        if (manaSystem != null && peraltaManaImage != null && peraltaManaSprites.Length > 0)
         {
-            float percent = Mathf.Clamp01(hoverSkill.timeRemaining / hoverSkill.Time);
+            float percent = Mathf.Clamp01(manaSystem.currentMana / manaSystem.maxMana);
             int index = Mathf.Clamp(Mathf.RoundToInt((1 - percent) * 6), 0, 6);
-
             peraltaManaImage.sprite = peraltaManaSprites[index];
         }
     }
 
-    void UpdatePeraltaPossession()
+    void UpdatePossessionHUD()
     {
-        if (peraltaPossessionSprites == null || peraltaPossessionSprites.Length == 0 || peraltaPossessionImage == null || hauntSkill == null)
+        if (hauntSkill == null || peraltaPossessionImage == null || peraltaPossessionSprites.Length == 0)
             return;
 
-        possessionTarget = hauntSkill.IsPossessing() ? 6f : 0f;
+        
+        possessionTarget = hauntSkill.isPossessing ? 6f : 0f;
 
+        
         possessionFill = Mathf.MoveTowards(possessionFill, possessionTarget, possessionSpeed * Time.deltaTime);
 
+        
         int index = Mathf.Clamp(Mathf.RoundToInt(possessionFill), 0, 6);
+
+        
         peraltaPossessionImage.sprite = peraltaPossessionSprites[index];
     }
+
 }

@@ -23,8 +23,12 @@ public class CharacterSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if (Keyboard.current.tabKey.wasPressedThisFrame)
+        var peraltaSkills = peralta.GetComponent<PeraltaSkills>();
+        if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
+            if (peraltaSkills != null && peraltaSkills.isPossessing)
+                return;
+
             if (currentCharacter == gabriel)
             {
                 SetActiveCharacter(peralta);

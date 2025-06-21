@@ -33,23 +33,14 @@ public class PeraltaSkills : MonoBehaviour
     {
 
         if (!canUseSkills) return;
-        //se estiver a possuir só deixa usar haunt e n cicla
-        if (isPossessing)
-        {
-            if (currentSkill != SkillType.Haunt)
-            {
-                return;  // bloqueia todas as skills exceto Haunt
 
-            }
-        }
-        else
-        {
-            // Ciclar skill se se não estiver a possuir
-            if (Keyboard.current.yKey.wasPressedThisFrame && !Keyboard.current.bKey.isPressed)
-            {
-                CycleSkill();
-            }
-        }
+        // Durante possessão, só permite Haunt
+        if (isPossessing && currentSkill != SkillType.Haunt)
+            return;
+
+        // Ciclar skills apenas se não estiver a possuir
+        if (!isPossessing && Keyboard.current.yKey.wasPressedThisFrame && !Keyboard.current.bKey.isPressed) //rever este input
+            CycleSkill();
 
 
         bool yPressed = Keyboard.current.yKey.isPressed;
