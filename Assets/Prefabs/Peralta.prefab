@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 7538798837028385987}
   - component: {fileID: 3171885917608872271}
   - component: {fileID: 6532183511238774704}
+  - component: {fileID: 1739608285953190528}
   m_Layer: 6
   m_Name: Peralta
   m_TagString: Peralta
@@ -273,6 +274,10 @@ MonoBehaviour:
   hauntRange: 2
   peraltaInventoryUI: {fileID: 0}
   peralta: {fileID: 2844302221783558123}
+  isPossessing: 0
+  isActive: 0
+  manaSystem: {fileID: 1739608285953190528}
+  manaCostPerSecond: 1
 --- !u!114 &8342265527225143512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,10 +290,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22908531aba9281f2be9d4461b12f57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Time: 6
-  timeRemaining: 0
+  manaSystem: {fileID: 1739608285953190528}
+  manaCostPerSecond: 1
   Active: 0
   Return: 0
+  isActive: 0
 --- !u!114 &7538798837028385987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,3 +347,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1739608285953190528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844302221783558123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a1554862fd049458da6c757c9fa3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 6
+  currentMana: 6
+  regenRate: 1
+  hoverSkill: {fileID: 8342265527225143512}
+  hauntSkill: {fileID: 6504016026059253130}

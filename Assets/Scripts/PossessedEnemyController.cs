@@ -5,10 +5,22 @@ public class PossessedEnemyController : MonoBehaviour
 {
     private float speed = 5f;
     private HauntSkill hauntSkill;
+    private SpriteRenderer spriteRenderer;
+    private bool originalFlipX;
+
+    private float originalYRotation;
 
     public void Init(HauntSkill skillRef)
     {
         hauntSkill = skillRef;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+
+        if (spriteRenderer != null)
+            originalFlipX = spriteRenderer.flipX;
+
+        originalYRotation = transform.eulerAngles.y;//guarda a rotation original
+        transform.eulerAngles = Vector3.zero;//força a rotação para 0 para o flipx funcionar
     }
 
     void Update()
@@ -19,21 +31,23 @@ public class PossessedEnemyController : MonoBehaviour
 
         transform.position += move * speed * Time.deltaTime;
 
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        /*if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             TryInteractWithLever();
-        }
+        }*/
 
-        if (h != 0)
-        {
-            Vector3 scale = transform.localScale;
-            scale.x = Mathf.Sign(h) * Mathf.Abs(scale.x);
-            transform.localScale = scale;
-        }
+        if (h != 0 && spriteRenderer != null)
+            spriteRenderer.flipX = h > 0;
 
     }
 
-    void TryInteractWithLever()
+    public void RestoreOriginalFlip()
+    {
+        if (spriteRenderer != null)
+            spriteRenderer.flipX = originalFlipX;
+        transform.eulerAngles = new Vector3(0, originalYRotation, 0);
+    }
+    /*void TryInteractWithLever()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
         if (hit.collider != null && hit.collider.CompareTag("Lever"))
@@ -44,5 +58,5 @@ public class PossessedEnemyController : MonoBehaviour
                 lever.Activate();
             }
         }
-    }
+    }*/
 }
