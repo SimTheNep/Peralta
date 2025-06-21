@@ -52,8 +52,6 @@ public class ControlEnemy : MonoBehaviour
             Estate = "Active";
         }
 
-
-
         if (Life <= 0)
         {
             animator.Play("Death_Inimigo01");
@@ -65,7 +63,11 @@ public class ControlEnemy : MonoBehaviour
 
         }
         
- 
+        GabrielHealth gabrielHealth = AlvoGOB.GetComponent<GabrielHealth>();
+        if (gabrielHealth != null && gabrielHealth.currentHealth <= 0)
+        {
+            Estate = "Idle";
+        }
         
         //sistema de movimento base
 
@@ -161,8 +163,8 @@ public class ControlEnemy : MonoBehaviour
             {
                 Debug.Log("[ENEMY] Gabriel encontrado e estado ativo. Aplicando dano.");
                 gabrielHealth.TakeDamage(Dano);
-
                 Estate = "Tired";
+
             }
             else
             {

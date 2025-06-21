@@ -33,7 +33,7 @@ public class GabrielHealth : MonoBehaviour
             animator.SetTrigger("Damage");
         }
 
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
 
             Die();
