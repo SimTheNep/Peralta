@@ -183,7 +183,7 @@ MonoBehaviour:
   itemName: Pedra
   icon: {fileID: -7833671090200325546, guid: 7bb9735e66c99f747b9cff64f2aff53d, type: 3}
   itemType: 1
-  isStackable: 1
+  isStackable: 0
   quantity: 1
   damage: 1
   price: 6

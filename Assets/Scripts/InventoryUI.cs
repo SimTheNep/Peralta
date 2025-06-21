@@ -4,14 +4,14 @@ using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Image[] slotBackgrounds;      
-    public Sprite normalSlotSprite;      
-    public Sprite selectedSlotSprite;    
-    public Image[] itemIcons;            
+    public Image[] slotBackgrounds;
+    public Sprite normalSlotSprite;
+    public Sprite selectedSlotSprite;
+    public Image[] itemIcons;
     public TMP_Text[] itemQuantities;
 
-    private Item[] items = new Item[3]; 
-
+    private Item[] items = new Item[3];
+    private MagicItem[] MagicItems = new MagicItem[3];
     private int selectedSlot = 0;
 
     public void SetInventoryVisible(bool visible)
@@ -21,29 +21,20 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-      
         UpdateUI(items, selectedSlot);
     }
 
     public void UpdateUI(Item[] items, int selectedSlot)
     {
-        
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < slotBackgrounds.Length; i++)
         {
             slotBackgrounds[i].sprite = (i == selectedSlot) ? selectedSlotSprite : normalSlotSprite;
 
-            // muda a cor: vermelho se for o slot selecionado, branco caso contr�rio. s� enquanto n temos o sprite final 
-            // slotBackgrounds[i].color = (i == selectedSlot) ? Color.red : Color.white;
-
             if (items[i] != null && items[i].icon != null)
             {
-                
                 itemIcons[i].sprite = items[i].icon;
                 itemIcons[i].enabled = true;
                 itemIcons[i].color = Color.white;
-
-
-
 
                 if (items[i].isStackable && items[i].quantity > 1)
                     itemQuantities[i].text = items[i].quantity.ToString();
@@ -59,20 +50,20 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void UpdateUI(MagicItem[] items, int selectedSlot)
+    public void UpdateUI(MagicItem[] MagicItems, int selectedSlot)
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < slotBackgrounds.Length; i++)
         {
             slotBackgrounds[i].sprite = (i == selectedSlot) ? selectedSlotSprite : normalSlotSprite;
 
-            if (items[i] != null && items[i].icon != null)
+            if (MagicItems[i] != null && MagicItems[i].icon != null)
             {
-                itemIcons[i].sprite = items[i].icon;
+                itemIcons[i].sprite = MagicItems[i].icon;
                 itemIcons[i].enabled = true;
                 itemIcons[i].color = Color.white;
 
-                if (items[i].isStackable && items[i].quantity > 1)
-                    itemQuantities[i].text = items[i].quantity.ToString();
+                if (MagicItems[i].isStackable && MagicItems[i].quantity > 1)
+                    itemQuantities[i].text = MagicItems[i].quantity.ToString();
                 else
                     itemQuantities[i].text = "";
             }

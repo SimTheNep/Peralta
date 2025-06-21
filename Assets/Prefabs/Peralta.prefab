@@ -237,6 +237,11 @@ MonoBehaviour:
   selectedSlot: 0
   peraltaSkills: {fileID: 392852926930219903}
   inventoryUI: {fileID: 0}
+  Alma: {fileID: 8355932442162324796, guid: 016e2f9f54e49e640a917a0ed2b1b9b3, type: 3}
+  serpenteEncantada: {fileID: 8355932442162324796, guid: 4088e4a89c8ce861e852809066416681, type: 3}
+  asaDeIcaro: {fileID: 8355932442162324796, guid: afe6878e1ceca01d695f284635b219a2, type: 3}
+  sorteDeNavegador: {fileID: 8355932442162324796, guid: 22dc5bf9680b542dbabe5ea194d23baa, type: 3}
+  rosaDeAragao: {fileID: 8355932442162324796, guid: 328bf2d9210caca87bf6741a0f402f9f, type: 3}
   canUseInventory: 1
 --- !u!114 &2448324745921832461
 MonoBehaviour:

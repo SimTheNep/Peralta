@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415a59a1268720f4bafdeb2a506d6174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gabrielController: {fileID: 0}
   skillUIImage: {fileID: 0}
   skillSprites:
   - {fileID: 5967214536038645678, guid: d0c42b4b565d4dba49db4a2afbc7494c, type: 3}
@@ -230,6 +231,7 @@ MonoBehaviour:
   throwSkill: {fileID: 7164898276760932456}
   attackSkill: {fileID: 3921725513960240834}
   gabrielnventory: {fileID: 3710009515345946728}
+  animator: {fileID: 0}
   canUseSkills: 1
 --- !u!114 &2692514466950442923
 MonoBehaviour:
@@ -275,6 +277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c7ebb2e2d0355468a72103fbeb144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0
+  cooldown: 0
+  baseDuration: 0.6
+  baseCooldown: 0.6
   attackRadius: 1.5
   gabrielInventoryManager: {fileID: 3710009515345946728}
   animator: {fileID: 4259193411201505744}
@@ -318,8 +324,17 @@ MonoBehaviour:
   selectedSlot: 0
   gabrielskills: {fileID: 3185626848438632142}
   inventoryUI: {fileID: 0}
-  stonePrefab: {fileID: 5596868613322933132, guid: 190355b20e1823648921ba7044ed8e89, type: 3}
-  stickPrefab: {fileID: 5596868613322933132, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+  pedra: {fileID: 5596868613322933132, guid: 190355b20e1823648921ba7044ed8e89, type: 3}
+  chanfana: {fileID: 5596868613322933132, guid: 231b55eabda28e71b89b4381f7422f4e, type: 3}
+  frascoDeAgua: {fileID: 5596868613322933132, guid: f637f158804ea270ba269a41b55ad6a9, type: 3}
+  tigelada: {fileID: 5596868613322933132, guid: 3fa8bf96b06d65ebfa5f260395b0ccf6, type: 3}
+  cabritoAssado: {fileID: 5596868613322933132, guid: 0165d7392ae9570f69ec47f4c0f7ec5e, type: 3}
+  espadaDeAntenas: {fileID: 5596868613322933132, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+  espadaEnferrujada: {fileID: 5596868613322933132, guid: fe765169dd3245b83b0785cdfe62bbae, type: 3}
+  falcata: {fileID: 5596868613322933132, guid: cc1a67c42f8e63fbdb3d067b0c3e6950, type: 3}
+  montante: {fileID: 5596868613322933132, guid: 33bfc4ce6224c3792b4c72064d1936d8, type: 3}
+  cranio: {fileID: 5596868613322933132, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+  chave: {fileID: 306348430091817049, guid: dc973ef54405aaf4e881d36ea2e35057, type: 3}
   canUseInventory: 1
 --- !u!95 &4259193411201505744
 Animator:
@@ -358,3 +373,5 @@ MonoBehaviour:
   maxHealth: 6
   currentHealth: 0
   animator: {fileID: 4259193411201505744}
+  gameOverOverlay: {fileID: 0}
+  rosasDeAragao: 1

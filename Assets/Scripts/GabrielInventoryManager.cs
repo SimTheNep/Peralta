@@ -13,8 +13,17 @@ public class GabrielInventoryManager : MonoBehaviour
     public InventoryUI inventoryUI;
 
 
-    public GameObject stonePrefab;
-    public GameObject stickPrefab;
+    public GameObject pedra;
+    public GameObject chanfana;
+    public GameObject frascoDeAgua;
+    public GameObject tigelada;
+    public GameObject cabritoAssado;
+    public GameObject espadaDeAntenas;
+    public GameObject espadaEnferrujada;
+    public GameObject falcata;
+    public GameObject montante;
+    public GameObject cranio;
+    public GameObject chave;
 
     public bool canUseInventory = true;
 
@@ -56,7 +65,7 @@ public class GabrielInventoryManager : MonoBehaviour
                 Item newItem = pickup.itemData.GetItem();
                 TryPickupItem(newItem);
                 Destroy(pickup.gameObject);
-                break;//faz com que apanhe só 1 de cada vez, mesmo tendo varios objetos no raio
+                break;//faz com que apanhe sï¿½ 1 de cada vez, mesmo tendo varios objetos no raio
             }
         }
     }
@@ -134,7 +143,7 @@ public class GabrielInventoryManager : MonoBehaviour
         {
             slots[selectedSlot] = null;
         }*/ 
-        //o codigo comentado acima faz desparecer a arma de ataque, mas não é suposto isso acontecer, mas se no futuro quisermos meter durabilidade é aqui
+        //o codigo comentado acima faz desparecer a arma de ataque, mas nï¿½o ï¿½ suposto isso acontecer, mas se no futuro quisermos meter durabilidade ï¿½ aqui
     }
 
     void DropItemToScene(Item item)
@@ -144,18 +153,45 @@ public class GabrielInventoryManager : MonoBehaviour
         switch (item.itemName)
         {
             case "Pedra":
-                prefab = stonePrefab;
+                prefab = pedra;
                 break;
-            case "Pau":
-                prefab = stickPrefab;
+            case "Chanfana":
+                prefab = chanfana;
                 break;
+            case "CrÃ¢nio":
+                prefab = cranio;
+            break;
+            case "Espada de Antenas":
+                prefab = espadaDeAntenas;
+            break;
+            case "Espada Enferrujada":
+                prefab = espadaEnferrujada;
+            break;
+            case "Falcata":
+                prefab = falcata;
+            break;
+            case "Montante":
+                prefab = montante;
+            break;
+            case "Frasco de Ã€gua":
+                prefab = frascoDeAgua;
+            break;
+            case "Chave":
+                prefab = chave;
+            break;
+            case "Cabrito Assado":
+                prefab = cabritoAssado;
+            break;
+            case "Tigelada":
+                prefab = tigelada;
+            break;
         }
 
         if (prefab != null)
         {
             for (int i = 0; i < item.quantity; i++)
             {
-                // Distribui os itens com leve offset para evitar sobreposição total
+                // Distribui os itens com leve offset para evitar sobreposiï¿½ï¿½o total
                 Vector3 dropOffset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.2f, 0.2f), 0);
                 Vector3 dropPosition = transform.position + Vector3.right * 1f + dropOffset;
                 Instantiate(prefab, dropPosition, Quaternion.identity);

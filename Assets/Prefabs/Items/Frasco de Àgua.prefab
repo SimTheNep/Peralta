@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d6e703aeaa1b24d994307ba1c87dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Pedra
+  itemName: frascoDeAgua
   icon: {fileID: -7583409310137716746, guid: 7bb9735e66c99f747b9cff64f2aff53d, type: 3}
   itemType: 1
   isStackable: 1
