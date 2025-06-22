@@ -50,7 +50,7 @@ public class ToggleWaterOnBox : MonoBehaviour
             if (trigger == null)
                 continue;
 
-            Collider2D[] results = new Collider2D[5];
+            List<Collider2D> results = new List<Collider2D>();
             int count = trigger.Overlap(boxFilter, results);
 
             if (count == 0)
@@ -62,17 +62,18 @@ public class ToggleWaterOnBox : MonoBehaviour
 
         if (allCovered && !waterDisabled)
         {
-            Debug.Log("todas zonas cobertas desativando agua");
             waterDisabled = true;
             StartCoroutine(FadeOutWater());
+            Debug.Log("todas zonas cobertas desativando agua");
         }
         else if (!allCovered && waterDisabled)
         {
-            Debug.Log("zona descoberta reativando agua");
             waterDisabled = false;
             StartCoroutine(FadeInWater());
+            Debug.Log("zona descoberta reativando agua");
         }
     }
+
 
     IEnumerator FadeOutWater()
     {
