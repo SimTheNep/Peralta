@@ -48,6 +48,11 @@ public class DialogueManager : MonoBehaviour
 
     public DialogueSequence initialSequence; //para inciiar
 
+    public bool IsDialogueActive()
+    {
+        return dialogueActive;
+    }
+
 
     private void Start()
     {

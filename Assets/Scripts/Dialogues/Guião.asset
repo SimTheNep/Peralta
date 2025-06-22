@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01617b6960948742ad710be93f6cf28, type: 3}
+  m_Name: "Gui\xE3o"
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: 0
+    text: "Ahahah! Toma l\xE1, otario!"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: "Est\xE1is ferido, Infante?"
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: "Senhora... n\xE3o fa\xE7o ideia de quem... ou o que \xE9s, mas isto \xE9
+      mesmo cena de Legend of Zelda!"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: "L\xE9jend\u2026 Z\xE9lida? Parece latim, mas n\xE3o fa\xE7o ideia do que
+      \xE9\u2026 isso \xE9 coisa que se come ou se conjura?"
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 1
+    text: "Tem cautela com essa l\xE2mina, Infante. Talvez encontreis sustento em
+      barris v\xE1-se l\xE1 saber como arranja tal."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: "Mas\u2026 quem\u2026 o que \xE9s tu afinal?"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: "\u2026 Sou a Peralta, um \u2026 esp\xEDrito. Ou um fantasma como os mo\xE7os
+      costumam dizer."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: "Tu \u2026 n\xE3o me vais roubar a alma ou assim, pois n\xE3o?"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: "N\xE3o te apoquentes, infante! N\xE3o teria qualquer uso para a tua alma
+      juvenil. Embora tenhas extra\xEDdo a alma daquela besta."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: "Ent\xE3o\u2026 o que queres?"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: "O mesmo que tu, suponho eu. Voltar para casa. Infelizmente, temo que estas
+      catacumbas me impe\xE7am disso."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: "Mas se \xE9s um fantasmas, n\xE3o podias tipo, sei l\xE1, simplesmente
+      atravessar as paredes para sair daqui?"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: "N\xE3o \xE9 t\xE3o simples, jovem. Para n\xF3s, espir\xEDtos o mundo manifesta-se
+      ao contr\xE1rio. Os l\xEDquidos tornam-se s\xF3lidos, e os s\xF3lidos, l\xEDquidos."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 1
+    text: "Estas catacumbas est\xE3o cercadas por mantos de \xE1gua e a humidade
+      \xE9 tanta que se emprenhou nas paredes."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 1
+    text: "Al\xE9m disso, os corredores est\xE3o repletos de monstros, mas admito
+      que este \xFAltimo n\xE3o me causar\xE1 tanta mol\xE9stia quanto a ti, mo\xE7o."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: "N\xE3\xE3\xE3o! Vou ter de comer Chanfana ran\xE7osa para o resto da vida!"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: "N\xE3o, necessariamente."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 1
+    text: Separadamente, ambos, certamente, falharemos nas nossas tentativas de escapar
+      deste lugar infernal.
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 1
+    text: "Mas, s\xF3 talvez, uma alian\xE7a entre n\xF3s nos possa dar uma oportunidade.
+      Com os meus poderes fantasmag\xF3ricos e a tua... bem... fogosidade."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: Hey!
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: Talvez ainda haja uma chance, por muito pequena que seja, de escaparmos
+      disto vivos...
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: ...Hmmm... Vivos?
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: Tu entendes o que quis dizer... O que me dizes, Infante?
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: "Ok, pode ser. Mas j\xE1 chega de \"Infante\". O meu nome \xE9 Gabriel."
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: Prazer, Sir Gabriel.
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: Tranquilo, Peralta. Bate aqui!
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: ...Bater? Porque atacaria um aliado? Pensei que...
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: "N\xE3o, \xE9 tipo uma coisa que amigos fazem... est\xE1s a ver \xE9 tipo...
+      esquece! Trabalhamos nisso depois."
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: "Agora vamos mas \xE9 embora antes que outro daqueles bichos apare\xE7a."
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: ... "Amigos"...
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 0
