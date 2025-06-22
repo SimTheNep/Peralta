@@ -26,6 +26,7 @@ public class TutorialEvents : MonoBehaviour
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         StartCoroutine(FallAndDieSequence());
     }
 
@@ -79,6 +80,8 @@ public class TutorialEvents : MonoBehaviour
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         if (gabrielAnimator != null) gabrielAnimator.SetTrigger("Damage");
     }
 
@@ -87,6 +90,9 @@ public class TutorialEvents : MonoBehaviour
     {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -107,9 +113,15 @@ public class TutorialEvents : MonoBehaviour
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         yield return new WaitForSeconds(0.35f);
         gabrielController.GetComponent<SpriteRenderer>().flipX = true;
         yield return new WaitForSeconds(0.35f);
+=======
+        yield return new WaitForSeconds(0.15f);
+        gabrielController.GetComponent<SpriteRenderer>().flipX = true;
+        yield return new WaitForSeconds(0.15f);
+>>>>>>> Stashed changes
 =======
         yield return new WaitForSeconds(0.15f);
         gabrielController.GetComponent<SpriteRenderer>().flipX = true;
