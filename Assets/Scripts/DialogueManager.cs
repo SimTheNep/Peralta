@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     public CameraFollow cameraFollow;
     public Transform gabrielTransform;
     public Transform peraltaTransform;
+    public Transform cabriolaTransform;
 
     public TutorialEvents tutorialEvents;
 
@@ -154,6 +155,11 @@ public class DialogueManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(line.text))
         {
             dialogueUIGroup.SetActive(false);
+            HandleTutorialEvent(line.tutorialEvent);
+
+            // Avança automaticamente após o evento (ajusta o tempo conforme o evento)
+            float autoAdvanceDelay = GetAutoAdvanceDelay(line.tutorialEvent);
+            StartCoroutine(AutoAdvanceLine(autoAdvanceDelay));
         }
         else
         {
@@ -161,10 +167,10 @@ public class DialogueManager : MonoBehaviour
             SetDialogueSide(line.isRightSide);
             nameText.text = line.speaker.ToString();
             StartCoroutine(TypeText(line.text));
+            HandleTutorialEvent(line.tutorialEvent);
         }
 
-            
-        HandleTutorialEvent(line.tutorialEvent);
+ 
 
 
         // Mudar a camara para o personagem que fala
@@ -176,9 +182,36 @@ public class DialogueManager : MonoBehaviour
             case DialogueSpeaker.Peralta:
                 cameraFollow.SetTarget(peraltaTransform);
                 break;
-                // Adiciona aqui se quiseres para a Cabriola
+            case DialogueSpeaker.Cabriola:
+                cameraFollow.SetTarget(cabriolaTransform);
+                break;
         }
         // Adaptar isto para inimgos e npcs 
+    }
+
+    private IEnumerator AutoAdvanceLine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        NextLine();
+    }
+
+    private float GetAutoAdvanceDelay(TutorialEventType evt)
+    {
+        switch (evt)
+        {
+            case TutorialEventType.PlayFallAnimation: return 2.0f;
+            case TutorialEventType.PlayGetUpAnimation: return 1.0f;
+            case TutorialEventType.FlipConfusedLook: return 0.8f;
+            case TutorialEventType.ShowExclamation: return 1.0f;
+            case TutorialEventType.ShowInventory: return 1.5f;
+            case TutorialEventType.HideInventory: return 0.5f;
+            case TutorialEventType.LookAround: return 1.0f;
+            case TutorialEventType.SpawnCabriola: return 0.8f;
+            case TutorialEventType.FocusCameraCabriola: return 0.5f;
+            case TutorialEventType.FocusCameraGabriel: return 0.5f;
+            // ... outros eventos que queiras controlar o tempo
+            default: return 0.8f;
+        }
     }
 
     void HandleTutorialEvent(TutorialEventType evt)

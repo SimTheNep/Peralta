@@ -23,12 +23,54 @@ public class TutorialEvents : MonoBehaviour
     // 1. Animação de queda/dano
     public void PlayFallAnimation()
     {
-        if (gabrielAnimator != null) gabrielAnimator.SetTrigger("Damage");
+        StartCoroutine(FallAndDieSequence());
     }
+
+    private IEnumerator FallAndDieSequence()
+    {
+        // 1. Prepara a animação de Damage (fica no último frame durante a queda)
+        if (gabrielAnimator != null)
+        {
+            gabrielAnimator.SetTrigger("Damage");
+            yield return null; // Garante que o Animator atualiza
+            gabrielAnimator.speed = 0f; // Pausa no primeiro frame de Damage
+        }
+
+        // 2. Move Gabriel do topo para a posição inicial (queda)
+        Vector3 start = gabrielTransform.position + new Vector3(0, 5f, 0); // ajusta o offset conforme precisares
+        Vector3 end = gabrielTransform.position;
+        gabrielTransform.position = start;
+
+        float duration = 2.0f; // tempo da queda (ajusta para mais lento)
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            gabrielTransform.position = Vector3.Lerp(start, end, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        gabrielTransform.position = end;
+
+        // 3. Agora toca a animação Die (e fica parado no último frame)
+        if (gabrielAnimator != null)
+        {
+            gabrielAnimator.speed = 1f; // Volta a ativar o Animator
+            gabrielAnimator.SetTrigger("Die");
+            yield return null; // Espera um frame para garantir que a animação começa
+            yield return new WaitForSeconds(0.1f); // Pequeno delay para garantir transição
+
+            // Pausa no último frame da animação Die
+            gabrielAnimator.speed = 0f;
+        }
+
+    }
+
+
 
     // 2. Animação de levantar (morte invertida)
     public void PlayGetUpAnimation()
     {
+        gabrielAnimator.speed = 1f;
         if (gabrielAnimator != null) gabrielAnimator.SetTrigger("GetUp");
     }
 
@@ -41,9 +83,9 @@ public class TutorialEvents : MonoBehaviour
     private IEnumerator FlipRoutine()
     {
         gabrielController.GetComponent<SpriteRenderer>().flipX = false;
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.35f);
         gabrielController.GetComponent<SpriteRenderer>().flipX = true;
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.35f);
         gabrielController.GetComponent<SpriteRenderer>().flipX = false;
     }
 
