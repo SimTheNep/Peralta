@@ -5,8 +5,6 @@ public class Chest : MonoBehaviour
 {
     public PeraltaInventoryManager inventoryManager;
 
-    private static List<string> droppedAttackables = new List<string>();
-
     public enum ChestType
     {
         Common,
@@ -29,23 +27,21 @@ public class Chest : MonoBehaviour
     public Sprite goldSprite;
     public Sprite barrelSprite;
 
-    public string playerName = "Gabriel";           
-    public KeyCode interactKey = KeyCode.B; // ignored
+    public string playerName = "Gabriel";
 
     public List<ChestLootEntry> lootTables;
 
-    private Animator chestAnimator;                                 
+    public AudioSource audioSource;
+    public AudioClip openSound;
+
+    private Animator chestAnimator;
     private bool isPlayerNearby = false;
     private GameObject player;
     public bool isOpened = false;
 
-    public AudioSource audioSource;    
-    public AudioClip openSound;       
-
     void Start()
     {
-        Debug.Log("start chest");
-        chestAnimator = gameObject.GetComponent<Animator>();
+        chestAnimator = GetComponent<Animator>();
         chestAnimator.enabled = false;
         SetSprite(chestType);
 
@@ -60,15 +56,13 @@ public class Chest : MonoBehaviour
             chestAnimator.enabled = true;
             player.GetComponent<Animator>().SetTrigger("Throw");
 
-            string triggerName = GetTrigger(chestType);
-            chestAnimator.SetTrigger(triggerName);
+            chestAnimator.SetTrigger(GetTrigger(chestType));
             isOpened = true;
+
             DropItems();
 
             if (audioSource != null && openSound != null)
-            {
                 audioSource.PlayOneShot(openSound);
-            }
         }
     }
 
@@ -77,69 +71,62 @@ public class Chest : MonoBehaviour
         ChestLootEntry entry = lootTables.Find(e => e.chestType == chestType);
         if (entry == null || entry.possibleItems == null || entry.possibleItems.Count == 0) return;
 
-        int droppedCount = 0;
         List<GameObject> availableItems = new List<GameObject>(entry.possibleItems);
+        List<string> localDroppedAttackables = new List<string>();
+        int droppedCount = 0;
 
         while (droppedCount < entry.itemCount && availableItems.Count > 0)
         {
-            GameObject selectedPrefab = GetWeight(availableItems);
-            if (selectedPrefab != null)
+            GameObject selectedPrefab = GetWeightedItem(availableItems);
+            if (selectedPrefab == null) break;
+
+            ItemData itemData = selectedPrefab.GetComponent<ItemData>();
+            string itemName = selectedPrefab.name;
+            bool isAttackable = itemData != null && itemData.itemType == ItemType.Attackable;
+
+            // Skip if already dropped in this chest
+            if (isAttackable && localDroppedAttackables.Contains(itemName))
             {
-                ItemData itemData = selectedPrefab.GetComponent<ItemData>();
-                string itemName = selectedPrefab.name;
-
-                bool isAttackable = itemData != null && itemData.itemType == ItemType.Attackable;
-
-                if (isAttackable && droppedAttackables.Contains(itemName))
-                {
-                    availableItems.Remove(selectedPrefab);
-                    continue; 
-                }
-
-                if (isAttackable)
-                {
-                    droppedAttackables.Add(itemName);
-                }
-
-                Vector3 offset = new Vector3(Random.Range(-0.8f, 0.8f), Random.Range(-0.8f, 0.8f), 0);
-                Instantiate(selectedPrefab, transform.position + offset, Quaternion.identity);
-                droppedCount++;
+                availableItems.Remove(selectedPrefab);
+                continue;
             }
+
+            if (isAttackable)
+                localDroppedAttackables.Add(itemName);
+
+            Vector3 offset = new Vector3(Random.Range(-0.8f, 0.8f), Random.Range(-0.8f, 0.8f), 0);
+            Instantiate(selectedPrefab, transform.position + offset, Quaternion.identity);
+            droppedCount++;
         }
     }
 
-    private GameObject GetWeight(List<GameObject> itemList)
+    private GameObject GetWeightedItem(List<GameObject> itemList)
     {
-        bool HasSorteNavegador = inventoryManager != null && inventoryManager.HasSorteNavegador();
-
+        bool hasSorteNavegador = inventoryManager != null && inventoryManager.HasSorteNavegador();
+        float multiplier = hasSorteNavegador ? 3f : 1.5f;
         float totalWeight = 0f;
 
-        float multiplier = 1.5f;
-
-        if (HasSorteNavegador)
-        {
-            print("Aumentou chances");
-            multiplier = 3f;
-        }
+        Dictionary<GameObject, float> weights = new Dictionary<GameObject, float>();
 
         foreach (var prefab in itemList)
         {
-            int price = GetPrice(prefab);
-            totalWeight += 1f / Mathf.Max(price, multiplier);
+            int price = Mathf.Max(GetPrice(prefab), 1);
+            float weight = 1f / (price / multiplier); // Lower price = higher weight
+            weights[prefab] = weight;
+            totalWeight += weight;
         }
 
-        float randomValue = Random.Range(0f, totalWeight);
+        float rand = Random.Range(0f, totalWeight);
         float cumulative = 0f;
 
-        foreach (var prefab in itemList)
+        foreach (var kvp in weights)
         {
-            int price = GetPrice(prefab);
-            cumulative += 1f / Mathf.Max(price, multiplier);
-            if (randomValue <= cumulative)
-                return prefab;
+            cumulative += kvp.Value;
+            if (rand <= cumulative)
+                return kvp.Key;
         }
 
-        return null;
+        return itemList[Random.Range(0, itemList.Count)];
     }
 
     private int GetPrice(GameObject prefab)
@@ -147,11 +134,11 @@ public class Chest : MonoBehaviour
         var itemData = prefab.GetComponent<ItemData>();
         if (itemData != null) return itemData.price;
 
-        var magicData = prefab.GetComponent<MagicItemData>(); 
+        var magicData = prefab.GetComponent<MagicItemData>();
         if (magicData != null) return magicData.price;
 
-        Debug.LogWarning("Prefab missing price component: " + prefab.name);
-        return 1; 
+        Debug.LogWarning("Missing price component: " + prefab.name);
+        return 1;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -176,52 +163,39 @@ public class Chest : MonoBehaviour
     {
         switch (type)
         {
-            case ChestType.Rare:
-                return "RareOpen";
-            case ChestType.Gold:
-                return "GoldOpen";
-            case ChestType.Barrel:
-                return "BarrelOpen";
-            case ChestType.Common:
-            default:
-                return "CommonOpen";
+            case ChestType.Rare: return "RareOpen";
+            case ChestType.Gold: return "GoldOpen";
+            case ChestType.Barrel: return "BarrelOpen";
+            default: return "CommonOpen";
         }
     }
 
     private void SetSprite(ChestType type)
     {
-        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr == null)
         {
-            Debug.LogError("sprite renderer n encontrado");
+            Debug.LogError("SpriteRenderer not found on chest!");
             return;
         }
-
-        Debug.Log("setsprite chamado paras" + type);
 
         switch (type)
         {
             case ChestType.Rare:
-                print("rarechest_init");
-                gameObject.GetComponent<SpriteRenderer>().sprite = rareSprite;
+                sr.sprite = rareSprite;
                 break;
             case ChestType.Gold:
-                print("goldchest_init");
-                gameObject.GetComponent<SpriteRenderer>().sprite = goldSprite;
+                sr.sprite = goldSprite;
                 break;
             case ChestType.Barrel:
-                print("barrelchest_init");
-                gameObject.GetComponent<SpriteRenderer>().sprite = barrelSprite;
+                sr.sprite = barrelSprite;
                 break;
-            case ChestType.Common:
-                print("commonchest_init");
-                gameObject.GetComponent<SpriteRenderer>().sprite = commonSprite;
+            default:
+                sr.sprite = commonSprite;
                 break;
         }
 
         if (sr.sprite == null)
-        {
-            Debug.Log("sprite n atribuido");
-        }
+            Debug.LogWarning("Sprite not set for chest type: " + type);
     }
 }
