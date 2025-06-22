@@ -52,7 +52,7 @@ public class GabrielInventoryManager : MonoBehaviour
         if (!Keyboard.current[actionKey].isPressed && Keyboard.current[itemKey].wasPressedThisFrame)
         {
             selectedSlot = (selectedSlot + 1) % 3;
-            Debug.Log("Slot selecionado: " + selectedSlot);
+         
             inventoryUI.UpdateUI(slots, selectedSlot);
         }
 
@@ -61,7 +61,7 @@ public class GabrielInventoryManager : MonoBehaviour
             TryPickupNearbyItem();
         }
 
-        // Usa item de cura com A + B
+        
         if (Keyboard.current[actionKey].isPressed && Keyboard.current[itemKey].wasPressedThisFrame)
         {
             if (gabrielHealth != null && gabrielHealth.currentHealth < gabrielHealth.maxHealth)
@@ -153,7 +153,7 @@ public class GabrielInventoryManager : MonoBehaviour
                     break;
 
                 default:
-                    Debug.Log($"Item {item.itemName} is healable but has no defined effect.");
+                    Debug.Log($"Item {item.itemName} é de cura mas n tem efeito definido");
                     break;
             }
         }
@@ -208,7 +208,7 @@ public class GabrielInventoryManager : MonoBehaviour
         {
             slots[selectedSlot] = null;
         }*/
-        //o código comentado acima faz desaparecer a arma de ataque, mas não é suposto isso acontecer, mas se no futuro quisermos meter durabilidade é aqui
+        //o código comentado acima faz desaparecer a arma de ataque, mas não é suposto isso acontecer, mas se no futuro quisermos meter durabilidade é assim que se faz
     }
 
     void DropItemToScene(Item item)
