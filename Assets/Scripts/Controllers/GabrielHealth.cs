@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GabrielHealth : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class GabrielHealth : MonoBehaviour
 
     public AudioSource audioSource;       
     public AudioClip damageClip;           
+
+    public List<AudioSource> audioSourcesToStop;
+    public AudioSource audioSourceToPlay;
 
     void Start()
     {
@@ -65,6 +69,7 @@ public class GabrielHealth : MonoBehaviour
 
     IEnumerator GameOverDelay()
     {
+        StopPlay();
         yield return new WaitForSeconds(1f);
 
         if (gameOverOverlay != null)
@@ -151,5 +156,31 @@ public class GabrielHealth : MonoBehaviour
         }
 
         Debug.Log($"Regenerou {amountHealed} de vida sobre {duration} segundos");
+    }
+
+    public void StopPlay()
+    {
+        if (audioSourcesToStop == null || audioSourcesToStop.Count == 0)
+        {
+            Debug.LogWarning("No AudioSources assigned to stop.");
+        }
+        else
+        {
+            foreach (AudioSource source in audioSourcesToStop)
+            {
+                if (source != null && source.isPlaying)
+                {
+                    source.Stop();
+                }
+            }
+        }
+
+        if (audioSourceToPlay == null)
+        {
+            Debug.LogWarning("audioSourceToPlay is not assigned.");
+            return;
+        }
+
+        audioSourceToPlay.Play();
     }
 }
