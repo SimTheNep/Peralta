@@ -294,6 +294,9 @@ public class DialogueManager : MonoBehaviour
         dialogueUIGroup.SetActive(false);
         dialogueActive = false;
         BlockPlayerControls(false);
+
+        if (characterSwitch != null)
+            characterSwitch.EnsureOnlyActiveCharacterUI();
     }
 
     void BlockPlayerControls(bool block)
