@@ -113,7 +113,13 @@ public class PhaseSkill : MonoBehaviour
     IEnumerator PhaseRoutine()
     {
         yield return new WaitForSeconds(0.2f);
-        transform.position = new Vector3(gradeTileWorldPos.x, gradeTileWorldPos.y + teleportOffsetY, transform.position.z);
+
+        Vector3 toTile = gradeTileWorldPos - transform.position;
+
+        Vector3 newPosition = gradeTileWorldPos - toTile;
+
+        Vector3 offset = toTile.normalized * 0.5f;
+        transform.position = newPosition + offset;
     }
 
     void terminaFase()
