@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
@@ -7,17 +7,17 @@ using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
-   
-    public GameObject dialogueUIGroup;
-    public Image dialogueBox; 
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI dialogueText; 
 
-    
+    public GameObject dialogueUIGroup;
+    public Image dialogueBox;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI dialogueText;
+
+
     public Vector2 leftNamePos;
     public Vector2 rightNamePos;
 
-    
+
     public float typingSpeed = 0.03f;
 
     private DialogueSequence currentSequence;
@@ -36,7 +36,7 @@ public class DialogueManager : MonoBehaviour
     public HUDController hudController;
     public InventoryUI gabrielInventoryUI;
     public InventoryUI peraltaInventoryUI;
-   
+
 
 
     public CameraFollow cameraFollow;
@@ -57,66 +57,66 @@ public class DialogueManager : MonoBehaviour
         }
     }
     void Awake()
-{
-    // UI
-    if (dialogueUIGroup == null)
-        dialogueUIGroup = GameObject.Find("DialogueUIGroup");
+    {
+        // UI
+        if (dialogueUIGroup == null)
+            dialogueUIGroup = GameObject.Find("DialogueUIGroup");
 
-    if (dialogueBox == null)
-        dialogueBox = GameObject.Find("DialogueBox")?.GetComponent<Image>();
+        if (dialogueBox == null)
+            dialogueBox = GameObject.Find("DialogueBox")?.GetComponent<Image>();
 
-    if (nameText == null)
-        nameText = GameObject.Find("NameText")?.GetComponent<TextMeshProUGUI>();
+        if (nameText == null)
+            nameText = GameObject.Find("NameText")?.GetComponent<TextMeshProUGUI>();
 
-    if (dialogueText == null)
-        dialogueText = GameObject.Find("DialogueText")?.GetComponent<TextMeshProUGUI>();
+        if (dialogueText == null)
+            dialogueText = GameObject.Find("DialogueText")?.GetComponent<TextMeshProUGUI>();
 
-     // Controladores
-    if (gabrielController == null)
-        gabrielController = FindFirstObjectByType<GabrielController>();
+        // Controladores
+        if (gabrielController == null)
+            gabrielController = FindFirstObjectByType<GabrielController>();
 
-    if (peraltaController == null)
-        peraltaController = FindFirstObjectByType<PeraltaController>();
+        if (peraltaController == null)
+            peraltaController = FindFirstObjectByType<PeraltaController>();
 
-    if (characterSwitch == null)
-        characterSwitch = FindFirstObjectByType<CharacterSwitch>();
+        if (characterSwitch == null)
+            characterSwitch = FindFirstObjectByType<CharacterSwitch>();
 
-    // Inventarios
+        // Inventarios
 
-    if (gabrielInventory == null)
-        gabrielInventory = FindFirstObjectByType<GabrielInventoryManager>();
+        if (gabrielInventory == null)
+            gabrielInventory = FindFirstObjectByType<GabrielInventoryManager>();
 
-    if (peraltaInventory == null)
-        peraltaInventory = FindFirstObjectByType<PeraltaInventoryManager>();
+        if (peraltaInventory == null)
+            peraltaInventory = FindFirstObjectByType<PeraltaInventoryManager>();
 
-    if (gabrielInventoryUI == null)
-        gabrielInventoryUI = GameObject.Find("GabrielInventoryUI")?.GetComponent<InventoryUI>();
+        if (gabrielInventoryUI == null)
+            gabrielInventoryUI = GameObject.Find("GabrielInventoryUI")?.GetComponent<InventoryUI>();
 
-    if (peraltaInventoryUI == null)
-        peraltaInventoryUI = GameObject.Find("PeraltaInventoryUI")?.GetComponent<InventoryUI>();
+        if (peraltaInventoryUI == null)
+            peraltaInventoryUI = GameObject.Find("PeraltaInventoryUI")?.GetComponent<InventoryUI>();
 
-    // Skills
-    if (gabrielSkills == null)
-        gabrielSkills = FindFirstObjectByType<GabrielSkills>();
+        // Skills
+        if (gabrielSkills == null)
+            gabrielSkills = FindFirstObjectByType<GabrielSkills>();
 
-    if (peraltaSkills == null)
-        peraltaSkills = FindFirstObjectByType<PeraltaSkills>();
+        if (peraltaSkills == null)
+            peraltaSkills = FindFirstObjectByType<PeraltaSkills>();
 
-    // HUD
-    if (hudController == null)
-        hudController = FindFirstObjectByType<HUDController>();
+        // HUD
+        if (hudController == null)
+            hudController = FindFirstObjectByType<HUDController>();
 
-    // Camera
-    if (cameraFollow == null)
-        cameraFollow = FindFirstObjectByType<CameraFollow>();
+        // Camera
+        if (cameraFollow == null)
+            cameraFollow = FindFirstObjectByType<CameraFollow>();
 
-    // Transforms dos personagens
-    if (gabrielTransform == null)
-        gabrielTransform = GameObject.Find("Gabriel")?.transform;
+        // Transforms dos personagens
+        if (gabrielTransform == null)
+            gabrielTransform = GameObject.Find("Gabriel")?.transform;
 
-    if (peraltaTransform == null)
-        peraltaTransform = GameObject.Find("Peralta")?.transform;
-}
+        if (peraltaTransform == null)
+            peraltaTransform = GameObject.Find("Peralta")?.transform;
+    }
 
     void Update()
     {
@@ -155,23 +155,11 @@ public class DialogueManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(line.text))
         {
             dialogueUIGroup.SetActive(false);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
             HandleTutorialEvent(line.tutorialEvent);
 
-            // Avança automaticamente após o evento (ajusta o tempo conforme o evento)
+            // Avanï¿½a automaticamente apï¿½s o evento (ajusta o tempo conforme o evento)
             float autoAdvanceDelay = GetAutoAdvanceDelay(line.tutorialEvent);
             StartCoroutine(AutoAdvanceLine(autoAdvanceDelay));
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         }
         else
         {
@@ -179,35 +167,10 @@ public class DialogueManager : MonoBehaviour
             SetDialogueSide(line.isRightSide);
             nameText.text = line.speaker.ToString();
             StartCoroutine(TypeText(line.text));
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
             HandleTutorialEvent(line.tutorialEvent);
         }
 
- 
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-        }
 
-            
-        HandleTutorialEvent(line.tutorialEvent);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 
         // Mudar a camara para o personagem que fala
@@ -219,33 +182,13 @@ public class DialogueManager : MonoBehaviour
             case DialogueSpeaker.Peralta:
                 cameraFollow.SetTarget(peraltaTransform);
                 break;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
             case DialogueSpeaker.Cabriola:
                 cameraFollow.SetTarget(cabriolaTransform);
                 break;
-=======
-                // Adiciona aqui se quiseres para a Cabriola
->>>>>>> Stashed changes
-=======
-                // Adiciona aqui se quiseres para a Cabriola
->>>>>>> Stashed changes
-=======
-                // Adiciona aqui se quiseres para a Cabriola
->>>>>>> Stashed changes
-=======
-                // Adiciona aqui se quiseres para a Cabriola
->>>>>>> Stashed changes
         }
         // Adaptar isto para inimgos e npcs 
     }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     private IEnumerator AutoAdvanceLine(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -271,14 +214,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     void HandleTutorialEvent(TutorialEventType evt)
     {
         switch (evt)
