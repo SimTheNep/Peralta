@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01617b6960948742ad710be93f6cf28, type: 3}
+  m_Name: Introducao
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 1
+  - speaker: 0
+    text: "Au! \u2026 uh \u2026 Doi-me \u2026 tudo."
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 2
+  - speaker: 0
+    text: "\u2026 Mas o que... onde \xE9 que raio \xE9 eu estou?!"
+    isRightSide: 0
+    tutorialEvent: 3
+  - speaker: 0
+    text: "\u2026 Isto n\xE3o me parece a casa de banho \u2026"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: "\u2026 mas cheira como uma."
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 4
+  - speaker: 0
+    text: Rocky!
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 5
+  - speaker: 0
+    text: "Ah, Rocky, est\xE1s bem\u2026 mas tens um arranh\xE3o \u2026 fant\xE1stico,
+      simplesmente fant\xE1stico \u2026"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 6
+  - speaker: 0
+    text: "Ok\u2026 preciso de sair desta espelunca."
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 8
+  - speaker: 0
+    text: "Hmm, por ali de certeza que n\xE3o d\xE1 para subir\u2026 talvez se eu
+      for por\u2026"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: "\u2026 ehmm\u2026 isto n\xE3o foi o barulho do meu estomago, pois n\xE3o?"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 9
+  - speaker: 0
+    text: "Uh \u2026 ol\xE1 cabrinha?"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 7
+  - speaker: 0
+    text: "AH! N\xC3O \xC9 UMA CABRINHA! N\xC3O \xC9 UMA CABRINHA!!"
+    isRightSide: 0
+    tutorialEvent: 4

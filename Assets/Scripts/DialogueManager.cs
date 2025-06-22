@@ -2,33 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[System.Serializable]
-public class DialogueLine
-{
-    public string speakerName;
-    [TextArea(2, 5)]
-    public string text;
-    public bool isRightSide;
-    public UnityEvent onLineEvent; 
-}
-
-[CreateAssetMenu(menuName = "Dialogue/DialogueSequence")]
-public class DialogueSequence : ScriptableObject
-{
-    public List<DialogueLine> lines;
-}
 
 public class DialogueManager : MonoBehaviour
 {
    
     public GameObject dialogueUIGroup;
-    public Image dialogueBox; // DialogueBox (Image)
-    public TextMeshProUGUI nameText; // NameText (TMP)
-    public TextMeshProUGUI dialogueText; // DialogueText (TMP)
+    public Image dialogueBox; 
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI dialogueText; 
 
     
     public Vector2 leftNamePos;
@@ -56,15 +39,22 @@ public class DialogueManager : MonoBehaviour
    
 
 
-
-
-
-
-
     public CameraFollow cameraFollow;
     public Transform gabrielTransform;
     public Transform peraltaTransform;
 
+    public TutorialEvents tutorialEvents;
+
+    public DialogueSequence initialSequence; //para inciiar
+
+
+    private void Start()
+    {
+        if (initialSequence != null)
+        {
+            StartDialogue(initialSequence);
+        }
+    }
     void Awake()
 {
     // UI
@@ -90,7 +80,7 @@ public class DialogueManager : MonoBehaviour
     if (characterSwitch == null)
         characterSwitch = FindFirstObjectByType<CharacterSwitch>();
 
-        // Invent�rios
+    // Inventarios
 
     if (gabrielInventory == null)
         gabrielInventory = FindFirstObjectByType<GabrielInventoryManager>();
@@ -115,7 +105,7 @@ public class DialogueManager : MonoBehaviour
     if (hudController == null)
         hudController = FindFirstObjectByType<HUDController>();
 
-    // C�mera
+    // Camera
     if (cameraFollow == null)
         cameraFollow = FindFirstObjectByType<CameraFollow>();
 
@@ -160,18 +150,80 @@ public class DialogueManager : MonoBehaviour
     void ShowLine()
     {
         var line = currentSequence.lines[currentLineIndex];
-        SetDialogueSide(line.isRightSide);
-        nameText.text = line.speakerName;
-        StartCoroutine(TypeText(line.text));
-        line.onLineEvent?.Invoke();
+
+        if (string.IsNullOrWhiteSpace(line.text))
+        {
+            dialogueUIGroup.SetActive(false);
+        }
+        else
+        {
+            dialogueUIGroup.SetActive(true);
+            SetDialogueSide(line.isRightSide);
+            nameText.text = line.speaker.ToString();
+            StartCoroutine(TypeText(line.text));
+        }
+
+            
+        HandleTutorialEvent(line.tutorialEvent);
 
 
-        // Mudar a c�mara para o personagem que fala
-        if (line.speakerName == "Gabriel")
-            cameraFollow.SetTarget(gabrielTransform);
-        else if (line.speakerName == "Peralta")
-            cameraFollow.SetTarget(peraltaTransform);
-        // Adapta para outros personagens se necess�rio
+        // Mudar a camara para o personagem que fala
+        switch (line.speaker)
+        {
+            case DialogueSpeaker.Gabriel:
+                cameraFollow.SetTarget(gabrielTransform);
+                break;
+            case DialogueSpeaker.Peralta:
+                cameraFollow.SetTarget(peraltaTransform);
+                break;
+                // Adiciona aqui se quiseres para a Cabriola
+        }
+        // Adaptar isto para inimgos e npcs 
+    }
+
+    void HandleTutorialEvent(TutorialEventType evt)
+    {
+        switch (evt)
+        {
+            case TutorialEventType.PlayFallAnimation:
+                tutorialEvents.PlayFallAnimation();
+                break;
+            case TutorialEventType.PlayGetUpAnimation:
+                tutorialEvents.PlayGetUpAnimation();
+                break;
+            case TutorialEventType.FlipConfusedLook:
+                tutorialEvents.FlipConfusedLook();
+                break;
+            case TutorialEventType.ShowExclamation:
+                tutorialEvents.ShowExclamation();
+                break;
+            case TutorialEventType.ShowInventory:
+                tutorialEvents.ShowGabrielInventory();
+                break;
+            case TutorialEventType.HideInventory:
+                tutorialEvents.HideGabrielInventory();
+                break;
+            case TutorialEventType.PlayDangerSound:
+                tutorialEvents.PlayDangerSound();
+                break;
+            case TutorialEventType.LookAround:
+                tutorialEvents.LookAround();
+                break;
+            case TutorialEventType.SpawnCabriola:
+                tutorialEvents.SpawnCabriola();
+                break;
+            case TutorialEventType.FocusCameraCabriola:
+                tutorialEvents.FocusCameraOnCabriola();
+                break;
+            case TutorialEventType.FocusCameraGabriel:
+                tutorialEvents.FocusCameraOnGabriel();
+                break;
+
+            // ...adicionem outros casos conforme precisarem
+            case TutorialEventType.None:
+            default:
+                break;
+        }
     }
 
     IEnumerator TypeText(string text)
@@ -217,7 +269,7 @@ public class DialogueManager : MonoBehaviour
         gabrielSkills.canUseSkills = !block;
         peraltaSkills.canUseSkills = !block;
 
-        // Invent�rio
+        // Inventario
         gabrielInventory.canUseInventory = !block;
         peraltaInventory.canUseInventory = !block;
 
@@ -236,7 +288,7 @@ public class DialogueManager : MonoBehaviour
         // Espelha apenas a imagem de fundo
         dialogueBox.rectTransform.localScale = new Vector3(isRightSide ? -1 : 1, 1, 1);
 
-        // Muda a posi��o do nome
+        // Muda a posicao do nome
         nameText.rectTransform.anchoredPosition = isRightSide ? rightNamePos : leftNamePos;
 
         // Alinha o texto do nome
