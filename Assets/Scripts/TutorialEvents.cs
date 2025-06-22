@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -6,7 +6,7 @@ public class TutorialEvents : MonoBehaviour
 {
     public GabrielController gabrielController;
     public Animator gabrielAnimator;
-    public GameObject exclamationIndicator; // indicador de exclamação gabriel
+    public GameObject exclamationIndicator; // indicador de exclamaï¿½ï¿½o gabriel
     public AudioSource audioSource; // audiosource do Gabriel
     public AudioClip dangerClip;
     public AudioClip comicClip;
@@ -17,22 +17,18 @@ public class TutorialEvents : MonoBehaviour
     public Transform cabriolaSpawnPoint;
     public CameraFollow cameraFollow;
     public Transform gabrielTransform;
-    public Transform cabriolaTransform; // só preenchido dps do spawn
+    public Transform cabriolaTransform; // sï¿½ preenchido dps do spawn
 
 
-    // 1. Animação de queda/dano
+    // 1. Animaï¿½ï¿½o de queda/dano
     public void PlayFallAnimation()
     {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         StartCoroutine(FallAndDieSequence());
     }
 
     private IEnumerator FallAndDieSequence()
     {
-        // 1. Prepara a animação de Damage (fica no último frame durante a queda)
+        // 1. Prepara a animaï¿½ï¿½o de Damage (fica no ï¿½ltimo frame durante a queda)
         if (gabrielAnimator != null)
         {
             gabrielAnimator.SetTrigger("Damage");
@@ -40,7 +36,7 @@ public class TutorialEvents : MonoBehaviour
             gabrielAnimator.speed = 0f; // Pausa no primeiro frame de Damage
         }
 
-        // 2. Move Gabriel do topo para a posição inicial (queda)
+        // 2. Move Gabriel do topo para a posiï¿½ï¿½o inicial (queda)
         Vector3 start = gabrielTransform.position + new Vector3(0, 5f, 0); // ajusta o offset conforme precisares
         Vector3 end = gabrielTransform.position;
         gabrielTransform.position = start;
@@ -55,15 +51,15 @@ public class TutorialEvents : MonoBehaviour
         }
         gabrielTransform.position = end;
 
-        // 3. Agora toca a animação Die (e fica parado no último frame)
+        // 3. Agora toca a animaï¿½ï¿½o Die (e fica parado no ï¿½ltimo frame)
         if (gabrielAnimator != null)
         {
             gabrielAnimator.speed = 1f; // Volta a ativar o Animator
             gabrielAnimator.SetTrigger("Die");
-            yield return null; // Espera um frame para garantir que a animação começa
-            yield return new WaitForSeconds(0.1f); // Pequeno delay para garantir transição
+            yield return null; // Espera um frame para garantir que a animaï¿½ï¿½o comeï¿½a
+            yield return new WaitForSeconds(0.1f); // Pequeno delay para garantir transiï¿½ï¿½o
 
-            // Pausa no último frame da animação Die
+            // Pausa no ï¿½ltimo frame da animaï¿½ï¿½o Die
             gabrielAnimator.speed = 0f;
         }
 
@@ -71,37 +67,14 @@ public class TutorialEvents : MonoBehaviour
 
 
 
-    // 2. Animação de levantar (morte invertida)
+    // 2. Animaï¿½ï¿½o de levantar (morte invertida)
     public void PlayGetUpAnimation()
     {
         gabrielAnimator.speed = 1f;
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-        if (gabrielAnimator != null) gabrielAnimator.SetTrigger("Damage");
-    }
-
-    // 2. Animação de levantar (morte invertida)
-    public void PlayGetUpAnimation()
-    {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         if (gabrielAnimator != null) gabrielAnimator.SetTrigger("GetUp");
     }
 
-    // 3. Flip rápido do sprite idle + som cómico
+    // 3. Flip rï¿½pido do sprite idle + som cï¿½mico
     public void FlipConfusedLook()
     {
         if (gabrielController != null) StartCoroutine(FlipRoutine());
@@ -110,37 +83,13 @@ public class TutorialEvents : MonoBehaviour
     private IEnumerator FlipRoutine()
     {
         gabrielController.GetComponent<SpriteRenderer>().flipX = false;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         yield return new WaitForSeconds(0.35f);
         gabrielController.GetComponent<SpriteRenderer>().flipX = true;
         yield return new WaitForSeconds(0.35f);
-=======
-        yield return new WaitForSeconds(0.15f);
-        gabrielController.GetComponent<SpriteRenderer>().flipX = true;
-        yield return new WaitForSeconds(0.15f);
->>>>>>> Stashed changes
-=======
-        yield return new WaitForSeconds(0.15f);
-        gabrielController.GetComponent<SpriteRenderer>().flipX = true;
-        yield return new WaitForSeconds(0.15f);
->>>>>>> Stashed changes
-=======
-        yield return new WaitForSeconds(0.15f);
-        gabrielController.GetComponent<SpriteRenderer>().flipX = true;
-        yield return new WaitForSeconds(0.15f);
->>>>>>> Stashed changes
-=======
-        yield return new WaitForSeconds(0.15f);
-        gabrielController.GetComponent<SpriteRenderer>().flipX = true;
-        yield return new WaitForSeconds(0.15f);
->>>>>>> Stashed changes
         gabrielController.GetComponent<SpriteRenderer>().flipX = false;
     }
 
-    // 4. Exclamação + som de perigo
+    // 4. Exclamaï¿½ï¿½o + som de perigo
     public void ShowExclamation() => ShowExclamationCustom(1f);
     public void ShowExclamationCustom(float duration)
     {
@@ -155,20 +104,20 @@ public class TutorialEvents : MonoBehaviour
         exclamationIndicator.SetActive(false);
     }
 
-    // 5. Mostrar inventário
+    // 5. Mostrar inventï¿½rio
     public void ShowGabrielInventory()
     {
         if (gabrielInventoryUI != null) gabrielInventoryUI.gameObject.SetActive(true);
         SetDialogueBoxAlpha(0.5f); // Meio transparente
     }
-    // 6. Esconder inventário
+    // 6. Esconder inventï¿½rio
     public void HideGabrielInventory()
     {
         if (gabrielInventoryUI != null) gabrielInventoryUI.gameObject.SetActive(false);
         SetDialogueBoxAlpha(1f); // Opaco
     }
 
-    // 7. Alterar transparência da DialogueBox (Image)
+    // 7. Alterar transparï¿½ncia da DialogueBox (Image)
     public void SetDialogueBoxAlpha(float alpha)
     {
         if (dialogueBox != null)
@@ -212,14 +161,14 @@ public class TutorialEvents : MonoBehaviour
         }
     }
 
-    // 10. Mudar câmara para Cabriola
+    // 10. Mudar cï¿½mara para Cabriola
     public void FocusCameraOnCabriola()
     {
         if (cameraFollow != null && cabriolaTransform != null)
             cameraFollow.SetTarget(cabriolaTransform);
     }
 
-    // 11. Voltar câmara para Gabriel
+    // 11. Voltar cï¿½mara para Gabriel
     public void FocusCameraOnGabriel()
     {
         if (cameraFollow != null && gabrielTransform != null)
