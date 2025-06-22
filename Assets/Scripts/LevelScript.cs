@@ -10,6 +10,9 @@ public class LeverScript : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip activationSound;
 
+    [Tooltip("Assign the GameObject that contains the Bridge child")]
+    public GameObject targetGOB;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -40,12 +43,40 @@ public class LeverScript : MonoBehaviour
         SetIndicatorActive(false);
 
         if (animator != null)
-            animator.SetTrigger("on");
+            animator.SetTrigger("On");
 
         if (audioSource != null && activationSound != null)
             audioSource.PlayOneShot(activationSound);
 
         Debug.Log("Lever activated!");
+
+        if (targetGOB != null)
+        {
+            Transform bridge = targetGOB.transform.Find("Bridge");
+            if (bridge != null)
+            {
+                // Disable the collider on Bridge
+                Collider2D bridgeCollider = bridge.GetComponent<Collider2D>();
+                if (bridgeCollider != null)
+                    bridgeCollider.enabled = false;
+                else
+                    Debug.LogWarning("Bridge does not have a Collider2D component.");
+
+                // Enable all children under Bridge
+                foreach (Transform child in bridge)
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Bridge child not found under targetGOB.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("targetGOB is not assigned.");
+        }
     }
 
     public bool IsActivated()
@@ -55,7 +86,7 @@ public class LeverScript : MonoBehaviour
 
     public void SetIndicatorActive(bool active)
     {
-        Transform indicator = transform.Find("indicator");
+        Transform indicator = transform.Find("Indicator");
         if (indicator != null)
             indicator.gameObject.SetActive(active);
     }
