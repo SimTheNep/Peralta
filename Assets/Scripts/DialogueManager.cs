@@ -155,11 +155,14 @@ public class DialogueManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(line.text))
         {
             dialogueUIGroup.SetActive(false);
+<<<<<<< Updated upstream
             HandleTutorialEvent(line.tutorialEvent);
 
             // Avança automaticamente após o evento (ajusta o tempo conforme o evento)
             float autoAdvanceDelay = GetAutoAdvanceDelay(line.tutorialEvent);
             StartCoroutine(AutoAdvanceLine(autoAdvanceDelay));
+=======
+>>>>>>> Stashed changes
         }
         else
         {
@@ -167,10 +170,17 @@ public class DialogueManager : MonoBehaviour
             SetDialogueSide(line.isRightSide);
             nameText.text = line.speaker.ToString();
             StartCoroutine(TypeText(line.text));
+<<<<<<< Updated upstream
             HandleTutorialEvent(line.tutorialEvent);
         }
 
  
+=======
+        }
+
+            
+        HandleTutorialEvent(line.tutorialEvent);
+>>>>>>> Stashed changes
 
 
         // Mudar a camara para o personagem que fala
@@ -182,13 +192,18 @@ public class DialogueManager : MonoBehaviour
             case DialogueSpeaker.Peralta:
                 cameraFollow.SetTarget(peraltaTransform);
                 break;
+<<<<<<< Updated upstream
             case DialogueSpeaker.Cabriola:
                 cameraFollow.SetTarget(cabriolaTransform);
                 break;
+=======
+                // Adiciona aqui se quiseres para a Cabriola
+>>>>>>> Stashed changes
         }
         // Adaptar isto para inimgos e npcs 
     }
 
+<<<<<<< Updated upstream
     private IEnumerator AutoAdvanceLine(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -214,6 +229,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+=======
+>>>>>>> Stashed changes
     void HandleTutorialEvent(TutorialEventType evt)
     {
         switch (evt)

@@ -23,6 +23,7 @@ public class TutorialEvents : MonoBehaviour
     // 1. Animação de queda/dano
     public void PlayFallAnimation()
     {
+<<<<<<< Updated upstream
         StartCoroutine(FallAndDieSequence());
     }
 
@@ -71,6 +72,14 @@ public class TutorialEvents : MonoBehaviour
     public void PlayGetUpAnimation()
     {
         gabrielAnimator.speed = 1f;
+=======
+        if (gabrielAnimator != null) gabrielAnimator.SetTrigger("Damage");
+    }
+
+    // 2. Animação de levantar (morte invertida)
+    public void PlayGetUpAnimation()
+    {
+>>>>>>> Stashed changes
         if (gabrielAnimator != null) gabrielAnimator.SetTrigger("GetUp");
     }
 
@@ -83,9 +92,15 @@ public class TutorialEvents : MonoBehaviour
     private IEnumerator FlipRoutine()
     {
         gabrielController.GetComponent<SpriteRenderer>().flipX = false;
+<<<<<<< Updated upstream
         yield return new WaitForSeconds(0.35f);
         gabrielController.GetComponent<SpriteRenderer>().flipX = true;
         yield return new WaitForSeconds(0.35f);
+=======
+        yield return new WaitForSeconds(0.15f);
+        gabrielController.GetComponent<SpriteRenderer>().flipX = true;
+        yield return new WaitForSeconds(0.15f);
+>>>>>>> Stashed changes
         gabrielController.GetComponent<SpriteRenderer>().flipX = false;
     }
 
