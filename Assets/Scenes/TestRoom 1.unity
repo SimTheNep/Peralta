@@ -6909,6 +6909,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752309919}
@@ -6942,6 +6943,66 @@ RectTransform:
   m_SizeDelta: {x: 1366, y: 334}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &763415054
+=======
+--- !u!1001 &963034396
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.9938216
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.30870715
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596868613322933132, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_Name
+      value: Espada de Antenas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+--- !u!1 &963453330 stripped
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10443,7 +10504,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: -6, z: 0}
@@ -10611,7 +10672,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 0, z: 0}
@@ -10835,7 +10896,7 @@ Tilemap:
       - {fileID: -878772996, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 8, z: 0}
@@ -10864,6 +10925,7 @@ Tilemap:
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       m_AnimationSpeed: 3
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 19, y: 8, z: 0}
@@ -10920,6 +10982,8 @@ Tilemap:
       - {fileID: -1013929160, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       - {fileID: -1639547037, guid: 62e489471f5717147ae648d0c029803a, type: 3}
       m_AnimationSpeed: 3.0000002
+=======
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 9, z: 0}
@@ -11705,12 +11769,81 @@ Transform:
   - {fileID: 1011294012}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
 --- !u!1 &1425539147
 GameObject:
+=======
+--- !u!1001 &1394623961
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.8493767
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6172228
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596868613322933132, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+      propertyPath: m_Name
+      value: "Cr\xE2nio"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed9dc299f38e41ceca4d3e8005379396, type: 3}
+--- !u!1 &1442079541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5596868613322933132, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+  m_PrefabInstance: {fileID: 1687240210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1442079548
+Animator:
+  serializedVersion: 7
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425539148}
@@ -11857,6 +11990,24 @@ CanvasRenderer:
   m_GameObject: {fileID: 1654858003}
   m_CullTransparentMesh: 1
 --- !u!1001 &1664266229
+=======
+  m_GameObject: {fileID: 1442079541}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f24e786240fb39469e444d610bb2b07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &1498843890
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11912,8 +12063,13 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
   m_SourcePrefab: {fileID: 100100000, guid: 3fa8bf96b06d65ebfa5f260395b0ccf6, type: 3}
 --- !u!1001 &1688267518
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 190355b20e1823648921ba7044ed8e89, type: 3}
+--- !u!1001 &1687240210
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11921,6 +12077,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
     - target: {fileID: 3762887303547652352, guid: 016e2f9f54e49e640a917a0ed2b1b9b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.238292
@@ -11964,10 +12121,56 @@ PrefabInstance:
     - target: {fileID: 8355932442162324796, guid: 016e2f9f54e49e640a917a0ed2b1b9b3, type: 3}
       propertyPath: m_Name
       value: Alma
+=======
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.9394965
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.042044
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825660917179905084, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596868613322933132, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      propertyPath: m_Name
+      value: Espada de Antenas (1)
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 016e2f9f54e49e640a917a0ed2b1b9b3, type: 3}
 --- !u!1001 &1689005870
@@ -12040,6 +12243,17 @@ GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
+=======
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5596868613322933132, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1442079548}
+  m_SourcePrefab: {fileID: 100100000, guid: 667dec3ad6312504fa6ef01283c90b87, type: 3}
+--- !u!114 &1688259726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7015351432561605880, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+  m_PrefabInstance: {fileID: 3749499097714565368}
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -16399,7 +16613,7 @@ Tilemap:
       - {fileID: 1347640450, guid: 0e7413876e105074d9d9f82caab1b830, type: 3}
       - {fileID: 2105203554, guid: 0e7413876e105074d9d9f82caab1b830, type: 3}
       - {fileID: -294324518, guid: 0e7413876e105074d9d9f82caab1b830, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -8, z: 0}
@@ -16903,7 +17117,67 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
     - target: {fileID: 906666820220017934, guid: abee303ecbc4fc68cb2ddface3232498, type: 3}
+=======
+    - target: {fileID: 1657749427341396494, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657749427341396494, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781900880708125813, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042528185199058672, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: hoverSkill
+      value: 
+      objectReference: {fileID: 637548824}
+    - target: {fileID: 5042528185199058672, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: gabrielHealth
+      value: 
+      objectReference: {fileID: 1020943809}
+    - target: {fileID: 5166852117863256910, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: gabrielHealth
+      value: 
+      objectReference: {fileID: 1020943809}
+    - target: {fileID: 7104108790564543108, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104108790564543108, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104108790564543108, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104108790564543108, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104108790564543108, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104108790564543108, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104108790564543108, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104108790564543108, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104108790564543108, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
       propertyPath: m_LocalPosition.x
       value: 740.1944
       objectReference: {fileID: 0}
@@ -16943,7 +17217,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
     - target: {fileID: 1754214945709762760, guid: abee303ecbc4fc68cb2ddface3232498, type: 3}
+=======
+    - target: {fileID: 7288629996361856454, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998014242651479683, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
@@ -17149,6 +17431,7 @@ SceneRoots:
   - {fileID: 3734905631093967685}
   - {fileID: 159967030}
   - {fileID: 40144131}
+<<<<<<< Updated upstream:Assets/Scenes/TestRoom 1.unity
   - {fileID: 998079936}
   - {fileID: 763738918}
   - {fileID: 676672605}
@@ -17167,3 +17450,14 @@ SceneRoots:
   - {fileID: 1688267518}
   - {fileID: 4483387304197329295}
   - {fileID: 2365259370578385112}
+=======
+  - {fileID: 1954349397}
+  - {fileID: 7548407389872856410}
+  - {fileID: 1498843890}
+  - {fileID: 915565322816130939}
+  - {fileID: 637548823}
+  - {fileID: 3749499097714565368}
+  - {fileID: 963034396}
+  - {fileID: 1687240210}
+  - {fileID: 1394623961}
+>>>>>>> Stashed changes:Assets/Scenes/CopyofTestRoom.unity
