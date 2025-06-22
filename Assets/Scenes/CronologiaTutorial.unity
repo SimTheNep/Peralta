@@ -192,6 +192,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6286003293019696449, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1081657371}
+    - target: {fileID: 6286003293019696449, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: inventoryManager
       value: 
       objectReference: {fileID: 362966737}
@@ -563,7 +567,7 @@ Transform:
   m_GameObject: {fileID: 389731282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.31, y: 0.15881, z: 0}
+  m_LocalPosition: {x: -2.44, y: 0.15881, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -735,6 +739,10 @@ PrefabInstance:
       propertyPath: AlvoGOB
       value: 
       objectReference: {fileID: 191656169}
+    - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 785777450}
     - target: {fileID: 2963371153354486200, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.401832
@@ -780,20 +788,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
---- !u!4 &785777448 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2963371153354486200, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
-  m_PrefabInstance: {fileID: 785777447}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &785777449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 147359820142258766, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+--- !u!82 &785777450 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: -4522911916120284059, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
   m_PrefabInstance: {fileID: 785777447}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &1081657371 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: -4663558926995789584, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
   m_PrefabInstance: {fileID: 191656163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1092972895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1428296431402012801, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+  m_PrefabInstance: {fileID: 2081890489}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1342608162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5416297621264699308, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+  m_PrefabInstance: {fileID: 2081890489}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1383462995
 GameObject:
@@ -1076,13 +1089,17 @@ MonoBehaviour:
   dangerClip: {fileID: 0}
   comicClip: {fileID: 0}
   roarClip: {fileID: 0}
+  gabrielUIGroup: {fileID: 2081890498}
   gabrielInventoryUI: {fileID: 2081890496}
+  gabrielInventory: {fileID: 191656165}
+  gabrielSkillUI: {fileID: 1092972895}
+  gabrielHealthImage: {fileID: 1342608162}
   dialogueBox: {fileID: 2081890502}
-  cabriolaPrefab: {fileID: 785777449}
+  cabriolaPrefab: {fileID: 147359820142258766, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
   cabriolaSpawnPoint: {fileID: 389731283}
   cameraFollow: {fileID: 1383462996}
   gabrielTransform: {fileID: 191656167}
-  cabriolaTransform: {fileID: 785777448}
+  cabriolaTransform: {fileID: 2963371153354486200, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
 --- !u!4 &1808384074
 Transform:
   m_ObjectHideFlags: 0
@@ -1241,6 +1258,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1413619142426462856, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
       propertyPath: m_TextWrappingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707377045328260095, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2571840379592534792, guid: 68c056e0ccc49f841b8b342c47cb34d6, type: 3}

@@ -311,8 +311,8 @@ public class DialogueManager : MonoBehaviour
 
         // UI
         hudController.SetHUDVisible(!block);
-        gabrielInventoryUI.gameObject.SetActive(!block);
-        peraltaInventoryUI.gameObject.SetActive(!block);
+        //gabrielInventoryUI.gameObject.SetActive(!block);
+        //peraltaInventoryUI.gameObject.SetActive(!block);
 
     }
 
