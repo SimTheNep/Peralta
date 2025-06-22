@@ -129,10 +129,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2692514466950442923, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1081657371}
     - target: {fileID: 2692514466950442923, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       propertyPath: inventoryManager
@@ -140,10 +143,13 @@ PrefabInstance:
       objectReference: {fileID: 362966737}
     - target: {fileID: 3185626848438632142, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1081657371}
     - target: {fileID: 3185626848438632142, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       propertyPath: skillUIImage
@@ -151,10 +157,13 @@ PrefabInstance:
       objectReference: {fileID: 2081890499}
     - target: {fileID: 3539610634938790255, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1081657371}
     - target: {fileID: 3539610634938790255, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       propertyPath: peraltaSkills
@@ -182,6 +191,7 @@ PrefabInstance:
       objectReference: {fileID: 362966741}
     - target: {fileID: 3710009515345946728, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1081657371}
@@ -198,6 +208,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2081890496}
 >>>>>>> Stashed changes
+=======
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 2081890496}
+>>>>>>> Stashed changes
     - target: {fileID: 6286003293019696449, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       propertyPath: canvas
       value: 
@@ -206,7 +221,11 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       objectReference: {fileID: 0}
+=======
+      objectReference: {fileID: 1188402551}
+>>>>>>> Stashed changes
 =======
       objectReference: {fileID: 1188402551}
 >>>>>>> Stashed changes
@@ -265,12 +284,18 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 300551882}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_AddedComponents: []
 =======
+=======
+>>>>>>> Stashed changes
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8910304432982592667, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
       insertIndex: -1
       addedObject: {fileID: 191656170}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_SourcePrefab: {fileID: 100100000, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
 --- !u!114 &191656164 stripped
@@ -328,7 +353,10 @@ GameObject:
   m_PrefabInstance: {fileID: 191656163}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!82 &191656170
 AudioSource:
   m_ObjectHideFlags: 0
@@ -426,6 +454,9 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &300551881
 GameObject:
@@ -454,7 +485,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalPosition: {x: -0.02, y: 0.71, z: 0}
+=======
+  m_LocalPosition: {x: -0.02, y: 0.8, z: 0}
+>>>>>>> Stashed changes
 =======
   m_LocalPosition: {x: -0.02, y: 0.8, z: 0}
 >>>>>>> Stashed changes
@@ -508,7 +543,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Sprite: {fileID: 5522654982662980753, guid: 02463ad5342a18a4b907294a5ab020b5, type: 3}
+=======
+  m_Sprite: {fileID: 8405985795958728959, guid: 2937e51b81eb5fa4b8b768f19afe3c48, type: 3}
+>>>>>>> Stashed changes
 =======
   m_Sprite: {fileID: 8405985795958728959, guid: 2937e51b81eb5fa4b8b768f19afe3c48, type: 3}
 >>>>>>> Stashed changes
@@ -517,7 +556,11 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Size: {x: 0.34133333, y: 0.34133333}
+=======
+  m_Size: {x: 5.12, y: 5.12}
+>>>>>>> Stashed changes
 =======
   m_Size: {x: 5.12, y: 5.12}
 >>>>>>> Stashed changes
@@ -602,7 +645,11 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       objectReference: {fileID: 0}
+=======
+      objectReference: {fileID: 1188402551}
+>>>>>>> Stashed changes
 =======
       objectReference: {fileID: 1188402551}
 >>>>>>> Stashed changes
@@ -801,6 +848,7 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &692037578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -858,6 +906,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1af870a77b9f01f4787c4fc3b09b9efb, type: 3}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1001 &785777447
@@ -936,11 +986,14 @@ GameObject:
   m_PrefabInstance: {fileID: 785777447}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!82 &1081657371 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: -4663558926995789584, guid: 9adc42da52aefd3409360ecfb8e3db90, type: 3}
   m_PrefabInstance: {fileID: 191656163}
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &1188402550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1083,6 +1136,9 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1816455357872018758, guid: 15c760ea9c568cebab3b38c969148d50, type: 3}
   m_PrefabInstance: {fileID: 1188402550}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1383462995
@@ -1363,7 +1419,11 @@ MonoBehaviour:
   gabrielAnimator: {fileID: 514972633}
   exclamationIndicator: {fileID: 300551881}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   audioSource: {fileID: 0}
+=======
+  audioSource: {fileID: 191656170}
+>>>>>>> Stashed changes
 =======
   audioSource: {fileID: 191656170}
 >>>>>>> Stashed changes
@@ -1867,7 +1927,11 @@ SceneRoots:
   - {fileID: 362966736}
   - {fileID: 191656163}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 692037578}
+=======
+  - {fileID: 1188402550}
+>>>>>>> Stashed changes
 =======
   - {fileID: 1188402550}
 >>>>>>> Stashed changes

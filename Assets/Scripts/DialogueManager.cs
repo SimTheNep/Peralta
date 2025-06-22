@@ -156,11 +156,14 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueUIGroup.SetActive(false);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             HandleTutorialEvent(line.tutorialEvent);
 
             // Avança automaticamente após o evento (ajusta o tempo conforme o evento)
             float autoAdvanceDelay = GetAutoAdvanceDelay(line.tutorialEvent);
             StartCoroutine(AutoAdvanceLine(autoAdvanceDelay));
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         }
@@ -171,15 +174,21 @@ public class DialogueManager : MonoBehaviour
             nameText.text = line.speaker.ToString();
             StartCoroutine(TypeText(line.text));
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             HandleTutorialEvent(line.tutorialEvent);
         }
 
  
 =======
+=======
+>>>>>>> Stashed changes
         }
 
             
         HandleTutorialEvent(line.tutorialEvent);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
@@ -193,9 +202,13 @@ public class DialogueManager : MonoBehaviour
                 cameraFollow.SetTarget(peraltaTransform);
                 break;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             case DialogueSpeaker.Cabriola:
                 cameraFollow.SetTarget(cabriolaTransform);
                 break;
+=======
+                // Adiciona aqui se quiseres para a Cabriola
+>>>>>>> Stashed changes
 =======
                 // Adiciona aqui se quiseres para a Cabriola
 >>>>>>> Stashed changes
@@ -203,6 +216,7 @@ public class DialogueManager : MonoBehaviour
         // Adaptar isto para inimgos e npcs 
     }
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     private IEnumerator AutoAdvanceLine(float delay)
     {
@@ -229,6 +243,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     void HandleTutorialEvent(TutorialEventType evt)
