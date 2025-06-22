@@ -20,8 +20,8 @@ public class ControlEnemy : MonoBehaviour
 
     public List<GameObject> turnTiles; // Assign multiple GameObjects in Inspector
 
-    private float leftLimit;
-    private float rightLimit;
+    public float leftLimit;
+    public float rightLimit;
     private Vector3 startPosition;
 
     private Animator animator;
