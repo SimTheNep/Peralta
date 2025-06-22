@@ -11,7 +11,11 @@ public class TutorialEvents : MonoBehaviour
     public AudioClip dangerClip;
     public AudioClip comicClip;
     public AudioClip roarClip;
+    public GameObject gabrielUIGroup;
     public InventoryUI gabrielInventoryUI;
+    public GabrielInventoryManager gabrielInventory;
+    public GameObject gabrielSkillUI;      
+    public GameObject gabrielHealthImage;  
     public Image dialogueBox;
     public GameObject cabriolaPrefab;
     public Transform cabriolaSpawnPoint;
@@ -28,20 +32,27 @@ public class TutorialEvents : MonoBehaviour
 
     private IEnumerator FallAndDieSequence()
     {
-        // 1. Prepara a anima��o de Damage (fica no �ltimo frame durante a queda)
-        if (gabrielAnimator != null)
-        {
-            gabrielAnimator.SetTrigger("Damage");
-            yield return null; // Garante que o Animator atualiza
-            gabrielAnimator.speed = 0f; // Pausa no primeiro frame de Damage
-        }
-
-        // 2. Move Gabriel do topo para a posi��o inicial (queda)
-        Vector3 start = gabrielTransform.position + new Vector3(0, 5f, 0); // ajusta o offset conforme precisares
+        // 1. Move Gabriel para fora do ecrã (posição inicial para a queda)
         Vector3 end = gabrielTransform.position;
+        Vector3 start = gabrielTransform.position + new Vector3(0, 5f, 0);
         gabrielTransform.position = start;
 
-        float duration = 2.0f; // tempo da queda (ajusta para mais lento)
+        // 2. Esperar até Gabriel ficar visível na câmara
+        Renderer gabrielRenderer = gabrielTransform.GetComponent<Renderer>();
+        while (gabrielRenderer != null && !gabrielRenderer.isVisible)
+        {
+            yield return null;
+        }
+
+        // 3. Agora ativa a animação "Damage" e deixa correr normalmente durante a queda
+        if (gabrielAnimator != null)
+        {
+            gabrielAnimator.speed = 1f;
+            gabrielAnimator.SetTrigger("Damage");
+        }
+
+        // 4. Fazer a queda do topo para a posição final
+        float duration = 1.5f;
         float elapsed = 0f;
         while (elapsed < duration)
         {
@@ -51,15 +62,24 @@ public class TutorialEvents : MonoBehaviour
         }
         gabrielTransform.position = end;
 
-        // 3. Agora toca a anima��o Die (e fica parado no �ltimo frame)
+        // 5. Pausar no último frame da animação Damage (para não voltar a Idle)
         if (gabrielAnimator != null)
         {
-            gabrielAnimator.speed = 1f; // Volta a ativar o Animator
-            gabrielAnimator.SetTrigger("Die");
-            yield return null; // Espera um frame para garantir que a anima��o come�a
-            yield return new WaitForSeconds(0.1f); // Pequeno delay para garantir transi��o
+            gabrielAnimator.Play("Damage", 0, 1f); // vai para o último frame de "Damage"
+            gabrielAnimator.speed = 0f;
+        }
 
-            // Pausa no �ltimo frame da anima��o Die
+        // 6. Esperar um tempo antes de tocar Die
+        yield return new WaitForSeconds(1.0f);
+
+        // 7. Tocar Die e pausar no último frame
+        if (gabrielAnimator != null)
+        {
+            gabrielAnimator.speed = 1f;
+            gabrielAnimator.SetTrigger("Die");
+            yield return null;
+            yield return new WaitForSeconds(0.1f);
+            gabrielAnimator.Play("Die", 0, 1f); // vai para o último frame de "Die"
             gabrielAnimator.speed = 0f;
         }
 
@@ -70,8 +90,11 @@ public class TutorialEvents : MonoBehaviour
     // 2. Anima��o de levantar (morte invertida)
     public void PlayGetUpAnimation()
     {
-        gabrielAnimator.speed = 1f;
-        if (gabrielAnimator != null) gabrielAnimator.SetTrigger("GetUp");
+        if (gabrielAnimator != null)
+        {
+            gabrielAnimator.speed = 1f;
+            gabrielAnimator.SetTrigger("GetUp");
+        }
     }
 
     // 3. Flip r�pido do sprite idle + som c�mico
@@ -107,15 +130,71 @@ public class TutorialEvents : MonoBehaviour
     // 5. Mostrar invent�rio
     public void ShowGabrielInventory()
     {
-        if (gabrielInventoryUI != null) gabrielInventoryUI.gameObject.SetActive(true);
-        SetDialogueBoxAlpha(0.5f); // Meio transparente
+        // Garante que o grupo está ativo
+        if (gabrielUIGroup != null)
+            gabrielUIGroup.SetActive(true);
+
+        // Ativa só o inventário
+        if (gabrielInventoryUI != null)
+            gabrielInventoryUI.gameObject.SetActive(true);
+
+        // Esconde os outros elementos do grupo
+        if (gabrielSkillUI != null)
+            gabrielSkillUI.SetActive(false);
+
+        if (gabrielHealthImage != null)
+            gabrielHealthImage.SetActive(false);
+
+        // Adiciona a pedra "Pedra" ao inventário, se ainda não existir
+        Debug.Log("ShowGabrielInventory chamado");
+        if (gabrielInventory != null && !InventoryContainsPedra())
+        {
+            Debug.Log("Vai tentar adicionar pedra!");
+            if (gabrielInventory.pedra != null)
+            {
+                ItemPickup pedraPickup = gabrielInventory.pedra.GetComponent<ItemPickup>();
+                if (pedraPickup != null && pedraPickup.itemData != null)
+                {
+                    Item pedraItem = pedraPickup.itemData.GetItem();
+                    Debug.Log("Item Pedra criado: " + pedraItem.itemName);
+                    gabrielInventory.TryPickupItem(pedraItem);
+                }
+               
+            }
+            
+        }
+        // **FORÇA a atualização do UI com o estado atual dos slots**
+        if (gabrielInventory != null && gabrielInventory.inventoryUI != null)
+            gabrielInventory.inventoryUI.UpdateUI(gabrielInventory.slots, gabrielInventory.selectedSlot);
+
+
+        SetDialogueBoxAlpha(0.5f);
     }
-    // 6. Esconder invent�rio
+
     public void HideGabrielInventory()
     {
-        if (gabrielInventoryUI != null) gabrielInventoryUI.gameObject.SetActive(false);
-        SetDialogueBoxAlpha(1f); // Opaco
+        if (gabrielInventoryUI != null)
+            gabrielInventoryUI.gameObject.SetActive(false);
+
+        if (gabrielSkillUI != null)
+            gabrielSkillUI.SetActive(true);
+
+        if (gabrielHealthImage != null)
+            gabrielHealthImage.SetActive(true);
+
+        SetDialogueBoxAlpha(1f);
     }
+
+    private bool InventoryContainsPedra()
+    {
+        foreach (var item in gabrielInventory.slots)
+        {
+            if (item != null && item.itemName == "Pedra")
+                return true;
+        }
+        return false;
+    }
+
 
     // 7. Alterar transpar�ncia da DialogueBox (Image)
     public void SetDialogueBoxAlpha(float alpha)
@@ -158,8 +237,13 @@ public class TutorialEvents : MonoBehaviour
         {
             GameObject cabriola = Instantiate(cabriolaPrefab, cabriolaSpawnPoint.position, Quaternion.identity);
             cabriolaTransform = cabriola.transform;
+            // Se o DialogueManager também tem cabriolaTransform, atualiza lá também:
+            if (FindFirstObjectByType<DialogueManager>() != null)
+                FindFirstObjectByType<DialogueManager>().cabriolaTransform = cabriola.transform;
         }
     }
+
+
 
     // 10. Mudar c�mara para Cabriola
     public void FocusCameraOnCabriola()
@@ -167,6 +251,7 @@ public class TutorialEvents : MonoBehaviour
         if (cameraFollow != null && cabriolaTransform != null)
             cameraFollow.SetTarget(cabriolaTransform);
     }
+
 
     // 11. Voltar c�mara para Gabriel
     public void FocusCameraOnGabriel()

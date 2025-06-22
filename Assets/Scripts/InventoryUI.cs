@@ -10,9 +10,9 @@ public class InventoryUI : MonoBehaviour
     public Image[] itemIcons;
     public TMP_Text[] itemQuantities;
 
-    private Item[] items = new Item[3];
-    private MagicItem[] MagicItems = new MagicItem[3];
-    private int selectedSlot = 0;
+    //private Item[] items = new Item[3];
+    //private MagicItem[] MagicItems = new MagicItem[3];
+    //private int selectedSlot = 0;
 
     public void SetInventoryVisible(bool visible)
     {
@@ -21,7 +21,7 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        UpdateUI(items, selectedSlot);
+        //UpdateUI(items, selectedSlot);
     }
 
     public void UpdateUI(Item[] items, int selectedSlot)
