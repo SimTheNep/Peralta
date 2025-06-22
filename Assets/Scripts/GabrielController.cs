@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,7 +11,6 @@ public class GabrielController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     public bool Flip;
-
     public bool canMove = true;
 
     public GameObject pauseMenu;
@@ -20,12 +20,14 @@ public class GabrielController : MonoBehaviour
 
     public PeraltaInventoryManager inventoryManager;
 
-    public AudioSource audioSource;        
-    public AudioClip defaultFootstepClip;  
-    public AudioClip waterFootstepClip;  
-    public Tilemap waterTile;          
+    public AudioSource audioSource;
+    public AudioClip defaultFootstepClip;
+    public AudioClip waterFootstepClip;
 
-    public float footstepInterval = 0.35f;   
+    public Tilemap waterTile;
+    public List<Collider2D> waterZones;
+
+    public float footstepInterval = 0.35f;
     private float footstepTimer = 0f;
 
     void Start()
@@ -45,7 +47,7 @@ public class GabrielController : MonoBehaviour
         if (hasSerpenteEncantada)
         {
             moveSpeed = 6f;
-            footstepInterval = 0.25f;   
+            footstepInterval = 0.25f;
         }
         else
         {
@@ -62,7 +64,7 @@ public class GabrielController : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("PlayerCharacters");
         }
 
-        // Check for pause key
+        // Pause
         if (KeybindManager.GetKeyDown("Pause"))
         {
             TogglePause();
@@ -87,7 +89,6 @@ public class GabrielController : MonoBehaviour
             spriteRenderer.flipX = moveInput.x < 0;
         }
 
-        // FOOTSTEP SOUND HANDLING
         HandleFootsteps();
     }
 
@@ -137,7 +138,7 @@ public class GabrielController : MonoBehaviour
             footstepTimer = 0f;
             if (audioSource != null)
             {
-                audioSource.pitch = 1f; 
+                audioSource.pitch = 1f;
             }
         }
     }
@@ -148,11 +149,19 @@ public class GabrielController : MonoBehaviour
 
         AudioClip clipToPlay = defaultFootstepClip;
 
-        if (waterTile != null)
+        foreach (var zone in waterZones)
+        {
+            if (zone != null && zone.bounds.Contains(transform.position))
+            {
+                clipToPlay = waterFootstepClip;
+                break;
+            }
+        }
+
+        if (clipToPlay == defaultFootstepClip && waterTile != null)
         {
             Vector3Int tilePosition = waterTile.WorldToCell(transform.position);
             TileBase tile = waterTile.GetTile(tilePosition);
-
             if (tile != null)
             {
                 clipToPlay = waterFootstepClip;
