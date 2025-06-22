@@ -21,8 +21,8 @@ public class MenuNavigation : MonoBehaviour
 
     public AudioMixer audioMixer;
 
-    private const string MusicVolumeParam = "MusicVol";  // Must exactly match exposed param in mixer
-    private const string SFXVolumeParam = "SFXVol";      // Must exactly match exposed param in mixer
+    private const string MusicVolumeParam = "MusicVol";  
+    private const string SFXVolumeParam = "SFXVol";      
 
     void Start()
     {
@@ -69,7 +69,7 @@ public class MenuNavigation : MonoBehaviour
     {
         RegisterSettings();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("TestRoom");
+        SceneManager.LoadScene("IntermissionUI");
     }
 
     public void RegisterSettings()
