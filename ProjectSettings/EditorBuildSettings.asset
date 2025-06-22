@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 1 - Tutorial.unity
     guid: 9225d47820d76134c939c384e65f55ba
+  - enabled: 1
+    path: Assets/Scenes/Intermission UI.unity
+    guid: 7d82948a62743f3e5b455791d33d8d5b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
