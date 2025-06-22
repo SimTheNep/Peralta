@@ -114,13 +114,12 @@ public class PhaseSkill : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        Vector3 toTile = gradeTileWorldPos - transform.position;
+        float direction = transform.position.y < gradeTileWorldPos.y ? 1f : -1f;
 
-        Vector3 newPosition = gradeTileWorldPos - toTile;
-
-        Vector3 offset = toTile.normalized * 0.5f;
-        transform.position = newPosition + offset;
+        Vector3 newPosition = transform.position + new Vector3(0f, teleportOffsetY * direction, 0f);
+        transform.position = newPosition;
     }
+
 
     void terminaFase()
     {

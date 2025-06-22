@@ -32,6 +32,8 @@ public class HauntSkill : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip hauntSound;
 
+    public LeverScript currentLever; // Added: lever currently in range
+
     void Awake()
     {
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
@@ -62,6 +64,37 @@ public class HauntSkill : MonoBehaviour
                 isActive = false;
             }
         }
+
+        if (isPossessing && possessedEnemy != null)
+        {
+            DetectLeverNearPossessedEnemy();
+        }
+    }
+
+    void DetectLeverNearPossessedEnemy()
+    {
+        float detectRadius = 1f; // Adjust as needed
+        Collider2D[] hits = Physics2D.OverlapCircleAll(possessedEnemy.transform.position, detectRadius);
+
+        // Disable previous lever indicator if any
+        if (currentLever != null)
+            currentLever.SetIndicatorActive(false);
+
+        currentLever = null;
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.CompareTag("Lever"))
+            {
+                LeverScript lever = hit.GetComponent<LeverScript>();
+                if (lever != null && !lever.IsActivated())
+                {
+                    currentLever = lever;
+                    currentLever.SetIndicatorActive(true);
+                    break;
+                }
+            }
+        }
     }
 
     void EndSkillOrPossession()
@@ -72,6 +105,7 @@ public class HauntSkill : MonoBehaviour
         }
 
         isActive = false;
+        currentLever = null; // Clear lever on end
     }
 
     public bool Execute()
@@ -112,6 +146,7 @@ public class HauntSkill : MonoBehaviour
 
                 PossessedEnemyController pc = possessedEnemy.AddComponent<PossessedEnemyController>();
                 pc.Init(this);
+                pc.SetLever(currentLever);  // Pass current lever
 
                 Vector3 dir = possessedEnemy.transform.position - transform.position;
                 transform.eulerAngles = new Vector3(0, dir.x > 0 ? 0 : 180, 0);
@@ -157,6 +192,7 @@ public class HauntSkill : MonoBehaviour
 
                 PossessedEnemyController pc = possessedEnemy.AddComponent<PossessedEnemyController>();
                 pc.Init(this);
+                pc.SetLever(currentLever);  // Pass current lever
 
                 if (cameraFollow != null)
                     cameraFollow.SetTarget(possessedEnemy.transform);
@@ -203,6 +239,7 @@ public class HauntSkill : MonoBehaviour
 
             isPossessing = false;
             isActive = false;
+            currentLever = null;  // Clear lever on release
             if (peraltaSkills != null)
                 peraltaSkills.isPossessing = false;
 

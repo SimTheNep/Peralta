@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ControlEnemy : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class ControlEnemy : MonoBehaviour
     public string Estate;
     public GameObject AlvoGOB;
     public float Life;
-    public float maxHealth = 100f; // Ajustar a vida
+    public float maxHealth = 100f;
     public float Radius;
     public float CoolDown;
     public float VPerseguição;
@@ -17,19 +18,25 @@ public class ControlEnemy : MonoBehaviour
     public float DeathTime;
     public float PersueTime;
 
+    public List<GameObject> turnTiles; // Assign multiple GameObjects in Inspector
+
+    private float leftLimit;
+    private float rightLimit;
+    private Vector3 startPosition;
+
     private Animator animator;
 
     public GameObject soulPrefab;
     public int soulAmount;
 
-    public string enemyID;  // Identifica o tipo de Inimigo para o bestiário
+    public string enemyID;
 
     public SpriteRenderer healthBarRenderer;
     public Sprite[] healthBarSprites;
 
-    public AudioSource audioSource;                 
-    public AudioClip[] footstepClips;               
-    public float footstepBaseInterval = 0.5f;       
+    public AudioSource audioSource;
+    public AudioClip[] footstepClips;
+    public float footstepBaseInterval = 0.5f;
     private float footstepTimer = 0f;
 
     public AudioClip activeSound;
@@ -42,17 +49,17 @@ public class ControlEnemy : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"[START] {gameObject.name} iniciado na layer {gameObject.layer} com tag {gameObject.tag}");
         animator = GetComponent<Animator>();
         Estate = "Idle";
         Velocidade = VIdle;
-        Life = maxHealth; 
+        Life = maxHealth;
+
+        startPosition = transform.position;
+        leftLimit = startPosition.x - Mathf.Abs(Limites);
+        rightLimit = startPosition.x + Mathf.Abs(Limites);
 
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
-
-        if (audioSource == null)
-            Debug.LogWarning("[Audio] No AudioSource assigned or found on enemy!");
     }
 
     void Update()
@@ -64,7 +71,6 @@ public class ControlEnemy : MonoBehaviour
 
         HandleFootsteps();
 
-        // Decide state
         Vector3 Df = AlvoGOB.transform.position - transform.position;
 
         if (Df.magnitude < Radius && Estate == "Idle")
@@ -81,7 +87,6 @@ public class ControlEnemy : MonoBehaviour
             if (!string.IsNullOrEmpty(enemyID) && BestiaryManager.Instance != null)
             {
                 BestiaryManager.Instance.RegisterEnemyKill(enemyID);
-                Debug.Log($"[Bestiary] Registered kill: {enemyID}");
             }
 
             if (healthBarRenderer != null)
@@ -96,18 +101,17 @@ public class ControlEnemy : MonoBehaviour
             Estate = "Idle";
         }
 
-        // Movement base (patrolling)
         if (Estate == "Idle")
         {
             ResetStateSounds();
 
-            if (Pos.x >= Limites)
+            if (Pos.x >= rightLimit)
             {
                 transform.eulerAngles = new Vector3(0, 180, 0);
                 direcao = true;
                 Velocidade = -Mathf.Abs(VIdle);
             }
-            if (direcao && Pos.x <= -Limites)
+            if (direcao && Pos.x <= leftLimit)
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 direcao = false;
@@ -117,7 +121,6 @@ public class ControlEnemy : MonoBehaviour
             transform.position = Pos;
         }
 
-        // Chase / Attack
         if (Estate == "Active")
         {
             PlayActiveSoundOnce();
@@ -134,7 +137,6 @@ public class ControlEnemy : MonoBehaviour
             Invoke("passaTired", PersueTime);
         }
 
-        // Tired State
         if (Estate == "Tired")
         {
             PlayTiredSoundOnce();
@@ -174,9 +176,7 @@ public class ControlEnemy : MonoBehaviour
         if (audioSource == null || footstepClips == null || footstepClips.Length == 0) return;
 
         AudioClip clip = footstepClips[Random.Range(0, footstepClips.Length)];
-
         audioSource.pitch = Random.Range(0.9f, 1.1f);
-
         float volume = Mathf.Clamp(volumeScale, 0.1f, 1f);
         audioSource.PlayOneShot(clip, volume);
     }
@@ -235,20 +235,15 @@ public class ControlEnemy : MonoBehaviour
         int index = Mathf.FloorToInt(healthPercent * (healthBarSprites.Length - 1));
         index = Mathf.Clamp(index, 0, healthBarSprites.Length - 1);
 
-        Debug.Log($"[HealthBar] Life: {Life}, Percent: {healthPercent}, Sprite Index: {index}");
-
         healthBarRenderer.sprite = healthBarSprites[index];
     }
 
-    // Public method to apply damage safely
     public void TakeDamage(float amount)
     {
         if (Estate == "Dead") return;
 
         Life -= amount;
         Life = Mathf.Clamp(Life, 0, maxHealth);
-
-        Debug.Log($"[Enemy] Took {amount} damage, Life now {Life}");
 
         if (Life <= 0)
         {
@@ -259,7 +254,6 @@ public class ControlEnemy : MonoBehaviour
             if (!string.IsNullOrEmpty(enemyID) && BestiaryManager.Instance != null)
             {
                 BestiaryManager.Instance.RegisterEnemyKill(enemyID);
-                Debug.Log($"[Bestiary] Registered kill: {enemyID}");
             }
 
             if (healthBarRenderer != null)
@@ -301,22 +295,32 @@ public class ControlEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log($"[ENEMY] OnCollisionEnter2D with: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
+        Debug.Log($"[ENEMY] OnCollisionEnter2D with: {collision.gameObject.name}");
+
         if (collision.gameObject.CompareTag("Gabriel"))
         {
             GabrielHealth gabrielHealth = collision.gameObject.GetComponent<GabrielHealth>();
 
             if (gabrielHealth != null)
             {
-                Debug.Log("[ENEMY] Gabriel found and active. Applying damage.");
                 gabrielHealth.TakeDamage(Dano);
                 Estate = "Tired";
                 ResetStateSounds();
             }
-            else
-            {
-                Debug.Log("[ENEMY] GabrielHealth not found or inactive.");
-            }
         }
+
+        // Flip direction if collided object is in the turnTiles list
+        if (turnTiles != null && turnTiles.Contains(collision.gameObject))
+        {
+            FlipDirection();
+        }
+    }
+
+    private void FlipDirection()
+    {
+        direcao = !direcao;
+        transform.eulerAngles = new Vector3(0, direcao ? 180 : 0, 0);
+        Velocidade = direcao ? -Mathf.Abs(VIdle) : Mathf.Abs(VIdle);
+        Debug.Log("[ENEMY] Direction flipped by turn tile collision.");
     }
 }

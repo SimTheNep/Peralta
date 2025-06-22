@@ -3,60 +3,63 @@ using UnityEngine.InputSystem;
 
 public class PossessedEnemyController : MonoBehaviour
 {
-    private float speed = 5f;
     private HauntSkill hauntSkill;
+    private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
-    private bool originalFlipX;
+    private float moveSpeed = 3f;
 
-    private float originalYRotation;
+    private LeverScript currentLever;  // Added: lever passed from HauntSkill
 
-    public void Init(HauntSkill skillRef)
+    public void Init(HauntSkill hauntSkill)
     {
-        hauntSkill = skillRef;
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        this.hauntSkill = hauntSkill;
+        rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
-
-        if (spriteRenderer != null)
-            originalFlipX = spriteRenderer.flipX;
-
-        originalYRotation = transform.eulerAngles.y;//guarda a rotation original
-        transform.eulerAngles = Vector3.zero;//força a rotação para 0 para o flipx funcionar
+    public void SetLever(LeverScript lever)
+    {
+        currentLever = lever;
     }
 
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Vector3 move = new Vector3(h, v, 0).normalized;
+        if (hauntSkill == null || !hauntSkill.isActive)
+            return;
 
-        transform.position += move * speed * Time.deltaTime;
-
-        /*if (Keyboard.current.eKey.wasPressedThisFrame)
+        Vector2 moveInput = Vector2.zero;
+        if (Keyboard.current != null)
         {
-            TryInteractWithLever();
-        }*/
+            if (Keyboard.current.aKey.isPressed) moveInput.x = -1;
+            else if (Keyboard.current.dKey.isPressed) moveInput.x = 1;
 
-        if (h != 0 && spriteRenderer != null)
-            spriteRenderer.flipX = h > 0;
+            if (Keyboard.current.wKey.isPressed) moveInput.y = 1;
+            else if (Keyboard.current.sKey.isPressed) moveInput.y = -1;
+        }
 
+        Vector2 velocity = moveInput.normalized * moveSpeed;
+        if (rb2d != null)
+        {
+            rb2d.linearVelocity = velocity;
+        }
+
+        if (moveInput.x < 0)
+            spriteRenderer.flipX = true;
+        else if (moveInput.x > 0)
+            spriteRenderer.flipX = false;
+
+        KeyCode actionKeyCode = KeybindManager.GetKeyCode("Action");
+        Key actionKey = InputHelpers.KeyCodeToKey(actionKeyCode);
+
+        if (actionKey != Key.None && Keyboard.current[actionKey].wasPressedThisFrame && currentLever != null)
+        {
+            currentLever.Activate();
+        }
     }
 
     public void RestoreOriginalFlip()
     {
         if (spriteRenderer != null)
-            spriteRenderer.flipX = originalFlipX;
-        transform.eulerAngles = new Vector3(0, originalYRotation, 0);
+            spriteRenderer.flipX = false;
     }
-    /*void TryInteractWithLever()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
-        if (hit.collider != null && hit.collider.CompareTag("Lever"))
-        {
-            Lever lever = hit.collider.GetComponent<Lever>();
-            if (lever != null)
-            {
-                lever.Activate();
-            }
-        }
-    }*/
 }

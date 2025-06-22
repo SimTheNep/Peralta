@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Grade
   - Water_Entry
+  - Lever
   layers:
   - Default
   - TransparentFX
