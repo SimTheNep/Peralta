@@ -69,7 +69,7 @@ public class MenuNavigation : MonoBehaviour
     {
         RegisterSettings();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("IntermissionUI");
+        SceneManager.LoadScene("Intermission UI");
     }
 
     public void RegisterSettings()
