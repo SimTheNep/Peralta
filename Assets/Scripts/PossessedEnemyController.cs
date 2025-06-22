@@ -8,14 +8,21 @@ public class PossessedEnemyController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float moveSpeed = 3f;
 
-    private LeverScript currentLever;  // Added: lever passed from HauntSkill
+
+    private bool originalFlipX;
+
+
+    private LeverScript currentLever;  
 
     public void Init(HauntSkill hauntSkill)
     {
         this.hauntSkill = hauntSkill;
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+            originalFlipX = spriteRenderer.flipX; // Guarda o estado original
     }
+
 
     public void SetLever(LeverScript lever)
     {
@@ -60,6 +67,7 @@ public class PossessedEnemyController : MonoBehaviour
     public void RestoreOriginalFlip()
     {
         if (spriteRenderer != null)
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = originalFlipX;
     }
+
 }
