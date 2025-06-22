@@ -32,7 +32,7 @@ public class HauntSkill : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip hauntSound;
 
-    public LeverScript currentLever; // Added: lever currently in range
+    public LeverScript currentLever; 
 
     void Awake()
     {
@@ -113,7 +113,8 @@ public class HauntSkill : MonoBehaviour
         if (!manaSystem.HasMana(0.1f))
             return false;
 
-        isActive = true;
+        bool success = false;
+
         Debug.Log("Executando HauntSkill...");
 
         if (audioSource != null && hauntSound != null)
@@ -122,19 +123,22 @@ public class HauntSkill : MonoBehaviour
         if (isPossessing)
         {
             TrySwitchOrReleasePossession();
+            success = true; 
         }
         else
         {
-            TryPossessEnemy();
+            success = TryPossessEnemy();
         }
 
-        return true;
+        isActive = success; 
+
+        return success;
     }
 
-    void TryPossessEnemy()
+    bool TryPossessEnemy()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hauntRange);
-        Debug.Log($"Procurando inimigos no raio {hauntRange}, encontrados: {hits.Length}");
+
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))
@@ -146,7 +150,7 @@ public class HauntSkill : MonoBehaviour
 
                 PossessedEnemyController pc = possessedEnemy.AddComponent<PossessedEnemyController>();
                 pc.Init(this);
-                pc.SetLever(currentLever);  // Pass current lever
+                pc.SetLever(currentLever);  
 
                 Vector3 dir = possessedEnemy.transform.position - transform.position;
                 transform.eulerAngles = new Vector3(0, dir.x > 0 ? 0 : 180, 0);
@@ -166,9 +170,16 @@ public class HauntSkill : MonoBehaviour
                 }
 
                 Debug.Log("Possuído: " + possessedEnemy.name);
-                break;
+                isPossessing = true;
+                if (peraltaSkills != null)
+                    peraltaSkills.isPossessing = true;
+                if (cameraFollow != null)
+                    cameraFollow.SetTarget(possessedEnemy.transform);
+
+                return true; 
             }
         }
+        return false; 
     }
 
     void TrySwitchOrReleasePossession()
@@ -192,7 +203,7 @@ public class HauntSkill : MonoBehaviour
 
                 PossessedEnemyController pc = possessedEnemy.AddComponent<PossessedEnemyController>();
                 pc.Init(this);
-                pc.SetLever(currentLever);  // Pass current lever
+                pc.SetLever(currentLever);  
 
                 if (cameraFollow != null)
                     cameraFollow.SetTarget(possessedEnemy.transform);
