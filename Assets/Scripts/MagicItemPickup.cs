@@ -6,6 +6,8 @@ public class MagicItemPickup : MonoBehaviour
     public MagicItemData itemData;
     public PeraltaInventoryManager peraltaInventoryManager;
 
+    private PickupDialog pickupDialog;
+
     void Start()
     {
         GameObject peralta = GameObject.FindGameObjectWithTag("Peralta");
@@ -13,6 +15,8 @@ public class MagicItemPickup : MonoBehaviour
         {
             peraltaInventoryManager = peralta.GetComponentInChildren<PeraltaInventoryManager>();
         }
+
+        pickupDialog = GetComponent<PickupDialog>();
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -26,6 +30,12 @@ public class MagicItemPickup : MonoBehaviour
             {
                 MagicItem newItem = itemData.GetMagicItem();
                 peraltaInventoryManager.TryPickupMagicItem(newItem);
+
+                if (pickupDialog != null)
+                {
+                    pickupDialog.TriggerDialog();
+                }
+
                 Destroy(gameObject);
             }
         }

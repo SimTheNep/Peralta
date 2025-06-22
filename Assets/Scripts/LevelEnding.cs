@@ -19,9 +19,10 @@ public class LevelEnding : MonoBehaviour
     {
         if (canvasGroup != null)
         {
-            canvasGroup.alpha = 0f;
+            canvasGroup.alpha = 1f; 
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
+            StartCoroutine(InitFadeOut());
         }
     }
 
@@ -98,6 +99,24 @@ public class LevelEnding : MonoBehaviour
         canvasGroup.alpha = 1f;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+    }
+
+    IEnumerator InitFadeOut()
+    {
+        if (canvasGroup == null) yield break;
+
+        float duration = 0.25f;
+        float elapsed = 0f;
+        float startAlpha = canvasGroup.alpha;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, 0f, elapsed / duration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0f;
     }
 
     IEnumerator FadeOutMusic()

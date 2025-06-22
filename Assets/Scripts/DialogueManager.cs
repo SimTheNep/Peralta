@@ -48,6 +48,11 @@ public class DialogueManager : MonoBehaviour
 
     public DialogueSequence initialSequence; //para inciiar
 
+    public bool IsDialogueActive()
+    {
+        return dialogueActive;
+    }
+
 
     private void Start()
     {
@@ -289,6 +294,9 @@ public class DialogueManager : MonoBehaviour
         dialogueUIGroup.SetActive(false);
         dialogueActive = false;
         BlockPlayerControls(false);
+
+        if (characterSwitch != null)
+            characterSwitch.EnsureOnlyActiveCharacterUI();
     }
 
     void BlockPlayerControls(bool block)

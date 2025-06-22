@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01617b6960948742ad710be93f6cf28, type: 3}
+  m_Name: Doors
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: 1
+    text: "Prossiga com caudela, Gabriel. Estes quartos s\xE3o desconhecidos por
+      mim..."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 1
+    text: "Tem a certeza que n\xE3o encontrou algo \xFAtil no quarto anterior, tipo
+      uma espada?"
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: "N\xE3o te preocupes fofa, o meu nome do meio \xE9 \"tabela\"."
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: Eu disse cautela... A menos que seja realmente o Sir Gabriel Tabela.
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: Ha. Ha. Que piada...
+    isRightSide: 0
+    tutorialEvent: 0

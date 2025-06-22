@@ -100,4 +100,19 @@ public class CharacterSwitch : MonoBehaviour
         peraltaUIGroup.SetActive(enabled);
     }
 
+    public void EnsureOnlyActiveCharacterUI()
+    {
+        if (currentCharacter == gabriel)
+        {
+            gabrielUIGroup.SetActive(true);
+            peraltaUIGroup.SetActive(false);
+        }
+        else if (currentCharacter == peralta)
+        {
+            gabrielUIGroup.SetActive(false);
+            peraltaUIGroup.SetActive(true);
+        }
+    }
+
+
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class ToggleWaterOnBox : MonoBehaviour
 {
     public Tilemap waterTilemap;
@@ -12,6 +12,7 @@ public class ToggleWaterOnBox : MonoBehaviour
 
     private bool waterDisabled = false;
     private ContactFilter2D boxFilter;
+    private Collider2D[] parentColliders;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class ToggleWaterOnBox : MonoBehaviour
         boxFilter.useLayerMask = true;
         boxFilter.layerMask = LayerMask.GetMask("Box");
 
+        parentColliders = GetComponents<Collider2D>();
     }
 
     void OnEnable()
@@ -44,11 +46,9 @@ public class ToggleWaterOnBox : MonoBehaviour
     {
         bool allCovered = true;
 
-        for (int i = 0; i < triggerColliders.Length; i++)
+        foreach (Collider2D trigger in triggerColliders)
         {
-            Collider2D trigger = triggerColliders[i];
-            if (trigger == null)
-                continue;
+            if (trigger == null) continue;
 
             List<Collider2D> results = new List<Collider2D>();
             int count = trigger.Overlap(boxFilter, results);
@@ -64,66 +64,70 @@ public class ToggleWaterOnBox : MonoBehaviour
         {
             waterDisabled = true;
             StartCoroutine(FadeOutWater());
-            Debug.Log("todas zonas cobertas desativando agua");
+            Debug.Log("Todas zonas cobertas — desativando água.");
         }
         else if (!allCovered && waterDisabled)
         {
             waterDisabled = false;
             StartCoroutine(FadeInWater());
-            Debug.Log("zona descoberta reativando agua");
+            Debug.Log("Zona descoberta — reativando água.");
         }
     }
 
-
     IEnumerator FadeOutWater()
     {
-
-        Tilemap tilemap = waterTilemap;
         float duration = 0.5f;
         float elapsed = 0f;
 
-        Color startColor = tilemap.color;
+        Color startColor = waterTilemap.color;
         Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f);
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
-            tilemap.color = Color.Lerp(startColor, endColor, t);
+            waterTilemap.color = Color.Lerp(startColor, endColor, t);
             yield return null;
         }
 
-        tilemap.color = endColor;
+        waterTilemap.color = endColor;
         waterTilemap.gameObject.SetActive(false);
-        GetComponent<Collider2D>().enabled = false;
 
-        Debug.Log("agua desativada");
+        foreach (Collider2D col in parentColliders)
+        {
+            col.enabled = false;
+        }
+
+        Debug.Log("Água desativada.");
     }
 
     IEnumerator FadeInWater()
     {
-
         waterTilemap.gameObject.SetActive(true);
-        Tilemap tilemap = waterTilemap;
 
         float duration = 0.5f;
         float elapsed = 0f;
 
-        Color startColor = new Color(tilemap.color.r, tilemap.color.g, tilemap.color.b, 0f);
-        Color endColor = new Color(tilemap.color.r, tilemap.color.g, tilemap.color.b, 1f);
-        tilemap.color = startColor;
+        Color startColor = new Color(waterTilemap.color.r, waterTilemap.color.g, waterTilemap.color.b, 0f);
+        Color endColor = new Color(waterTilemap.color.r, waterTilemap.color.g, waterTilemap.color.b, 1f);
+        waterTilemap.color = startColor;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
-            tilemap.color = Color.Lerp(startColor, endColor, t);
+            waterTilemap.color = Color.Lerp(startColor, endColor, t);
             yield return null;
         }
 
-        tilemap.color = endColor;
-        GetComponent<Collider2D>().enabled = true;
+        waterTilemap.color = endColor;
 
-        Debug.Log("agua ativada");
+        // Re-enable all colliders on parent
+        foreach (Collider2D col in parentColliders)
+        {
+            col.enabled = true;
+        }
+
+        Debug.Log("Água ativada.");
     }
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01617b6960948742ad710be93f6cf28, type: 3}
+  m_Name: Sorte
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: 1
+    text: "Aqui est\xE1 ela, a sorte de navegador, um amuleto m\xE1gico que ir\xE1
+      aumentar a nossa sorte."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: "Ooooh... D\xE1-me! D\xE1-me!"
+    isRightSide: 0
+    tutorialEvent: 0
+  - speaker: 1
+    text: "Perd\xE3o, mas objetos m\xE1gicos n\xE3o est\xE3o no plano carnal, apenas
+      esp\xEDritos podem interagir com for\xE7as sobrenaturais..."
+    isRightSide: 1
+    tutorialEvent: 0
