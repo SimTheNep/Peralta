@@ -95,3 +95,7 @@ MonoBehaviour:
     text: "AH! N\xC3O \xC9 UMA CABRINHA! N\xC3O \xC9 UMA CABRINHA!!"
     isRightSide: 0
     tutorialEvent: 4
+  - speaker: 0
+    text: 
+    isRightSide: 0
+    tutorialEvent: 13

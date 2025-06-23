@@ -733,12 +733,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 147359820142258766, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: AlvoGOB
       value: 
-      objectReference: {fileID: 191656169}
+      objectReference: {fileID: 0}
     - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: audioSource
       value: 

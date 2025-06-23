@@ -26,6 +26,7 @@ public enum TutorialEventType
     FocusCameraCabriola,
     FocusCameraGabriel, 
     ShowTooltip,
+    Termina
 
 
     // adicionem aqui outros eventos conforme forem precisando
