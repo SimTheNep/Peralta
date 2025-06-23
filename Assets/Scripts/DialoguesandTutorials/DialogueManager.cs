@@ -256,6 +256,9 @@ public class DialogueManager : MonoBehaviour
             case TutorialEventType.FocusCameraGabriel:
                 tutorialEvents.FocusCameraOnGabriel();
                 break;
+            case TutorialEventType.Termina:
+                tutorialEvents.Termina();
+            break;
 
             // ...adicionem outros casos conforme precisarem
             case TutorialEventType.None:

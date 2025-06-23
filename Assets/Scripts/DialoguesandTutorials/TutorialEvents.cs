@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialEvents : MonoBehaviour
 {
@@ -264,6 +265,11 @@ public class TutorialEvents : MonoBehaviour
     public void PlayDangerSound()
     {
         if (audioSource != null && dangerClip != null) audioSource.PlayOneShot(dangerClip);
+    }
+
+    public void Termina()
+    {
+        SceneManager.LoadScene("Level 1 - Tutorial");
     }
 }
 

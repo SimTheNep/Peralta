@@ -733,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 147359820142258766, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1103125534556293228, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
       propertyPath: AlvoGOB
@@ -961,6 +961,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1393327485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2963371153354486200, guid: dce8369e341243b4b8c3eb1c414ac7b2, type: 3}
+  m_PrefabInstance: {fileID: 785777447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1731620388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1183,6 +1188,10 @@ PrefabInstance:
       propertyPath: peraltaTransform
       value: 
       objectReference: {fileID: 362966742}
+    - target: {fileID: 1204059726625034464, guid: 6d81c61a9caff5445bdc1cae02bf2a65, type: 3}
+      propertyPath: cabriolaTransform
+      value: 
+      objectReference: {fileID: 1393327485}
     - target: {fileID: 1204059726625034464, guid: 6d81c61a9caff5445bdc1cae02bf2a65, type: 3}
       propertyPath: gabrielController
       value: 
