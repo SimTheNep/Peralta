@@ -17,6 +17,11 @@ public class LevelEnding : MonoBehaviour
     private bool gabrielInside = false;
     private bool peraltaInside = false;
 
+    // Static variables to persist inventory across scenes
+    private static Item[] savedGabrielInventory = new Item[3];
+    private static MagicItem[] savedPeraltaInventory = new MagicItem[3];
+    private static bool shouldLoadInventory = false;
+
     private void Start()
     {
         if (canvasGroup != null)
@@ -25,6 +30,39 @@ public class LevelEnding : MonoBehaviour
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
             StartCoroutine(InitFadeOut());
+        }
+
+        if (shouldLoadInventory)
+        {
+            shouldLoadInventory = false;
+
+            if (gabrielObject != null)
+            {
+                var gabrielInv = gabrielObject.GetComponent<GabrielInventoryManager>();
+                if (gabrielInv != null)
+                {
+                    for (int i = 0; i < gabrielInv.slots.Length; i++)
+                    {
+                        if (savedGabrielInventory[i] != null)
+                            gabrielInv.slots[i] = new Item(savedGabrielInventory[i]);
+                    }
+                    gabrielInv.inventoryUI?.UpdateUI(gabrielInv.slots, gabrielInv.selectedSlot);
+                }
+            }
+
+            if (peraltaObject != null)
+            {
+                var peraltaInv = peraltaObject.GetComponent<PeraltaInventoryManager>();
+                if (peraltaInv != null)
+                {
+                    for (int i = 0; i < peraltaInv.slots.Length; i++)
+                    {
+                        if (savedPeraltaInventory[i] != null)
+                            peraltaInv.slots[i] = new MagicItem(savedPeraltaInventory[i]);
+                    }
+                    peraltaInv.inventoryUI?.UpdateUI(peraltaInv.slots, peraltaInv.selectedSlot);
+                }
+            }
         }
     }
 
@@ -138,7 +176,32 @@ public class LevelEnding : MonoBehaviour
 
         musicAudioSource.volume = 0f;
         musicAudioSource.Stop();
+
+        SaveInventoryState();
+
         yield return new WaitForSeconds(1f);
+        shouldLoadInventory = true;
         SceneManager.LoadScene(targetLevel);
+    }
+
+    void SaveInventoryState()
+    {
+        var gabrielInv = gabrielObject?.GetComponent<GabrielInventoryManager>();
+        if (gabrielInv != null)
+        {
+            for (int i = 0; i < savedGabrielInventory.Length; i++)
+            {
+                savedGabrielInventory[i] = gabrielInv.slots[i] != null ? new Item(gabrielInv.slots[i]) : null;
+            }
+        }
+
+        var peraltaInv = peraltaObject?.GetComponent<PeraltaInventoryManager>();
+        if (peraltaInv != null)
+        {
+            for (int i = 0; i < savedPeraltaInventory.Length; i++)
+            {
+                savedPeraltaInventory[i] = peraltaInv.slots[i] != null ? new MagicItem(peraltaInv.slots[i]) : null;
+            }
+        }
     }
 }
