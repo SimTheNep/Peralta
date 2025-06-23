@@ -15,6 +15,7 @@ public class IntermissionManager : MonoBehaviour
     public float totalWaitTime = 5f;
 
     private bool buttonReady = false;
+    private bool enterPressed = false;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class IntermissionManager : MonoBehaviour
         if (continueButton != null)
         {
             continueButton.gameObject.SetActive(false);
-            continueButton.onClick.AddListener(() => SceneManager.LoadScene("CronologiaTutorial"));
+            continueButton.onClick.AddListener(StartGame);
         }
 
         StartCoroutine(FadeAndShowButton());
@@ -35,9 +36,10 @@ public class IntermissionManager : MonoBehaviour
 
     void Update()
     {
-        if (buttonReady && Input.GetKeyDown(KeyCode.Return))
+        if (buttonReady && !enterPressed && Input.GetKeyDown(KeyCode.Return))
         {
-            continueButton?.onClick.Invoke();
+            enterPressed = true;
+            StartGame(); // Call the scene transition method
         }
     }
 
@@ -72,5 +74,14 @@ public class IntermissionManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(continueButton.gameObject);
             buttonReady = true;
         }
+    }
+
+    void StartGame()
+    {
+        // Prevent multiple triggers
+        if (!enterPressed)
+            enterPressed = true;
+
+        SceneManager.LoadScene("CronologiaTutorial");
     }
 }

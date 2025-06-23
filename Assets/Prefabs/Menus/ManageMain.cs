@@ -104,9 +104,9 @@ public class MenuNavigation : MonoBehaviour
     {
         string resText = resolucaoDropdown.options[resolucaoDropdown.value].text;
 
-        if (resText == "4:3")
+        if (resText == "16:9")
             Screen.SetResolution(1366, 766, FullScreenMode.Windowed);
-        else if (resText == "16:9")
+        else if (resText == "4:3")
             Screen.SetResolution(1366, 1025, FullScreenMode.Windowed);
 
         Debug.Log($"Resolution applied: {resText}");
