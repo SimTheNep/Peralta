@@ -3,7 +3,7 @@ using UnityEngine;
 public class PickupDialog : MonoBehaviour
 {
     public DialogueSequence dialogueToTrigger;
-    private DialogueManager dialogueManager;
+    public DialogueManager dialogueManager;
     private bool dialoguePlayed = false;
 
     public void TriggerDialog()

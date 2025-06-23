@@ -69,7 +69,7 @@ public class GabrielHealth : MonoBehaviour
 
     IEnumerator GameOverDelay()
     {
-        StopPlay();
+        StopMultiplePlayOne();
         yield return new WaitForSeconds(1f);
 
         if (gameOverOverlay != null)
@@ -158,29 +158,30 @@ public class GabrielHealth : MonoBehaviour
         Debug.Log($"Regenerou {amountHealed} de vida sobre {duration} segundos");
     }
 
-    public void StopPlay()
-    {
-        if (audioSourcesToStop == null || audioSourcesToStop.Count == 0)
+    public void StopMultiplePlayOne()
         {
-            Debug.LogWarning("No AudioSources assigned to stop.");
-        }
-        else
-        {
-            foreach (AudioSource source in audioSourcesToStop)
+            if (audioSourcesToStop == null || audioSourcesToStop.Count == 0)
             {
-                if (source != null && source.isPlaying)
+                Debug.LogWarning("sem sources stop");
+            }
+            else
+            {
+                foreach (AudioSource source in audioSourcesToStop)
                 {
-                    source.Stop();
+                    if (source != null && source.isPlaying)
+                    {
+                        source.Stop();
+                    }
                 }
             }
-        }
 
-        if (audioSourceToPlay == null)
-        {
-            Debug.LogWarning("audioSourceToPlay is not assigned.");
-            return;
-        }
+            if (audioSourceToPlay == null)
+            {
+                Debug.LogWarning("sem sources play");
+                return;
+            }
 
-        audioSourceToPlay.Play();
+            audioSourceToPlay.Play();
+        }
     }
-}
+

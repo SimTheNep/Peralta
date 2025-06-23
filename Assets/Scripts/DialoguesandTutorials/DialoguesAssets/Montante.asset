@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f01617b6960948742ad710be93f6cf28, type: 3}
-  m_Name: Serpente
+  m_Name: Montante
   m_EditorClassIdentifier: 
   lines:
-  - speaker: 1
-    text: "Uma lend\xE1ria serpente encantada. Apesar de ter perdido a vida \xE0
-      mil\xE9nios, nos ir\xE1 fazer mais r\xE1pidos e fortes."
-    isRightSide: 1
+  - speaker: 0
+    text: Ufa! Esta espada parece-me muito mais pesada do que as outras...
+    isRightSide: 0
     tutorialEvent: 0

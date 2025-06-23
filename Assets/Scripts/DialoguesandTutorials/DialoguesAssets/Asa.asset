@@ -10,11 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f01617b6960948742ad710be93f6cf28, type: 3}
-  m_Name: Serpente
+  m_Name: Asa
   m_EditorClassIdentifier: 
   lines:
   - speaker: 1
-    text: "Uma lend\xE1ria serpente encantada. Apesar de ter perdido a vida \xE0
-      mil\xE9nios, nos ir\xE1 fazer mais r\xE1pidos e fortes."
+    text: "Isto parece ser uma asa de \xCDcaro, uma criatura m\xEDstica que n\xE3o
+      encontro h\xE1 s\xE9culos..."
     isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 1
+    text: "Sinto uma mudan\xE7a com este amuleto, experimente caminhar sobre o buraco."
+    isRightSide: 1
+    tutorialEvent: 0
+  - speaker: 0
+    text: 
+    isRightSide: 0
     tutorialEvent: 0

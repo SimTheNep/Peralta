@@ -12,6 +12,8 @@ public class LevelEnding : MonoBehaviour
     public GameObject gabrielObject;
     public GameObject peraltaObject;
 
+    public string targetLevel;
+
     private bool gabrielInside = false;
     private bool peraltaInside = false;
 
@@ -137,6 +139,6 @@ public class LevelEnding : MonoBehaviour
         musicAudioSource.volume = 0f;
         musicAudioSource.Stop();
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("TestRoom");
+        SceneManager.LoadScene(targetLevel);
     }
 }

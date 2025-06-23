@@ -30,6 +30,8 @@ public class GabrielController : MonoBehaviour
     public float footstepInterval = 0.35f;
     private float footstepTimer = 0f;
 
+    public TilemapCollider2D targetTilemapCollider;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,13 +57,16 @@ public class GabrielController : MonoBehaviour
             footstepInterval = 0.35f;
         }
 
-        if (HasAsaIcaro)
+        if (HasAsaIcaro && targetTilemapCollider != null)
         {
-            gameObject.layer = LayerMask.NameToLayer("Floot 2");
+            targetTilemapCollider.enabled = false;
         }
         else
         {
-            gameObject.layer = LayerMask.NameToLayer("PlayerCharacters");
+            if (targetTilemapCollider != null)
+            {
+                targetTilemapCollider.enabled = true;
+            }
         }
 
         // Pause

@@ -6,7 +6,8 @@ public enum DialogueSpeaker
 {
     Gabriel,
     Peralta,
-    Cabriola
+    Cabriola,
+    Placa
 }
 
 
